@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: max-success-plan-quicksizer
+    runtime: node
+    plan: starter
+    buildCommand: npm ci && npm run db:generate && npm run build
+    startCommand: npm run start:render
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: file:/var/data/dev.db
+    disk:
+      name: quicksizer-data
+      mountPath: /var/data
+      sizeGB: 1

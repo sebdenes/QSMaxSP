@@ -1,0 +1,7008 @@
+{
+  "sections": [
+    {
+      "header_row": 4,
+      "name": "SAP Transformation Design",
+      "crm_id": "9507731",
+      "start_row": 5,
+      "end_row": 21
+    },
+    {
+      "header_row": 22,
+      "name": "SAP Architecture Transformation",
+      "crm_id": "9507753",
+      "start_row": 23,
+      "end_row": 30
+    },
+    {
+      "header_row": 31,
+      "name": "SAP Application Lifecycle Management for Cloud",
+      "crm_id": "9507747",
+      "start_row": 32,
+      "end_row": 39
+    },
+    {
+      "header_row": 40,
+      "name": "SAP Architecture Governance",
+      "crm_id": "9507749",
+      "start_row": 41,
+      "end_row": 44
+    },
+    {
+      "header_row": 45,
+      "name": "SAP Architecture Point of View",
+      "crm_id": "9507755",
+      "start_row": 46,
+      "end_row": 46
+    },
+    {
+      "header_row": 47,
+      "name": "SAP Business Transformation Management",
+      "crm_id": "9507760",
+      "start_row": 48,
+      "end_row": 50
+    },
+    {
+      "header_row": 51,
+      "name": "SAP Cloud Application Development",
+      "crm_id": "9507748",
+      "start_row": 52,
+      "end_row": 60
+    },
+    {
+      "header_row": 61,
+      "name": "SAP Continuous Evolution Guidance",
+      "crm_id": "9507751",
+      "start_row": 62,
+      "end_row": 72
+    },
+    {
+      "header_row": 73,
+      "name": "SAP Customer Center of Expertise Evolution",
+      "crm_id": "9507687",
+      "start_row": 74,
+      "end_row": 76
+    },
+    {
+      "header_row": 77,
+      "name": "SAP Cybersecurity and Compliance",
+      "crm_id": "9507685",
+      "start_row": 78,
+      "end_row": 81
+    },
+    {
+      "header_row": 82,
+      "name": "SAP Data and Analytics Adoption",
+      "crm_id": "9507754",
+      "start_row": 83,
+      "end_row": 89
+    },
+    {
+      "header_row": 90,
+      "name": "SAP Operations Control Center for Cloud",
+      "crm_id": "9507686",
+      "start_row": 91,
+      "end_row": 93
+    },
+    {
+      "header_row": 94,
+      "name": "SAP Transformation Planning",
+      "crm_id": "9507750",
+      "start_row": 95,
+      "end_row": 105
+    },
+    {
+      "header_row": 106,
+      "name": "SAP Transformation Safeguarding",
+      "crm_id": "9507746",
+      "start_row": 107,
+      "end_row": 118
+    },
+    {
+      "header_row": 119,
+      "name": "SAP Data Volume Management for Cloud",
+      "crm_id": "9507688",
+      "start_row": 120,
+      "end_row": 122
+    },
+    {
+      "header_row": 123,
+      "name": "SAP Continuous Innovation Guidance",
+      "crm_id": "9507752",
+      "start_row": 124,
+      "end_row": 125
+    }
+  ],
+  "section_count": 16,
+  "service_count": 106,
+  "service_items": [
+    {
+      "row": 5,
+      "section": "SAP Transformation Design",
+      "service_name": "Fit-to-Standard Analysis/Design ",
+      "crm_id": "9507770",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 6,
+      "section": "SAP Transformation Design",
+      "service_name": "Size to Scale ",
+      "crm_id": "9507783",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 7,
+      "section": "SAP Transformation Design",
+      "service_name": "Master Data Design ",
+      "crm_id": "9507784",
+      "default_effort": "13",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 8,
+      "section": "SAP Transformation Design",
+      "service_name": "ICCM Analysis ",
+      "crm_id": "9507785",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 9,
+      "section": "SAP Transformation Design",
+      "service_name": "Technical Platform Definition ",
+      "crm_id": "9507786",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 10,
+      "section": "SAP Transformation Design",
+      "service_name": "ICCM Transformation ",
+      "crm_id": "9507787",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 11,
+      "section": "SAP Transformation Design",
+      "service_name": "Mandatory Preparation for System Conversion and Upgrade (MPS)",
+      "crm_id": "9507788",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 12,
+      "section": "SAP Transformation Design",
+      "service_name": "Central Finance Design ",
+      "crm_id": "9507789",
+      "default_effort": "12",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 13,
+      "section": "SAP Transformation Design",
+      "service_name": "Integration Design Workshop ",
+      "crm_id": "9507810",
+      "default_effort": "13",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 14,
+      "section": "SAP Transformation Design",
+      "service_name": "Security Design ",
+      "crm_id": "9507811",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 15,
+      "section": "SAP Transformation Design",
+      "service_name": "UX Activation and Design ",
+      "crm_id": "9507812",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 16,
+      "section": "SAP Transformation Design",
+      "service_name": "Financial Data Quality Analysis ",
+      "crm_id": "9507813",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 17,
+      "section": "SAP Transformation Design",
+      "service_name": "Phase Reviews for Cloud Implementation ",
+      "crm_id": "9507814",
+      "default_effort": "13",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 18,
+      "section": "SAP Transformation Design",
+      "service_name": "HA/DR Landscape Verification and Testing Support",
+      "crm_id": "9507815",
+      "default_effort": "60",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 19,
+      "section": "SAP Transformation Design",
+      "service_name": "Test Planning ",
+      "crm_id": "9507816",
+      "default_effort": "16",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 20,
+      "section": "SAP Transformation Design",
+      "service_name": "ICCM Monitoring ",
+      "crm_id": "9507817",
+      "default_effort": "8",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 21,
+      "section": "SAP Transformation Design",
+      "service_name": "Cloud Design Support",
+      "crm_id": "9508117",
+      "default_effort": "12",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 23,
+      "section": "SAP Architecture Transformation",
+      "service_name": "North Star Architecture Service ",
+      "crm_id": "9507775",
+      "default_effort": "70",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 24,
+      "section": "SAP Architecture Transformation",
+      "service_name": "Activate Solution ",
+      "crm_id": "9507776",
+      "default_effort": "6",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 25,
+      "section": "SAP Architecture Transformation",
+      "service_name": "Data and Analytics Strategy ",
+      "crm_id": "9507777",
+      "default_effort": "12",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 26,
+      "section": "SAP Architecture Transformation",
+      "service_name": "Integration Strategy ",
+      "crm_id": "9507829",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 27,
+      "section": "SAP Architecture Transformation",
+      "service_name": "Instance Strategy ",
+      "crm_id": "9507830",
+      "default_effort": "11",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 28,
+      "section": "SAP Architecture Transformation",
+      "service_name": "UX Strategy ",
+      "crm_id": "9507831",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 29,
+      "section": "SAP Architecture Transformation",
+      "service_name": "Hybrid Cloud Strategy ",
+      "crm_id": "9507832",
+      "default_effort": "30",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 30,
+      "section": "SAP Architecture Transformation",
+      "service_name": "Integrated Toolchain Discovery & Advisory",
+      "crm_id": "9507791",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 32,
+      "section": "SAP Application Lifecycle Management for Cloud",
+      "service_name": "Application Lifecycle Management Roadmap",
+      "crm_id": "9507821",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 33,
+      "section": "SAP Application Lifecycle Management for Cloud",
+      "service_name": "Agile Methodology and Tool Coach  ",
+      "crm_id": "9507822",
+      "default_effort": "40",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 34,
+      "section": "SAP Application Lifecycle Management for Cloud",
+      "service_name": "Software Change Management & CI/CD",
+      "crm_id": "9507823",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 35,
+      "section": "SAP Application Lifecycle Management for Cloud",
+      "service_name": "Test Management and Automation ",
+      "crm_id": "9507824",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 36,
+      "section": "SAP Application Lifecycle Management for Cloud",
+      "service_name": "Application Lifecycle Management Extensibility",
+      "crm_id": "9507825",
+      "default_effort": "7",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 37,
+      "section": "SAP Application Lifecycle Management for Cloud",
+      "service_name": "Process Management ",
+      "crm_id": "9507826",
+      "default_effort": "6",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 38,
+      "section": "SAP Application Lifecycle Management for Cloud",
+      "service_name": "DevOps Roadmap Design ",
+      "crm_id": "9507827",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 39,
+      "section": "SAP Application Lifecycle Management for Cloud",
+      "service_name": "Change and Deployment Management ",
+      "crm_id": "9507820",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 41,
+      "section": "SAP Architecture Governance",
+      "service_name": "Embedded Architecture Practice ",
+      "crm_id": "9507828",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 42,
+      "section": "SAP Architecture Governance",
+      "service_name": "Architecture Governance Setup ",
+      "crm_id": "9507840",
+      "default_effort": "8",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 43,
+      "section": "SAP Architecture Governance",
+      "service_name": "Value Design Governance ",
+      "crm_id": "9507841",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 44,
+      "section": "SAP Architecture Governance",
+      "service_name": "Value Design Setup ",
+      "crm_id": "9507774",
+      "default_effort": "5",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 46,
+      "section": "SAP Architecture Point of View",
+      "service_name": "Architecture Point of View ",
+      "crm_id": "9507939",
+      "default_effort": "6",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 48,
+      "section": "SAP Business Transformation Management",
+      "service_name": "Implementation Guidance for BTM",
+      "crm_id": "9507836",
+      "default_effort": "40",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": "Highly depending on solutions in scope."
+    },
+    {
+      "row": 49,
+      "section": "SAP Business Transformation Management",
+      "service_name": "Business Process Assessment ",
+      "crm_id": "9507837",
+      "default_effort": "8",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 50,
+      "section": "SAP Business Transformation Management",
+      "service_name": "Business Process Management Advisory",
+      "crm_id": "9507838",
+      "default_effort": "5",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 52,
+      "section": "SAP Cloud Application Development",
+      "service_name": "App Development Advisory for SAP BTP ",
+      "crm_id": "9507839",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 53,
+      "section": "SAP Cloud Application Development",
+      "service_name": "Extensibility Strategy Workshop ",
+      "crm_id": "9507870",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 54,
+      "section": "SAP Cloud Application Development",
+      "service_name": "Empowerment Service for SAP BTP ",
+      "crm_id": "9507871",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 55,
+      "section": "SAP Cloud Application Development",
+      "service_name": "Replatforming Assessment to SAP Integration Suite",
+      "crm_id": "9507872",
+      "default_effort": "14",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 56,
+      "section": "SAP Cloud Application Development",
+      "service_name": "Lifecycle Management Setup for SAP BTP ",
+      "crm_id": "9507873",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 57,
+      "section": "SAP Cloud Application Development",
+      "service_name": "Replatforming Support SAP BTP, Neo Environment to Multi-Cloud Foundation",
+      "crm_id": "9507778",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 58,
+      "section": "SAP Cloud Application Development",
+      "service_name": "SAP BTP Capabilities Empowerment ",
+      "crm_id": "9507779",
+      "default_effort": "8",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 59,
+      "section": "SAP Cloud Application Development",
+      "service_name": "Renovation and Replatforming Support for Clean Core Extensions",
+      "crm_id": "9507880",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 60,
+      "section": "SAP Cloud Application Development",
+      "service_name": "SAP BTP Programming Models Development Enablement ",
+      "crm_id": "9507881",
+      "default_effort": "12",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 62,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "Business Downtime Optimization ",
+      "crm_id": "9507882",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 63,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "Solution Management Assessment ",
+      "crm_id": "9507883",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 64,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "System Administration ",
+      "crm_id": "9507885",
+      "default_effort": "8",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 65,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "Cloud Operations Health Check",
+      "crm_id": "9508113",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 66,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "Innovation Design",
+      "crm_id": "9507886",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 67,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "AI and Innovation Exploration",
+      "crm_id": "9507887",
+      "default_effort": "14",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 68,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "AI Strategy (AIS)",
+      "crm_id": "9507888",
+      "default_effort": "12",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 69,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "Innovation Empowerment ",
+      "crm_id": "9507889",
+      "default_effort": "8",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 70,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "Innovation Maturity Assessment ",
+      "crm_id": "9507890",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 71,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "AI Implementation Support (AIIS) ",
+      "crm_id": "9507891",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 72,
+      "section": "SAP Continuous Evolution Guidance",
+      "service_name": "Innovation Proof of Concept ",
+      "crm_id": "9507884",
+      "default_effort": "21",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 74,
+      "section": "SAP Customer Center of Expertise Evolution",
+      "service_name": "Customer CoE Strategy and Design ",
+      "crm_id": "9507892",
+      "default_effort": "16",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 75,
+      "section": "SAP Customer Center of Expertise Evolution",
+      "service_name": "Operations Planning Workshop ",
+      "crm_id": "9507893",
+      "default_effort": "14",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 76,
+      "section": "SAP Customer Center of Expertise Evolution",
+      "service_name": "Operational Model ",
+      "crm_id": "9507894",
+      "default_effort": "30",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 78,
+      "section": "SAP Cybersecurity and Compliance",
+      "service_name": "Cybersecurity Deep Dive ",
+      "crm_id": "9507895",
+      "default_effort": "6",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 79,
+      "section": "SAP Cybersecurity and Compliance",
+      "service_name": "Cybersecurity Planning & Empowerment ",
+      "crm_id": "9507896",
+      "default_effort": "9",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 80,
+      "section": "SAP Cybersecurity and Compliance",
+      "service_name": "Cybersecurity Architecting ",
+      "crm_id": "9507897",
+      "default_effort": "23",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 81,
+      "section": "SAP Cybersecurity and Compliance",
+      "service_name": "Cybersecurity Design Advisory",
+      "crm_id": "9507898",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 83,
+      "section": "SAP Data and Analytics Adoption",
+      "service_name": "Design for Data and Analytics ",
+      "crm_id": "9507899",
+      "default_effort": "missing",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 84,
+      "section": "SAP Data and Analytics Adoption",
+      "service_name": "Jump-Start for Data and Analytics ",
+      "crm_id": "9507900",
+      "default_effort": "25",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 85,
+      "section": "SAP Data and Analytics Adoption",
+      "service_name": "Enablement for Data and Analytics ",
+      "crm_id": "9507901",
+      "default_effort": "12",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 86,
+      "section": "SAP Data and Analytics Adoption",
+      "service_name": "Design at Scale for Data & Analytics ",
+      "crm_id": "9507902",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 87,
+      "section": "SAP Data and Analytics Adoption",
+      "service_name": "Health Check for Data and Analytics ",
+      "crm_id": "9507903",
+      "default_effort": "4",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 88,
+      "section": "SAP Data and Analytics Adoption",
+      "service_name": "Inspiration for Data and Analytics ",
+      "crm_id": "9507905",
+      "default_effort": "4",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 89,
+      "section": "SAP Data and Analytics Adoption",
+      "service_name": "Maturity Assessment for Data and Analytics",
+      "crm_id": "9507904",
+      "default_effort": "10",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 91,
+      "section": "SAP Operations Control Center for Cloud",
+      "service_name": "Operations Platform Starter Pack",
+      "crm_id": "9507923",
+      "default_effort": "5",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 92,
+      "section": "SAP Operations Control Center for Cloud",
+      "service_name": "Operations Control Center Roadmap for Cloud",
+      "crm_id": "9508115",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 93,
+      "section": "SAP Operations Control Center for Cloud",
+      "service_name": "Operations Control Center Implementation and Improvement for Cloud",
+      "crm_id": "9508116",
+      "default_effort": "30",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 95,
+      "section": "SAP Transformation Planning",
+      "service_name": "Clean Core Assessment ",
+      "crm_id": "9507689",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 96,
+      "section": "SAP Transformation Planning",
+      "service_name": "Clean Core Discovery ",
+      "crm_id": "9507691",
+      "default_effort": "5",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 97,
+      "section": "SAP Transformation Planning",
+      "service_name": "Clean Core Strategy and Roadmap ",
+      "crm_id": "9507692",
+      "default_effort": "25",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 98,
+      "section": "SAP Transformation Planning",
+      "service_name": "Data Migration Assessment ",
+      "crm_id": "9507920",
+      "default_effort": "22",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 99,
+      "section": "SAP Transformation Planning",
+      "service_name": "Data Migration Architecture ",
+      "crm_id": "9507921",
+      "default_effort": "13",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 100,
+      "section": "SAP Transformation Planning",
+      "service_name": "SDT Planning Workshop (SPW)",
+      "crm_id": "9507922",
+      "default_effort": "30",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 101,
+      "section": "SAP Transformation Planning",
+      "service_name": "Capability Advisory and Adoption",
+      "crm_id": "9507924",
+      "default_effort": "12",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 102,
+      "section": "SAP Transformation Planning",
+      "service_name": "Transition Planning for New Implementation (TNI)",
+      "crm_id": "9507925",
+      "default_effort": "31",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 103,
+      "section": "SAP Transformation Planning",
+      "service_name": "Deep Transformation Insights",
+      "crm_id": "9507926",
+      "default_effort": "5",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 104,
+      "section": "SAP Transformation Planning",
+      "service_name": "Cloud Planning Workshop",
+      "crm_id": "9507927",
+      "default_effort": "7",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 105,
+      "section": "SAP Transformation Planning",
+      "service_name": "Migration and Upgrade Planning Workshop (MPW)",
+      "crm_id": "9507906",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 107,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Integration Check ",
+      "crm_id": "9507932",
+      "default_effort": "24",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 108,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Volume Test Optimization ",
+      "crm_id": "9507933",
+      "default_effort": "32",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 109,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "GAP Validation ",
+      "crm_id": "9507934",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 110,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Integration Validation ",
+      "crm_id": "9507935",
+      "default_effort": "30",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 111,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Feasibility Check ",
+      "crm_id": "9507936",
+      "default_effort": "24",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 112,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Application Architecture Evaluation",
+      "crm_id": "9507937",
+      "default_effort": "50",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 113,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Interface Management ",
+      "crm_id": "9507938",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 114,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Going Live Support ",
+      "crm_id": "9507930",
+      "default_effort": "16",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 115,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Business Process Performance Optimization",
+      "crm_id": "9507931",
+      "default_effort": "25",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 116,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Design Evaluation ",
+      "crm_id": "9507693",
+      "default_effort": "20",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 117,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Technical Performance Optimization",
+      "crm_id": "9507694",
+      "default_effort": "7",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 118,
+      "section": "SAP Transformation Safeguarding",
+      "service_name": "Transition to Cloud Operations",
+      "crm_id": "9508114",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 120,
+      "section": "SAP Data Volume Management for Cloud",
+      "service_name": "Data Volume Management: Native Storage Extension in the Cloud",
+      "crm_id": "9508118",
+      "default_effort": "5",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 121,
+      "section": "SAP Data Volume Management for Cloud",
+      "service_name": "Data Volume Design in the Cloud",
+      "crm_id": "9508119",
+      "default_effort": "12",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 122,
+      "section": "SAP Data Volume Management for Cloud",
+      "service_name": "Implementation Support for Data Volume Management in the Cloud",
+      "crm_id": "9508130",
+      "default_effort": "6",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 124,
+      "section": "SAP Continuous Innovation Guidance",
+      "service_name": "Sustainability Assessment ",
+      "crm_id": "9507928",
+      "default_effort": "30",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    },
+    {
+      "row": 125,
+      "section": "SAP Continuous Innovation Guidance",
+      "service_name": "Sustainability Advisory ",
+      "crm_id": "9507929",
+      "default_effort": "15",
+      "template_S": null,
+      "template_M": null,
+      "template_L": null,
+      "template_Custom": null,
+      "template_Details": null
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "AI",
+      "override_count": 16,
+      "overrides": [
+        {
+          "row": 46,
+          "service_name": "Architecture Point of View ",
+          "changes": {
+            "S": "4",
+            "M": "8",
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": "\u00a0",
+            "M": "6",
+            "L": "8",
+            "Custom": "\u00a0",
+            "Details": "Highly depending on solutions in scope."
+          }
+        },
+        {
+          "row": 49,
+          "service_name": "Business Process Assessment ",
+          "changes": {
+            "S": "\u00a0",
+            "M": "8",
+            "L": "8",
+            "Custom": "\u00a0",
+            "Details": null
+          }
+        },
+        {
+          "row": 56,
+          "service_name": "Lifecycle Management Setup for SAP BTP ",
+          "changes": {
+            "S": "\u00a0",
+            "M": "10",
+            "L": "10",
+            "Custom": "\u00a0",
+            "Details": "\u00a0"
+          }
+        },
+        {
+          "row": 58,
+          "service_name": "SAP BTP Capabilities Empowerment ",
+          "changes": {
+            "S": "\u00a0",
+            "M": "8",
+            "L": "8",
+            "Custom": "\u00a0",
+            "Details": "\u00a0"
+          }
+        },
+        {
+          "row": 64,
+          "service_name": "System Administration ",
+          "changes": {
+            "S": "\u00a0",
+            "M": "8",
+            "L": "8",
+            "Custom": "\u00a0",
+            "Details": "\u00a0"
+          }
+        },
+        {
+          "row": 66,
+          "service_name": "Innovation Design",
+          "changes": {
+            "S": "\u00a0",
+            "M": "10",
+            "L": "15",
+            "Custom": "\u00a0",
+            "Details": "\u00a0"
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": "10",
+            "M": "12",
+            "L": "14",
+            "Custom": "\u00a0",
+            "Details": "\u00a0"
+          }
+        },
+        {
+          "row": 68,
+          "service_name": "AI Strategy (AIS)",
+          "changes": {
+            "S": "\u00a0",
+            "M": "12",
+            "L": "20",
+            "Custom": "\u00a0",
+            "Details": "\u00a0"
+          }
+        },
+        {
+          "row": 69,
+          "service_name": "Innovation Empowerment ",
+          "changes": {
+            "S": "\u00a0",
+            "M": "8",
+            "L": "12",
+            "Custom": "\u00a0",
+            "Details": "\u00a0"
+          }
+        },
+        {
+          "row": 70,
+          "service_name": "Innovation Maturity Assessment ",
+          "changes": {
+            "S": "\u00a0",
+            "M": "10",
+            "L": "16",
+            "Custom": "\u00a0",
+            "Details": "\u00a0"
+          }
+        },
+        {
+          "row": 71,
+          "service_name": "AI Implementation Support (AIIS) ",
+          "changes": {
+            "S": "8",
+            "M": "12",
+            "L": "25",
+            "Custom": "\u00a0",
+            "Details": "\u00a0"
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": "10",
+            "M": "20",
+            "L": "35",
+            "Custom": "\u00a0",
+            "Details": "\u00a0"
+          }
+        },
+        {
+          "row": 78,
+          "service_name": "Cybersecurity Deep Dive ",
+          "changes": {
+            "S": "\u00a0",
+            "M": "6",
+            "L": "6",
+            "Custom": "\u00a0",
+            "Details": null
+          }
+        },
+        {
+          "row": 83,
+          "service_name": "Design for Data and Analytics ",
+          "changes": {
+            "S": "\u00a0",
+            "M": "12",
+            "L": "12",
+            "Custom": "\u00a0",
+            "Details": null
+          }
+        },
+        {
+          "row": 96,
+          "service_name": "Clean Core Discovery ",
+          "changes": {
+            "S": "\u00a0",
+            "M": "5",
+            "L": "5",
+            "Custom": "\u00a0",
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "32",
+        "M": "155",
+        "L": "210",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "Brownfield",
+      "override_count": 42,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "80",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 6,
+          "service_name": "Size to Scale ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 7,
+          "service_name": "Master Data Design ",
+          "changes": {
+            "S": null,
+            "M": "13",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 8,
+          "service_name": "ICCM Analysis ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 9,
+          "service_name": "Technical Platform Definition ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 10,
+          "service_name": "ICCM Transformation ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 11,
+          "service_name": "Mandatory Preparation for System Conversion and Upgrade (MPS)",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 13,
+          "service_name": "Integration Design Workshop ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 14,
+          "service_name": "Security Design ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": "for L customer more role control is needed. "
+          }
+        },
+        {
+          "row": 15,
+          "service_name": "UX Activation and Design ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 16,
+          "service_name": "Financial Data Quality Analysis ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 18,
+          "service_name": "HA/DR Landscape Verification and Testing Support",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 19,
+          "service_name": "Test Planning ",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 20,
+          "service_name": "ICCM Monitoring ",
+          "changes": {
+            "S": null,
+            "M": "8",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 28,
+          "service_name": "UX Strategy ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 32,
+          "service_name": "Application Lifecycle Management Roadmap",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 33,
+          "service_name": "Agile Methodology and Tool Coach  ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 52,
+          "service_name": "App Development Advisory for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 53,
+          "service_name": "Extensibility Strategy Workshop ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 54,
+          "service_name": "Empowerment Service for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 56,
+          "service_name": "Lifecycle Management Setup for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 58,
+          "service_name": "SAP BTP Capabilities Empowerment ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 62,
+          "service_name": "Business Downtime Optimization ",
+          "changes": {
+            "S": "15",
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 64,
+          "service_name": "System Administration ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 74,
+          "service_name": "Customer CoE Strategy and Design ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 91,
+          "service_name": "Operations Platform Starter Pack",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 101,
+          "service_name": "Capability Advisory and Adoption",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 105,
+          "service_name": "Migration and Upgrade Planning Workshop (MPW)",
+          "changes": {
+            "S": "20",
+            "M": "25",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": "24",
+            "M": "24",
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 109,
+          "service_name": "GAP Validation ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 110,
+          "service_name": "Integration Validation ",
+          "changes": {
+            "S": "30",
+            "M": "30",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 111,
+          "service_name": "Feasibility Check ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": "Either FC or IC"
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": "16",
+            "M": "32",
+            "L": "48",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 117,
+          "service_name": "Technical Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": "7",
+            "L": "7",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 118,
+          "service_name": "Transition to Cloud Operations",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 120,
+          "service_name": "Data Volume Management: Native Storage Extension in the Cloud",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 121,
+          "service_name": "Data Volume Design in the Cloud",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 122,
+          "service_name": "Implementation Support for Data Volume Management in the Cloud",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "105",
+        "M": "367",
+        "L": "672",
+        "Custom": "0",
+        "layout": "extended",
+        "custom_total_cell": "J2",
+        "totals_total_cell": "H2"
+      }
+    },
+    {
+      "name": "Greenfield",
+      "override_count": 42,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": "10",
+            "M": "20",
+            "L": "105",
+            "Custom": null,
+            "Details": "S/M: single selected topic L: 7 LoB \u00e1 15 Days"
+          }
+        },
+        {
+          "row": 6,
+          "service_name": "Size to Scale ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 7,
+          "service_name": "Master Data Design ",
+          "changes": {
+            "S": null,
+            "M": "13",
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 9,
+          "service_name": "Technical Platform Definition ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 13,
+          "service_name": "Integration Design Workshop ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 14,
+          "service_name": "Security Design ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 15,
+          "service_name": "UX Activation and Design ",
+          "changes": {
+            "S": "15",
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 18,
+          "service_name": "HA/DR Landscape Verification and Testing Support",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 19,
+          "service_name": "Test Planning ",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 24,
+          "service_name": "Activate Solution ",
+          "changes": {
+            "S": null,
+            "M": "6",
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 26,
+          "service_name": "Integration Strategy ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 28,
+          "service_name": "UX Strategy ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 32,
+          "service_name": "Application Lifecycle Management Roadmap",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 33,
+          "service_name": "Agile Methodology and Tool Coach  ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 43,
+          "service_name": "Value Design Governance ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 44,
+          "service_name": "Value Design Setup ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 64,
+          "service_name": "System Administration ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 66,
+          "service_name": "Innovation Design",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": null,
+            "M": "14",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 69,
+          "service_name": "Innovation Empowerment ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 71,
+          "service_name": "AI Implementation Support (AIIS) ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "21",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 74,
+          "service_name": "Customer CoE Strategy and Design ",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 76,
+          "service_name": "Operational Model ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 91,
+          "service_name": "Operations Platform Starter Pack",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 92,
+          "service_name": "Operations Control Center Roadmap for Cloud",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 93,
+          "service_name": "Operations Control Center Implementation and Improvement for Cloud",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 98,
+          "service_name": "Data Migration Assessment ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "22",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 99,
+          "service_name": "Data Migration Architecture ",
+          "changes": {
+            "S": null,
+            "M": "13",
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 101,
+          "service_name": "Capability Advisory and Adoption",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 102,
+          "service_name": "Transition Planning for New Implementation (TNI)",
+          "changes": {
+            "S": "20",
+            "M": "20",
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": "24",
+            "M": "24",
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": "32",
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 109,
+          "service_name": "GAP Validation ",
+          "changes": {
+            "S": null,
+            "M": "18",
+            "L": null,
+            "Custom": null,
+            "Details": "M: 6 Gaps"
+          }
+        },
+        {
+          "row": 110,
+          "service_name": "Integration Validation ",
+          "changes": {
+            "S": "30",
+            "M": "30",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 111,
+          "service_name": "Feasibility Check ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": "Either FC or IC"
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": "16",
+            "M": "32",
+            "L": "48",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 117,
+          "service_name": "Technical Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": "7",
+            "L": "7",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 118,
+          "service_name": "Transition to Cloud Operations",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "115",
+        "M": "438",
+        "L": "760",
+        "Custom": null,
+        "layout": "extended",
+        "custom_total_cell": "J2",
+        "totals_total_cell": "H2"
+      }
+    },
+    {
+      "name": "SDT (Bluefield)",
+      "override_count": 37,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "80",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 6,
+          "service_name": "Size to Scale ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 7,
+          "service_name": "Master Data Design ",
+          "changes": {
+            "S": null,
+            "M": "13",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 8,
+          "service_name": "ICCM Analysis ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 9,
+          "service_name": "Technical Platform Definition ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 10,
+          "service_name": "ICCM Transformation ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 11,
+          "service_name": "Mandatory Preparation for System Conversion and Upgrade (MPS)",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 13,
+          "service_name": "Integration Design Workshop ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 14,
+          "service_name": "Security Design ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 15,
+          "service_name": "UX Activation and Design ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 16,
+          "service_name": "Financial Data Quality Analysis ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 18,
+          "service_name": "HA/DR Landscape Verification and Testing Support",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 19,
+          "service_name": "Test Planning ",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 20,
+          "service_name": "ICCM Monitoring ",
+          "changes": {
+            "S": null,
+            "M": "8",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 32,
+          "service_name": "Application Lifecycle Management Roadmap",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 33,
+          "service_name": "Agile Methodology and Tool Coach  ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 52,
+          "service_name": "App Development Advisory for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 53,
+          "service_name": "Extensibility Strategy Workshop ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 54,
+          "service_name": "Empowerment Service for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 56,
+          "service_name": "Lifecycle Management Setup for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 58,
+          "service_name": "SAP BTP Capabilities Empowerment ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 64,
+          "service_name": "System Administration ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 74,
+          "service_name": "Customer CoE Strategy and Design ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 91,
+          "service_name": "Operations Platform Starter Pack",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 98,
+          "service_name": "Data Migration Assessment ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "22",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 99,
+          "service_name": "Data Migration Architecture ",
+          "changes": {
+            "S": "13",
+            "M": "13",
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 100,
+          "service_name": "SDT Planning Workshop (SPW)",
+          "changes": {
+            "S": "30",
+            "M": "30",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 101,
+          "service_name": "Capability Advisory and Adoption",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": "24",
+            "M": "24",
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 109,
+          "service_name": "GAP Validation ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 110,
+          "service_name": "Integration Validation ",
+          "changes": {
+            "S": "30",
+            "M": "30",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": "16",
+            "M": "32",
+            "L": "48",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 117,
+          "service_name": "Technical Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": "7",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 118,
+          "service_name": "Transition to Cloud Operations",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "113",
+        "M": "365",
+        "L": "670",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "Run",
+      "override_count": 37,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": "20",
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 10,
+          "service_name": "ICCM Transformation ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 14,
+          "service_name": "Security Design ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 15,
+          "service_name": "UX Activation and Design ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 19,
+          "service_name": "Test Planning ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 34,
+          "service_name": "Software Change Management & CI/CD",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "40",
+            "Custom": null,
+            "Details": "Highly depending on solutions in scope."
+          }
+        },
+        {
+          "row": 49,
+          "service_name": "Business Process Assessment ",
+          "changes": {
+            "S": null,
+            "M": "8",
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 50,
+          "service_name": "Business Process Management Advisory",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 62,
+          "service_name": "Business Downtime Optimization ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 63,
+          "service_name": "Solution Management Assessment ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 64,
+          "service_name": "System Administration ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 65,
+          "service_name": "Cloud Operations Health Check",
+          "changes": {
+            "S": "15",
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": "5 days per system plus 5 days fix"
+          }
+        },
+        {
+          "row": 66,
+          "service_name": "Innovation Design",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": "14",
+            "M": "14",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 69,
+          "service_name": "Innovation Empowerment ",
+          "changes": {
+            "S": null,
+            "M": "8",
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 71,
+          "service_name": "AI Implementation Support (AIIS) ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "21",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 74,
+          "service_name": "Customer CoE Strategy and Design ",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 75,
+          "service_name": "Operations Planning Workshop ",
+          "changes": {
+            "S": "14",
+            "M": "14",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 76,
+          "service_name": "Operational Model ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 91,
+          "service_name": "Operations Platform Starter Pack",
+          "changes": {
+            "S": "5",
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 92,
+          "service_name": "Operations Control Center Roadmap for Cloud",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 93,
+          "service_name": "Operations Control Center Implementation and Improvement for Cloud",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 101,
+          "service_name": "Capability Advisory and Adoption",
+          "changes": {
+            "S": "12",
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 105,
+          "service_name": "Migration and Upgrade Planning Workshop (MPW)",
+          "changes": {
+            "S": "15",
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": null,
+            "M": "24",
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 109,
+          "service_name": "GAP Validation ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 110,
+          "service_name": "Integration Validation ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 115,
+          "service_name": "Business Process Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 120,
+          "service_name": "Data Volume Management: Native Storage Extension in the Cloud",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": "5 days - plus 1 day per partitoning per table"
+          }
+        },
+        {
+          "row": 121,
+          "service_name": "Data Volume Design in the Cloud",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 122,
+          "service_name": "Implementation Support for Data Volume Management in the Cloud",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "95",
+        "M": "267",
+        "L": "612",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "Lift&Shift",
+      "override_count": 23,
+      "overrides": [
+        {
+          "row": 6,
+          "service_name": "Size to Scale ",
+          "changes": {
+            "S": "0",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 9,
+          "service_name": "Technical Platform Definition ",
+          "changes": {
+            "S": "0",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 13,
+          "service_name": "Integration Design Workshop ",
+          "changes": {
+            "S": "0",
+            "M": "10",
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 18,
+          "service_name": "HA/DR Landscape Verification and Testing Support",
+          "changes": {
+            "S": "0",
+            "M": "8",
+            "L": "10",
+            "Custom": null,
+            "Details": "Only DR Testing relevant"
+          }
+        },
+        {
+          "row": 32,
+          "service_name": "Application Lifecycle Management Roadmap",
+          "changes": {
+            "S": "5",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 33,
+          "service_name": "Agile Methodology and Tool Coach  ",
+          "changes": {
+            "S": "0",
+            "M": "25",
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 64,
+          "service_name": "System Administration ",
+          "changes": {
+            "S": "0",
+            "M": "6",
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 66,
+          "service_name": "Innovation Design",
+          "changes": {
+            "S": "0",
+            "M": "15",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": "14",
+            "M": "14",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 69,
+          "service_name": "Innovation Empowerment ",
+          "changes": {
+            "S": "0",
+            "M": "8",
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 71,
+          "service_name": "AI Implementation Support (AIIS) ",
+          "changes": {
+            "S": "0",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": "0",
+            "M": "15",
+            "L": "21",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 91,
+          "service_name": "Operations Platform Starter Pack",
+          "changes": {
+            "S": "5",
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 92,
+          "service_name": "Operations Control Center Roadmap for Cloud",
+          "changes": {
+            "S": "10",
+            "M": "12",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 93,
+          "service_name": "Operations Control Center Implementation and Improvement for Cloud",
+          "changes": {
+            "S": "0",
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 105,
+          "service_name": "Migration and Upgrade Planning Workshop (MPW)",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": "10",
+            "M": "15",
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 110,
+          "service_name": "Integration Validation ",
+          "changes": {
+            "S": "15",
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": "5",
+            "M": "10",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": "10",
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 120,
+          "service_name": "Data Volume Management: Native Storage Extension in the Cloud",
+          "changes": {
+            "S": "0",
+            "M": "3",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 121,
+          "service_name": "Data Volume Design in the Cloud",
+          "changes": {
+            "S": "5",
+            "M": "8",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 122,
+          "service_name": "Implementation Support for Data Volume Management in the Cloud",
+          "changes": {
+            "S": "0",
+            "M": "3",
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "89",
+        "M": "267",
+        "L": "356",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "Public Cloud",
+      "override_count": 22,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "40",
+            "Custom": null,
+            "Details": "L: 5 LoB \u00e1 8 Day"
+          }
+        },
+        {
+          "row": 7,
+          "service_name": "Master Data Design ",
+          "changes": {
+            "S": null,
+            "M": "13",
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 13,
+          "service_name": "Integration Design Workshop ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 14,
+          "service_name": "Security Design ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 19,
+          "service_name": "Test Planning ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 32,
+          "service_name": "Application Lifecycle Management Roadmap",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 33,
+          "service_name": "Agile Methodology and Tool Coach  ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 66,
+          "service_name": "Innovation Design",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": null,
+            "M": "14",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 69,
+          "service_name": "Innovation Empowerment ",
+          "changes": {
+            "S": null,
+            "M": "8",
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 71,
+          "service_name": "AI Implementation Support (AIIS) ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 74,
+          "service_name": "Customer CoE Strategy and Design ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 93,
+          "service_name": "Operations Control Center Implementation and Improvement for Cloud",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 99,
+          "service_name": "Data Migration Architecture ",
+          "changes": {
+            "S": "13",
+            "M": "13",
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 101,
+          "service_name": "Capability Advisory and Adoption",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": "24",
+            "M": "24",
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 109,
+          "service_name": "GAP Validation ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 111,
+          "service_name": "Feasibility Check ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": "either FC or IC"
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": "16",
+            "M": "16",
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 118,
+          "service_name": "Transition to Cloud Operations",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "53",
+        "M": "198",
+        "L": "321",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "Spend",
+      "override_count": 29,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": "20",
+            "M": "40",
+            "L": "100",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 11,
+          "service_name": "Mandatory Preparation for System Conversion and Upgrade (MPS)",
+          "changes": {
+            "S": "8",
+            "M": "8",
+            "L": "8",
+            "Custom": null,
+            "Details": "CVI assessment"
+          }
+        },
+        {
+          "row": 23,
+          "service_name": "North Star Architecture Service ",
+          "changes": {
+            "S": null,
+            "M": "40",
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 25,
+          "service_name": "Data and Analytics Strategy ",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 27,
+          "service_name": "Instance Strategy ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "11",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 46,
+          "service_name": "Architecture Point of View ",
+          "changes": {
+            "S": "3",
+            "M": "6",
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": "40",
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 49,
+          "service_name": "Business Process Assessment ",
+          "changes": {
+            "S": "10",
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 53,
+          "service_name": "Extensibility Strategy Workshop ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 63,
+          "service_name": "Solution Management Assessment ",
+          "changes": {
+            "S": "15",
+            "M": "25",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 66,
+          "service_name": "Innovation Design",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": "5",
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 68,
+          "service_name": "AI Strategy (AIS)",
+          "changes": {
+            "S": "7",
+            "M": "7",
+            "L": "7",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": "10",
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 75,
+          "service_name": "Operations Planning Workshop ",
+          "changes": {
+            "S": null,
+            "M": "14",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 79,
+          "service_name": "Cybersecurity Planning & Empowerment ",
+          "changes": {
+            "S": null,
+            "M": "9",
+            "L": "9",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 102,
+          "service_name": "Transition Planning for New Implementation (TNI)",
+          "changes": {
+            "S": null,
+            "M": "17",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 105,
+          "service_name": "Migration and Upgrade Planning Workshop (MPW)",
+          "changes": {
+            "S": null,
+            "M": "17",
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": "10",
+            "M": "15",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": "30",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 109,
+          "service_name": "GAP Validation ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 110,
+          "service_name": "Integration Validation ",
+          "changes": {
+            "S": null,
+            "M": "35",
+            "L": "50",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 111,
+          "service_name": "Feasibility Check ",
+          "changes": {
+            "S": "10",
+            "M": "15",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 112,
+          "service_name": "Application Architecture Evaluation",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 115,
+          "service_name": "Business Process Performance Optimization",
+          "changes": {
+            "S": "15",
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": "15",
+            "M": "25",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 117,
+          "service_name": "Technical Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "128",
+        "M": "510",
+        "L": "672",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "Finance",
+      "override_count": 36,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": "10",
+            "M": "20",
+            "L": "80",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 6,
+          "service_name": "Size to Scale ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 7,
+          "service_name": "Master Data Design ",
+          "changes": {
+            "S": null,
+            "M": "13",
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 12,
+          "service_name": "Central Finance Design ",
+          "changes": {
+            "S": "8",
+            "M": "12",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 15,
+          "service_name": "UX Activation and Design ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 16,
+          "service_name": "Financial Data Quality Analysis ",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 23,
+          "service_name": "North Star Architecture Service ",
+          "changes": {
+            "S": null,
+            "M": "50",
+            "L": "70",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 25,
+          "service_name": "Data and Analytics Strategy ",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 46,
+          "service_name": "Architecture Point of View ",
+          "changes": {
+            "S": "3",
+            "M": "6",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": "40",
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 49,
+          "service_name": "Business Process Assessment ",
+          "changes": {
+            "S": null,
+            "M": "8",
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 53,
+          "service_name": "Extensibility Strategy Workshop ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 62,
+          "service_name": "Business Downtime Optimization ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 63,
+          "service_name": "Solution Management Assessment ",
+          "changes": {
+            "S": "15",
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 66,
+          "service_name": "Innovation Design",
+          "changes": {
+            "S": "10",
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": "5",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 68,
+          "service_name": "AI Strategy (AIS)",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": "10",
+            "M": "15",
+            "L": "21",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 75,
+          "service_name": "Operations Planning Workshop ",
+          "changes": {
+            "S": null,
+            "M": "14",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 101,
+          "service_name": "Capability Advisory and Adoption",
+          "changes": {
+            "S": "12",
+            "M": "12",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 102,
+          "service_name": "Transition Planning for New Implementation (TNI)",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 105,
+          "service_name": "Migration and Upgrade Planning Workshop (MPW)",
+          "changes": {
+            "S": "10",
+            "M": "15",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": "15",
+            "M": "20",
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 109,
+          "service_name": "GAP Validation ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 110,
+          "service_name": "Integration Validation ",
+          "changes": {
+            "S": null,
+            "M": "30",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 111,
+          "service_name": "Feasibility Check ",
+          "changes": {
+            "S": "15",
+            "M": "20",
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 112,
+          "service_name": "Application Architecture Evaluation",
+          "changes": {
+            "S": null,
+            "M": "25",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": "10",
+            "M": "15",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 115,
+          "service_name": "Business Process Performance Optimization",
+          "changes": {
+            "S": "15",
+            "M": "25",
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": "15",
+            "M": "20",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 117,
+          "service_name": "Technical Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 120,
+          "service_name": "Data Volume Management: Native Storage Extension in the Cloud",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 121,
+          "service_name": "Data Volume Design in the Cloud",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 122,
+          "service_name": "Implementation Support for Data Volume Management in the Cloud",
+          "changes": {
+            "S": null,
+            "M": "6",
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "163",
+        "M": "582",
+        "L": "763",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "SCM",
+      "override_count": 14,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": "18",
+            "M": "20",
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 6,
+          "service_name": "Size to Scale ",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 46,
+          "service_name": "Architecture Point of View ",
+          "changes": {
+            "S": "18",
+            "M": "24",
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 63,
+          "service_name": "Solution Management Assessment ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "22",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 101,
+          "service_name": "Capability Advisory and Adoption",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": "16",
+            "M": "22",
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 109,
+          "service_name": "GAP Validation ",
+          "changes": {
+            "S": "16",
+            "M": "22",
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 111,
+          "service_name": "Feasibility Check ",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": "16",
+            "M": "22",
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 115,
+          "service_name": "Business Process Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": "22",
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": "16",
+            "M": "22",
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 117,
+          "service_name": "Technical Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "22",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "100",
+        "M": "214",
+        "L": "388",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "HCM",
+      "override_count": 30,
+      "overrides": [
+        {
+          "row": 8,
+          "service_name": "ICCM Analysis ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 17,
+          "service_name": "Phase Reviews for Cloud Implementation ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 25,
+          "service_name": "Data and Analytics Strategy ",
+          "changes": {
+            "S": "12",
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 26,
+          "service_name": "Integration Strategy ",
+          "changes": {
+            "S": "12",
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 28,
+          "service_name": "UX Strategy ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 29,
+          "service_name": "Hybrid Cloud Strategy ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 32,
+          "service_name": "Application Lifecycle Management Roadmap",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 43,
+          "service_name": "Value Design Governance ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 46,
+          "service_name": "Architecture Point of View ",
+          "changes": {
+            "S": "6",
+            "M": "6",
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 53,
+          "service_name": "Extensibility Strategy Workshop ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 54,
+          "service_name": "Empowerment Service for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 57,
+          "service_name": "Replatforming Support SAP BTP, Neo Environment to Multi-Cloud Foundation",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 63,
+          "service_name": "Solution Management Assessment ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": null,
+            "M": "14",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 69,
+          "service_name": "Innovation Empowerment ",
+          "changes": {
+            "S": "3",
+            "M": "3",
+            "L": "3",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 71,
+          "service_name": "AI Implementation Support (AIIS) ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": null,
+            "M": "21",
+            "L": "21",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 85,
+          "service_name": "Enablement for Data and Analytics ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 98,
+          "service_name": "Data Migration Assessment ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 102,
+          "service_name": "Transition Planning for New Implementation (TNI)",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 105,
+          "service_name": "Migration and Upgrade Planning Workshop (MPW)",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": null,
+            "M": "24",
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 111,
+          "service_name": "Feasibility Check ",
+          "changes": {
+            "S": "17",
+            "M": "17",
+            "L": "17",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": "15",
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 115,
+          "service_name": "Business Process Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 118,
+          "service_name": "Transition to Cloud Operations",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 121,
+          "service_name": "Data Volume Design in the Cloud",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "75",
+        "M": "254",
+        "L": "411",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "CX",
+      "override_count": 21,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 26,
+          "service_name": "Integration Strategy ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 28,
+          "service_name": "UX Strategy ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 46,
+          "service_name": "Architecture Point of View ",
+          "changes": {
+            "S": "6",
+            "M": "6",
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 53,
+          "service_name": "Extensibility Strategy Workshop ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 63,
+          "service_name": "Solution Management Assessment ",
+          "changes": {
+            "S": null,
+            "M": "17",
+            "L": "17",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 68,
+          "service_name": "AI Strategy (AIS)",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 71,
+          "service_name": "AI Implementation Support (AIIS) ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "21",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 105,
+          "service_name": "Migration and Upgrade Planning Workshop (MPW)",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 107,
+          "service_name": "Integration Check ",
+          "changes": {
+            "S": "12",
+            "M": "15",
+            "L": "17",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "17",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 109,
+          "service_name": "GAP Validation ",
+          "changes": {
+            "S": "6",
+            "M": "10",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 110,
+          "service_name": "Integration Validation ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 111,
+          "service_name": "Feasibility Check ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "17",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": "15",
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 115,
+          "service_name": "Business Process Performance Optimization",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": "6",
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "55",
+        "M": "165",
+        "L": "258",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "BTP",
+      "override_count": 22,
+      "overrides": [
+        {
+          "row": 8,
+          "service_name": "ICCM Analysis ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 13,
+          "service_name": "Integration Design Workshop ",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 26,
+          "service_name": "Integration Strategy ",
+          "changes": {
+            "S": "15",
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 49,
+          "service_name": "Business Process Assessment ",
+          "changes": {
+            "S": "8",
+            "M": "8",
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 52,
+          "service_name": "App Development Advisory for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "60",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 53,
+          "service_name": "Extensibility Strategy Workshop ",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 54,
+          "service_name": "Empowerment Service for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 55,
+          "service_name": "Replatforming Assessment to SAP Integration Suite",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 56,
+          "service_name": "Lifecycle Management Setup for SAP BTP ",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 58,
+          "service_name": "SAP BTP Capabilities Empowerment ",
+          "changes": {
+            "S": null,
+            "M": "6",
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 59,
+          "service_name": "Renovation and Replatforming Support for Clean Core Extensions",
+          "changes": {
+            "S": null,
+            "M": "17",
+            "L": "35",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 60,
+          "service_name": "SAP BTP Programming Models Development Enablement ",
+          "changes": {
+            "S": "12",
+            "M": "24",
+            "L": "36",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 64,
+          "service_name": "System Administration ",
+          "changes": {
+            "S": null,
+            "M": "8",
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 66,
+          "service_name": "Innovation Design",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 68,
+          "service_name": "AI Strategy (AIS)",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": null,
+            "M": "30",
+            "L": "90",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 74,
+          "service_name": "Customer CoE Strategy and Design ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 110,
+          "service_name": "Integration Validation ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "48",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "65",
+        "M": "261",
+        "L": "503",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "BDC",
+      "override_count": 11,
+      "overrides": [
+        {
+          "row": 25,
+          "service_name": "Data and Analytics Strategy ",
+          "changes": {
+            "S": "10",
+            "M": "12",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 46,
+          "service_name": "Architecture Point of View ",
+          "changes": {
+            "S": "6",
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": "10",
+            "M": "12",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 83,
+          "service_name": "Design for Data and Analytics ",
+          "changes": {
+            "S": "10",
+            "M": "12",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 84,
+          "service_name": "Jump-Start for Data and Analytics ",
+          "changes": {
+            "S": null,
+            "M": "25",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 85,
+          "service_name": "Enablement for Data and Analytics ",
+          "changes": {
+            "S": "10",
+            "M": "12",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 86,
+          "service_name": "Design at Scale for Data & Analytics ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 87,
+          "service_name": "Health Check for Data and Analytics ",
+          "changes": {
+            "S": "4",
+            "M": "4",
+            "L": "4",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 88,
+          "service_name": "Inspiration for Data and Analytics ",
+          "changes": {
+            "S": "4",
+            "M": "6",
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 89,
+          "service_name": "Maturity Assessment for Data and Analytics",
+          "changes": {
+            "S": "10",
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 105,
+          "service_name": "Migration and Upgrade Planning Workshop (MPW)",
+          "changes": {
+            "S": "10",
+            "M": "12",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "74",
+        "M": "142",
+        "L": "186",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "ITC",
+      "override_count": 14,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 19,
+          "service_name": "Test Planning ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 30,
+          "service_name": "Integrated Toolchain Discovery & Advisory",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 32,
+          "service_name": "Application Lifecycle Management Roadmap",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 35,
+          "service_name": "Test Management and Automation ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 39,
+          "service_name": "Change and Deployment Management ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 42,
+          "service_name": "Architecture Governance Setup ",
+          "changes": {
+            "S": null,
+            "M": "8",
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": "27",
+            "M": "98",
+            "L": "167",
+            "Custom": null,
+            "Details": "Highly depending on solutions in scope."
+          }
+        },
+        {
+          "row": 49,
+          "service_name": "Business Process Assessment ",
+          "changes": {
+            "S": "8",
+            "M": "16",
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 50,
+          "service_name": "Business Process Management Advisory",
+          "changes": {
+            "S": "5",
+            "M": "5",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 63,
+          "service_name": "Solution Management Assessment ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 67,
+          "service_name": "AI and Innovation Exploration",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 101,
+          "service_name": "Capability Advisory and Adoption",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "50",
+        "M": "157",
+        "L": "335",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "Clean Core",
+      "override_count": 52,
+      "overrides": [
+        {
+          "row": 5,
+          "service_name": "Fit-to-Standard Analysis/Design ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 7,
+          "service_name": "Master Data Design ",
+          "changes": {
+            "S": null,
+            "M": "13",
+            "L": "13",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 8,
+          "service_name": "ICCM Analysis ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 10,
+          "service_name": "ICCM Transformation ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 13,
+          "service_name": "Integration Design Workshop ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 16,
+          "service_name": "Financial Data Quality Analysis ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 19,
+          "service_name": "Test Planning ",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 20,
+          "service_name": "ICCM Monitoring ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 25,
+          "service_name": "Data and Analytics Strategy ",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 26,
+          "service_name": "Integration Strategy ",
+          "changes": {
+            "S": "10",
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 32,
+          "service_name": "Application Lifecycle Management Roadmap",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 33,
+          "service_name": "Agile Methodology and Tool Coach  ",
+          "changes": {
+            "S": null,
+            "M": "40",
+            "L": "40",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 34,
+          "service_name": "Software Change Management & CI/CD",
+          "changes": {
+            "S": "12",
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": "SWCM limied to S/4H system for small"
+          }
+        },
+        {
+          "row": 35,
+          "service_name": "Test Management and Automation ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "20",
+            "Custom": null,
+            "Details": "Test automation not included in medium"
+          }
+        },
+        {
+          "row": 37,
+          "service_name": "Process Management ",
+          "changes": {
+            "S": null,
+            "M": "6",
+            "L": "20",
+            "Custom": null,
+            "Details": "10 enablement of process management and tool integrations. 10 for WalkMe and org change management"
+          }
+        },
+        {
+          "row": 39,
+          "service_name": "Change and Deployment Management ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 41,
+          "service_name": "Embedded Architecture Practice ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "45",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 42,
+          "service_name": "Architecture Governance Setup ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 43,
+          "service_name": "Value Design Governance ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 44,
+          "service_name": "Value Design Setup ",
+          "changes": {
+            "S": "5",
+            "M": "10",
+            "L": "10",
+            "Custom": "4",
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 52,
+          "service_name": "App Development Advisory for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 53,
+          "service_name": "Extensibility Strategy Workshop ",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 54,
+          "service_name": "Empowerment Service for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "25",
+            "Custom": null,
+            "Details": "10 for extensibility, 15 for integrations "
+          }
+        },
+        {
+          "row": 55,
+          "service_name": "Replatforming Assessment to SAP Integration Suite",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 56,
+          "service_name": "Lifecycle Management Setup for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 58,
+          "service_name": "SAP BTP Capabilities Empowerment ",
+          "changes": {
+            "S": null,
+            "M": "6",
+            "L": "6",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 59,
+          "service_name": "Renovation and Replatforming Support for Clean Core Extensions",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "17",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 60,
+          "service_name": "SAP BTP Programming Models Development Enablement ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 63,
+          "service_name": "Solution Management Assessment ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 64,
+          "service_name": "System Administration ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 74,
+          "service_name": "Customer CoE Strategy and Design ",
+          "changes": {
+            "S": null,
+            "M": "16",
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 75,
+          "service_name": "Operations Planning Workshop ",
+          "changes": {
+            "S": null,
+            "M": "14",
+            "L": "14",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 76,
+          "service_name": "Operational Model ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 91,
+          "service_name": "Operations Platform Starter Pack",
+          "changes": {
+            "S": null,
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 92,
+          "service_name": "Operations Control Center Roadmap for Cloud",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 93,
+          "service_name": "Operations Control Center Implementation and Improvement for Cloud",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 95,
+          "service_name": "Clean Core Assessment ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 96,
+          "service_name": "Clean Core Discovery ",
+          "changes": {
+            "S": "5",
+            "M": "5",
+            "L": "5",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 97,
+          "service_name": "Clean Core Strategy and Roadmap ",
+          "changes": {
+            "S": "25",
+            "M": "25",
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "32",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 109,
+          "service_name": "GAP Validation ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 110,
+          "service_name": "Integration Validation ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "45",
+            "Custom": null,
+            "Details": "Large includes IV for BTP and Processes as 30 + 15"
+          }
+        },
+        {
+          "row": 112,
+          "service_name": "Application Architecture Evaluation",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "50",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": null,
+            "M": "12",
+            "L": "40",
+            "Custom": null,
+            "Details": "16+12 + 12 for processes,  extensibility and integration modules"
+          }
+        },
+        {
+          "row": 115,
+          "service_name": "Business Process Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 120,
+          "service_name": "Data Volume Management: Native Storage Extension in the Cloud",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 121,
+          "service_name": "Data Volume Design in the Cloud",
+          "changes": {
+            "S": "8",
+            "M": "12",
+            "L": "16",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 122,
+          "service_name": "Implementation Support for Data Volume Management in the Cloud",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "85",
+        "M": "427",
+        "L": "1002",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "Architecture",
+      "override_count": 7,
+      "overrides": [
+        {
+          "row": 23,
+          "service_name": "North Star Architecture Service ",
+          "changes": {
+            "S": "60",
+            "M": "100",
+            "L": "140",
+            "Custom": null,
+            "Details": "main effort driver is amount of LoB to be considered"
+          }
+        },
+        {
+          "row": 29,
+          "service_name": "Hybrid Cloud Strategy ",
+          "changes": {
+            "S": null,
+            "M": "30",
+            "L": "50",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 30,
+          "service_name": "Integrated Toolchain Discovery & Advisory",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 41,
+          "service_name": "Embedded Architecture Practice ",
+          "changes": {
+            "S": "40",
+            "M": "90",
+            "L": "160",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 42,
+          "service_name": "Architecture Governance Setup ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "25",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 44,
+          "service_name": "Value Design Setup ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 46,
+          "service_name": "Architecture Point of View ",
+          "changes": {
+            "S": "6",
+            "M": "12",
+            "L": "24",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "106",
+        "M": "262",
+        "L": "439",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "Integration",
+      "override_count": 15,
+      "overrides": [
+        {
+          "row": 6,
+          "service_name": "Size to Scale ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 13,
+          "service_name": "Integration Design Workshop ",
+          "changes": {
+            "S": "12",
+            "M": "12",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 26,
+          "service_name": "Integration Strategy ",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 27,
+          "service_name": "Instance Strategy ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 29,
+          "service_name": "Hybrid Cloud Strategy ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "30",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 54,
+          "service_name": "Empowerment Service for SAP BTP ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 55,
+          "service_name": "Replatforming Assessment to SAP Integration Suite",
+          "changes": {
+            "S": "12",
+            "M": "15",
+            "L": "18",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "21",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 108,
+          "service_name": "Volume Test Optimization ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": "Small and medium estimates only considering Integration "
+          }
+        },
+        {
+          "row": 112,
+          "service_name": "Application Architecture Evaluation",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": "Small and medium estimates only considering Integration "
+          }
+        },
+        {
+          "row": 113,
+          "service_name": "Interface Management ",
+          "changes": {
+            "S": "5",
+            "M": "10",
+            "L": "15",
+            "Custom": null,
+            "Details": "Small and medium estimates only considering Integration "
+          }
+        },
+        {
+          "row": 114,
+          "service_name": "Going Live Support ",
+          "changes": {
+            "S": null,
+            "M": "10",
+            "L": null,
+            "Custom": null,
+            "Details": "Small and medium estimates only considering Integration "
+          }
+        },
+        {
+          "row": 115,
+          "service_name": "Business Process Performance Optimization",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": null,
+            "Custom": null,
+            "Details": "Small and medium estimates only considering Integration "
+          }
+        },
+        {
+          "row": 116,
+          "service_name": "Design Evaluation ",
+          "changes": {
+            "S": "5",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": "Small and medium estimates only considering Integration "
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "44",
+        "M": "102",
+        "L": "179",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "BTM",
+      "override_count": 9,
+      "overrides": [
+        {
+          "row": 28,
+          "service_name": "UX Strategy ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 30,
+          "service_name": "Integrated Toolchain Discovery & Advisory",
+          "changes": {
+            "S": "10",
+            "M": "10",
+            "L": "10",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 42,
+          "service_name": "Architecture Governance Setup ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "8",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 48,
+          "service_name": "Implementation Guidance for BTM",
+          "changes": {
+            "S": "45",
+            "M": "78",
+            "L": "135",
+            "Custom": null,
+            "Details": "Assumption: all BTM solutions in scope."
+          }
+        },
+        {
+          "row": 49,
+          "service_name": "Business Process Assessment ",
+          "changes": {
+            "S": null,
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": "Scope: Plug and Gain Deep Analysis"
+          }
+        },
+        {
+          "row": 50,
+          "service_name": "Business Process Management Advisory",
+          "changes": {
+            "S": "5",
+            "M": "25",
+            "L": "62",
+            "Custom": null,
+            "Details": "Assumption: BPM Advisory & Coach in scope"
+          }
+        },
+        {
+          "row": 63,
+          "service_name": "Solution Management Assessment ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 72,
+          "service_name": "Innovation Proof of Concept ",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 101,
+          "service_name": "Capability Advisory and Adoption",
+          "changes": {
+            "S": null,
+            "M": null,
+            "L": "12",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "60",
+        "M": "128",
+        "L": "287",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    },
+    {
+      "name": "Security&Compliance",
+      "override_count": 4,
+      "overrides": [
+        {
+          "row": 78,
+          "service_name": "Cybersecurity Deep Dive ",
+          "changes": {
+            "S": "5",
+            "M": "10",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 79,
+          "service_name": "Cybersecurity Planning & Empowerment ",
+          "changes": {
+            "S": "10",
+            "M": "15",
+            "L": "15",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 80,
+          "service_name": "Cybersecurity Architecting ",
+          "changes": {
+            "S": null,
+            "M": "20",
+            "L": "50",
+            "Custom": null,
+            "Details": null
+          }
+        },
+        {
+          "row": 81,
+          "service_name": "Cybersecurity Design Advisory",
+          "changes": {
+            "S": "5",
+            "M": "20",
+            "L": "20",
+            "Custom": null,
+            "Details": null
+          }
+        }
+      ],
+      "totals_row2": {
+        "S": "20",
+        "M": "65",
+        "L": "100",
+        "Custom": "0",
+        "layout": "standard",
+        "custom_total_cell": "H2",
+        "totals_total_cell": null
+      }
+    }
+  ],
+  "scenario_count": 20
+}

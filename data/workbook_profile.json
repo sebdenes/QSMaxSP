@@ -1,0 +1,212 @@
+{
+  "sheet_count": 22,
+  "sheet_names": [
+    "Max Engagement Quick Sizer",
+    "Scenario Template",
+    "AI",
+    "Brownfield",
+    "Greenfield",
+    "SDT (Bluefield)",
+    "Run",
+    "Lift&Shift",
+    "Public Cloud",
+    "Spend",
+    "Finance",
+    "SCM",
+    "HCM",
+    "CX",
+    "BTP",
+    "BDC",
+    "ITC",
+    "Clean Core",
+    "Architecture",
+    "Integration",
+    "BTM",
+    "Security&Compliance"
+  ],
+  "defined_names": [
+    {
+      "name": "_xlnm._FilterDatabase",
+      "localSheetId": "12",
+      "text": "HCM!$A$1:$I$125"
+    }
+  ],
+  "sheets": [
+    {
+      "name": "Max Engagement Quick Sizer",
+      "dimension": "A1:Q77",
+      "formula_cells": 127,
+      "comment_count": 0,
+      "data_validation_count": 1,
+      "hidden_rows_count": 0
+    },
+    {
+      "name": "Scenario Template",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 1
+    },
+    {
+      "name": "AI",
+      "dimension": "A1:M130",
+      "formula_cells": 40,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 1
+    },
+    {
+      "name": "Brownfield",
+      "dimension": "A1:O130",
+      "formula_cells": 103,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 107
+    },
+    {
+      "name": "Greenfield",
+      "dimension": "A1:O130",
+      "formula_cells": 95,
+      "comment_count": 0,
+      "data_validation_count": 1,
+      "hidden_rows_count": 107
+    },
+    {
+      "name": "SDT (Bluefield)",
+      "dimension": "A1:M129",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 107
+    },
+    {
+      "name": "Run",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 107
+    },
+    {
+      "name": "Lift&Shift",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 107
+    },
+    {
+      "name": "Public Cloud",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 107
+    },
+    {
+      "name": "Spend",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 107
+    },
+    {
+      "name": "Finance",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 107
+    },
+    {
+      "name": "SCM",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 107
+    },
+    {
+      "name": "HCM",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 2,
+      "data_validation_count": 0,
+      "hidden_rows_count": 107
+    },
+    {
+      "name": "CX",
+      "dimension": "A1:M130",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 1
+    },
+    {
+      "name": "BTP",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 1
+    },
+    {
+      "name": "BDC",
+      "dimension": "A1:M130",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 1
+    },
+    {
+      "name": "ITC",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 1
+    },
+    {
+      "name": "Clean Core",
+      "dimension": "A1:N129",
+      "formula_cells": 67,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 1
+    },
+    {
+      "name": "Architecture",
+      "dimension": "A1:M129",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 69
+    },
+    {
+      "name": "Integration",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 1
+    },
+    {
+      "name": "BTM",
+      "dimension": "A1:M125",
+      "formula_cells": 68,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 1
+    },
+    {
+      "name": "Security&Compliance",
+      "dimension": "A1:M131",
+      "formula_cells": 65,
+      "comment_count": 3,
+      "data_validation_count": 0,
+      "hidden_rows_count": 1
+    }
+  ]
+}

@@ -1,0 +1,2584 @@
+{
+  "scenario_totals": [
+    {
+      "scenario": "Scenario Template",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 129
+    },
+    {
+      "scenario": "AI",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "32",
+        "cached": "32"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "155",
+        "cached": "155"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "210",
+        "cached": "210"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 129
+    },
+    {
+      "scenario": "Brownfield",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "105",
+        "cached": "105"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "367",
+        "cached": "367"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "672",
+        "cached": "672"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "150",
+        "cached": "150"
+      },
+      "I2": {
+        "ref": "I2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "J2": {
+        "ref": "J2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "visible_rows": 23
+    },
+    {
+      "scenario": "Greenfield",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "115",
+        "cached": "115"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "438",
+        "cached": "438"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "760",
+        "cached": "760"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "150",
+        "cached": "150"
+      },
+      "I2": {
+        "ref": "I2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "J2": {
+        "ref": "J2",
+        "value": null,
+        "cached": null
+      },
+      "visible_rows": 23
+    },
+    {
+      "scenario": "SDT (Bluefield)",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "113",
+        "cached": "113"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "365",
+        "cached": "365"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "670",
+        "cached": "670"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 23
+    },
+    {
+      "scenario": "Run",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "95",
+        "cached": "95"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": null,
+        "value": "267",
+        "cached": "267"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "SUM(G4+G22+G31+G40+G45+G47+G51+G61+G73+G77+G82+G90+G94+G106+G119+G123)",
+        "shared_si": null,
+        "value": "612",
+        "cached": "612"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "SUM(H4+H22+H31+H40+H45+H47+H51+H61+H73+H77+H82+H90+H94+H106+H119+H123)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 23
+    },
+    {
+      "scenario": "Lift&Shift",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "89",
+        "cached": "89"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": null,
+        "value": "267",
+        "cached": "267"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "SUM(G4+G22+G31+G40+G45+G47+G51+G61+G73+G77+G82+G90+G94+G106+G119+G123)",
+        "shared_si": null,
+        "value": "356",
+        "cached": "356"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "SUM(H4+H22+H31+H40+H45+H47+H51+H61+H73+H77+H82+H90+H94+H106+H119+H123)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 23
+    },
+    {
+      "scenario": "Public Cloud",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "53",
+        "cached": "53"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "198",
+        "cached": "198"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "321",
+        "cached": "321"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 23
+    },
+    {
+      "scenario": "Spend",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "128",
+        "cached": "128"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": null,
+        "value": "510",
+        "cached": "510"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "SUM(G4+G22+G31+G40+G45+G47+G51+G61+G73+G77+G82+G90+G94+G106+G119+G123)",
+        "shared_si": null,
+        "value": "672",
+        "cached": "672"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "SUM(H4+H22+H31+H40+H45+H47+H51+H61+H73+H77+H82+H90+H94+H106+H119+H123)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 23
+    },
+    {
+      "scenario": "Finance",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "163",
+        "cached": "163"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": null,
+        "value": "582",
+        "cached": "582"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "SUM(G4+G22+G31+G40+G45+G47+G51+G61+G73+G77+G82+G90+G94+G106+G119+G123)",
+        "shared_si": null,
+        "value": "763",
+        "cached": "763"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "SUM(H4+H22+H31+H40+H45+H47+H51+H61+H73+H77+H82+H90+H94+H106+H119+H123)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 23
+    },
+    {
+      "scenario": "SCM",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "100",
+        "cached": "100"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": null,
+        "value": "214",
+        "cached": "214"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "SUM(G4+G22+G31+G40+G45+G47+G51+G61+G73+G77+G82+G90+G94+G106+G119+G123)",
+        "shared_si": null,
+        "value": "388",
+        "cached": "388"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "SUM(H4+H22+H31+H40+H45+H47+H51+H61+H73+H77+H82+H90+H94+H106+H119+H123)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 23
+    },
+    {
+      "scenario": "HCM",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "75",
+        "cached": "75"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "254",
+        "cached": "254"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "411",
+        "cached": "411"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 23
+    },
+    {
+      "scenario": "CX",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "55",
+        "cached": "55"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": null,
+        "value": "165",
+        "cached": "165"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "SUM(G4+G22+G31+G40+G45+G47+G51+G61+G73+G77+G82+G90+G94+G106+G119+G123)",
+        "shared_si": null,
+        "value": "258",
+        "cached": "258"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "SUM(H4+H22+H31+H40+H45+H47+H51+H61+H73+H77+H82+H90+H94+H106+H119+H123)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 129
+    },
+    {
+      "scenario": "BTP",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "65",
+        "cached": "65"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": null,
+        "value": "261",
+        "cached": "261"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "SUM(G4+G22+G31+G40+G45+G47+G51+G61+G73+G77+G82+G90+G94+G106+G119+G123)",
+        "shared_si": null,
+        "value": "503",
+        "cached": "503"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "SUM(H4+H22+H31+H40+H45+H47+H51+H61+H73+H77+H82+H90+H94+H106+H119+H123)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 129
+    },
+    {
+      "scenario": "BDC",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "74",
+        "cached": "74"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "142",
+        "cached": "142"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "186",
+        "cached": "186"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 129
+    },
+    {
+      "scenario": "ITC",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "50",
+        "cached": "50"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": null,
+        "value": "157",
+        "cached": "157"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "SUM(G4+G22+G31+G40+G45+G47+G51+G61+G73+G77+G82+G90+G94+G106+G119+G123)",
+        "shared_si": null,
+        "value": "335",
+        "cached": "335"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "SUM(H4+H22+H31+H40+H45+H47+H51+H61+H73+H77+H82+H90+H94+H106+H119+H123)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 129
+    },
+    {
+      "scenario": "Clean Core",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "85",
+        "cached": "85"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "427",
+        "cached": "427"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "1002",
+        "cached": "1002"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 129
+    },
+    {
+      "scenario": "Architecture",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "106",
+        "cached": "106"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": null,
+        "value": "262",
+        "cached": "262"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "SUM(G4+G22+G31+G40+G45+G47+G51+G61+G73+G77+G82+G90+G94+G106+G119+G123)",
+        "shared_si": null,
+        "value": "439",
+        "cached": "439"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "SUM(H4+H22+H31+H40+H45+H47+H51+H61+H73+H77+H82+H90+H94+H106+H119+H123)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 61
+    },
+    {
+      "scenario": "Integration",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "44",
+        "cached": "44"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "102",
+        "cached": "102"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "179",
+        "cached": "179"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 129
+    },
+    {
+      "scenario": "BTM",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "60",
+        "cached": "60"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "128",
+        "cached": "128"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "287",
+        "cached": "287"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 129
+    },
+    {
+      "scenario": "Security&Compliance",
+      "E2": {
+        "ref": "E2",
+        "formula": "SUM(E4+E22+E31+E40+E45+E47+E51+E61+E73+E77+E82+E90+E94+E106+E119+E123)",
+        "shared_si": null,
+        "value": "20",
+        "cached": "20"
+      },
+      "F2": {
+        "ref": "F2",
+        "formula": "SUM(F4+F22+F31+F40+F45+F47+F51+F61+F73+F77+F82+F90+F94+F106+F119+F123)",
+        "shared_si": "0",
+        "value": "65",
+        "cached": "65"
+      },
+      "G2": {
+        "ref": "G2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "100",
+        "cached": "100"
+      },
+      "H2": {
+        "ref": "H2",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I2": {
+        "ref": "I2",
+        "value": null,
+        "cached": null
+      },
+      "J2": null,
+      "visible_rows": 129
+    }
+  ],
+  "main_sheet_rows": [
+    {
+      "row": 7,
+      "A": {
+        "ref": "A7",
+        "value": "1",
+        "cached": "1"
+      },
+      "B": {
+        "ref": "B7",
+        "value": "Empower Your Business with AI",
+        "cached": "12"
+      },
+      "C": {
+        "ref": "C7",
+        "value": "32",
+        "cached": "32"
+      },
+      "D": {
+        "ref": "D7",
+        "value": "155",
+        "cached": "155"
+      },
+      "E": {
+        "ref": "E7",
+        "value": "210",
+        "cached": "210"
+      },
+      "F": {
+        "ref": "F7",
+        "formula": "AI!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G7",
+        "value": "Custom",
+        "cached": "11"
+      },
+      "H": {
+        "ref": "H7",
+        "formula": "IF($G7<>\"N/A\",HLOOKUP($G7, $C$6:$F$28,$A7+1,0),0)",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I7",
+        "formula": "H7*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J7",
+        "formula": "H7*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K7",
+        "formula": "H7*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N7",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 8,
+      "A": {
+        "ref": "A8",
+        "value": "2",
+        "cached": "2"
+      },
+      "B": {
+        "ref": "B8",
+        "value": "SAP Cloud ERP - Digital Transformation Strategy ",
+        "cached": "13"
+      },
+      "C": {
+        "ref": "C8",
+        "value": "20",
+        "cached": "20"
+      },
+      "D": {
+        "ref": "D8",
+        "value": "40",
+        "cached": "40"
+      },
+      "E": {
+        "ref": "E8",
+        "value": "60",
+        "cached": "60"
+      },
+      "F": {
+        "ref": "F8",
+        "value": null,
+        "cached": null
+      },
+      "G": {
+        "ref": "G8",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H8",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I8",
+        "formula": "H8*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J8",
+        "formula": "H8*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K8",
+        "formula": "H8*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N8",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 9,
+      "A": {
+        "ref": "A9",
+        "value": "3",
+        "cached": "3"
+      },
+      "B": {
+        "ref": "B9",
+        "value": "SAP Cloud ERP - Brownfield scenario",
+        "cached": "15"
+      },
+      "C": {
+        "ref": "C9",
+        "value": "105",
+        "cached": "105"
+      },
+      "D": {
+        "ref": "D9",
+        "value": "367",
+        "cached": "367"
+      },
+      "E": {
+        "ref": "E9",
+        "value": "672",
+        "cached": "672"
+      },
+      "F": {
+        "ref": "F9",
+        "formula": "Brownfield!J2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G9",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H9",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I9",
+        "formula": "H9*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J9",
+        "formula": "H9*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K9",
+        "formula": "H9*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N9",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 10,
+      "A": {
+        "ref": "A10",
+        "value": "4",
+        "cached": "4"
+      },
+      "B": {
+        "ref": "B10",
+        "value": "SAP Cloud ERP - Greenfield scenario",
+        "cached": "16"
+      },
+      "C": {
+        "ref": "C10",
+        "value": "115",
+        "cached": "115"
+      },
+      "D": {
+        "ref": "D10",
+        "value": "438",
+        "cached": "438"
+      },
+      "E": {
+        "ref": "E10",
+        "value": "760",
+        "cached": "760"
+      },
+      "F": {
+        "ref": "F10",
+        "formula": "Greenfield!J2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G10",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H10",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I10",
+        "formula": "H10*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J10",
+        "formula": "H10*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K10",
+        "formula": "H10*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N10",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 11,
+      "A": {
+        "ref": "A11",
+        "value": "5",
+        "cached": "5"
+      },
+      "B": {
+        "ref": "B11",
+        "value": "SAP Cloud ERP - Selective Data Transition scenario (aka Bluefield)",
+        "cached": "17"
+      },
+      "C": {
+        "ref": "C11",
+        "value": "113",
+        "cached": "113"
+      },
+      "D": {
+        "ref": "D11",
+        "value": "365",
+        "cached": "365"
+      },
+      "E": {
+        "ref": "E11",
+        "value": "670",
+        "cached": "670"
+      },
+      "F": {
+        "ref": "F11",
+        "formula": "'SDT (Bluefield)'!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G11",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H11",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I11",
+        "formula": "H11*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J11",
+        "formula": "H11*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K11",
+        "formula": "H11*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N11",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 12,
+      "A": {
+        "ref": "A12",
+        "value": "6",
+        "cached": "6"
+      },
+      "B": {
+        "ref": "B12",
+        "value": "SAP Cloud ERP - Run Best on Cloud ERP",
+        "cached": "18"
+      },
+      "C": {
+        "ref": "C12",
+        "value": "95",
+        "cached": "95"
+      },
+      "D": {
+        "ref": "D12",
+        "value": "267",
+        "cached": "267"
+      },
+      "E": {
+        "ref": "E12",
+        "value": "612",
+        "cached": "612"
+      },
+      "F": {
+        "ref": "F12",
+        "formula": "Run!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G12",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H12",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I12",
+        "formula": "H12*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J12",
+        "formula": "H12*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K12",
+        "formula": "H12*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N12",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 13,
+      "A": {
+        "ref": "A13",
+        "value": "7",
+        "cached": "7"
+      },
+      "B": {
+        "ref": "B13",
+        "value": "SAP Cloud ERP - Build Your Innovation Foundation (aka Lift & Shift)",
+        "cached": "19"
+      },
+      "C": {
+        "ref": "C13",
+        "formula": "'Lift&Shift'!E2",
+        "shared_si": null,
+        "value": "89",
+        "cached": "89"
+      },
+      "D": {
+        "ref": "D13",
+        "formula": "'Lift&Shift'!F2",
+        "shared_si": null,
+        "value": "267",
+        "cached": "267"
+      },
+      "E": {
+        "ref": "E13",
+        "formula": "'Lift&Shift'!G2",
+        "shared_si": null,
+        "value": "356",
+        "cached": "356"
+      },
+      "F": {
+        "ref": "F13",
+        "formula": "'Lift&Shift'!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G13",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H13",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I13",
+        "formula": "H13*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J13",
+        "formula": "H13*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K13",
+        "formula": "H13*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N13",
+        "value": "Adoption Business Scenario",
+        "cached": "20"
+      }
+    },
+    {
+      "row": 14,
+      "A": {
+        "ref": "A14",
+        "value": "8",
+        "cached": "8"
+      },
+      "B": {
+        "ref": "B14",
+        "value": "SAP Cloud ERP - Evolve towards Public Cloud ERP (aka GROW)",
+        "cached": "21"
+      },
+      "C": {
+        "ref": "C14",
+        "value": "53",
+        "cached": "53"
+      },
+      "D": {
+        "ref": "D14",
+        "value": "198",
+        "cached": "198"
+      },
+      "E": {
+        "ref": "E14",
+        "value": "321",
+        "cached": "321"
+      },
+      "F": {
+        "ref": "F14",
+        "formula": "'Public Cloud'!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G14",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H14",
+        "formula": "",
+        "shared_si": "0",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I14",
+        "formula": "H14*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J14",
+        "formula": "H14*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K14",
+        "formula": "H14*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N14",
+        "value": "Cross-Topic Business Scenario",
+        "cached": "22"
+      }
+    },
+    {
+      "row": 15,
+      "A": {
+        "ref": "A15",
+        "value": "9",
+        "cached": "9"
+      },
+      "B": {
+        "ref": "B15",
+        "value": "Transform Your Financial Management",
+        "cached": "23"
+      },
+      "C": {
+        "ref": "C15",
+        "value": "60",
+        "cached": "60"
+      },
+      "D": {
+        "ref": "D15",
+        "value": "120",
+        "cached": "120"
+      },
+      "E": {
+        "ref": "E15",
+        "value": "250",
+        "cached": "250"
+      },
+      "F": {
+        "ref": "F15",
+        "value": null,
+        "cached": null
+      },
+      "G": {
+        "ref": "G15",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H15",
+        "formula": "IF($G15<>\"N/A\",HLOOKUP($G15, $C$6:$F$28,$A15+1,0),0)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I15",
+        "formula": "H15*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J15",
+        "formula": "H15*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K15",
+        "formula": "H15*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N15",
+        "value": "LOB Business Scenario",
+        "cached": "24"
+      }
+    },
+    {
+      "row": 16,
+      "A": {
+        "ref": "A16",
+        "value": "10",
+        "cached": "10"
+      },
+      "B": {
+        "ref": "B16",
+        "value": "Transform your Spend & Finance Management a (Focus on Spend)",
+        "cached": "25"
+      },
+      "C": {
+        "ref": "C16",
+        "formula": "Spend!E2",
+        "shared_si": null,
+        "value": "128",
+        "cached": "128"
+      },
+      "D": {
+        "ref": "D16",
+        "formula": "Spend!F2",
+        "shared_si": null,
+        "value": "510",
+        "cached": "510"
+      },
+      "E": {
+        "ref": "E16",
+        "formula": "Spend!G2",
+        "shared_si": null,
+        "value": "672",
+        "cached": "672"
+      },
+      "F": {
+        "ref": "F16",
+        "formula": "Spend!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G16",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H16",
+        "formula": "IF($G16<>\"N/A\",HLOOKUP($G16, $C$6:$F$28,$A16+1,0),0)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I16",
+        "formula": "H16*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J16",
+        "formula": "H16*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K16",
+        "formula": "H16*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N16",
+        "value": "LOB Business Scenario",
+        "cached": "24"
+      }
+    },
+    {
+      "row": 17,
+      "A": {
+        "ref": "A17",
+        "value": "10",
+        "cached": "10"
+      },
+      "B": {
+        "ref": "B17",
+        "value": "Transform your Spend & Finance Management b(Focus on Finance)",
+        "cached": "26"
+      },
+      "C": {
+        "ref": "C17",
+        "formula": "Finance!E2",
+        "shared_si": null,
+        "value": "163",
+        "cached": "163"
+      },
+      "D": {
+        "ref": "D17",
+        "formula": "Finance!F2",
+        "shared_si": null,
+        "value": "582",
+        "cached": "582"
+      },
+      "E": {
+        "ref": "E17",
+        "formula": "Finance!G2",
+        "shared_si": null,
+        "value": "763",
+        "cached": "763"
+      },
+      "F": {
+        "ref": "F17",
+        "formula": "Finance!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G17",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H17",
+        "formula": "IF($G17<>\"N/A\",HLOOKUP($G17, $C$6:$F$28,$A17+2,0),0)",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I17",
+        "formula": "H17*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J17",
+        "formula": "H17*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K17",
+        "formula": "H17*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N17",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 18,
+      "A": {
+        "ref": "A18",
+        "value": "11",
+        "cached": "11"
+      },
+      "B": {
+        "ref": "B18",
+        "value": "Transform Your Supply Chain Management",
+        "cached": "27"
+      },
+      "C": {
+        "ref": "C18",
+        "value": "100",
+        "cached": "100"
+      },
+      "D": {
+        "ref": "D18",
+        "value": "214",
+        "cached": "214"
+      },
+      "E": {
+        "ref": "E18",
+        "value": "388",
+        "cached": "388"
+      },
+      "F": {
+        "ref": "F18",
+        "formula": "SCM!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G18",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H18",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I18",
+        "formula": "H18*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J18",
+        "formula": "H18*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K18",
+        "formula": "H18*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N18",
+        "value": "Input here",
+        "cached": "28"
+      }
+    },
+    {
+      "row": 19,
+      "A": {
+        "ref": "A19",
+        "value": "12",
+        "cached": "12"
+      },
+      "B": {
+        "ref": "B19",
+        "value": "Transform Your Human Capital Management",
+        "cached": "29"
+      },
+      "C": {
+        "ref": "C19",
+        "formula": "HCM!E2",
+        "shared_si": null,
+        "value": "75",
+        "cached": "75"
+      },
+      "D": {
+        "ref": "D19",
+        "formula": "HCM!F2",
+        "shared_si": null,
+        "value": "254",
+        "cached": "254"
+      },
+      "E": {
+        "ref": "E19",
+        "formula": "HCM!G2",
+        "shared_si": null,
+        "value": "411",
+        "cached": "411"
+      },
+      "F": {
+        "ref": "F19",
+        "formula": "HCM!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G19",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H19",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I19",
+        "formula": "H19*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J19",
+        "formula": "H19*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K19",
+        "formula": "H19*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N19",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 20,
+      "A": {
+        "ref": "A20",
+        "value": "13",
+        "cached": "13"
+      },
+      "B": {
+        "ref": "B20",
+        "value": "Transform Your Customer Experience",
+        "cached": "30"
+      },
+      "C": {
+        "ref": "C20",
+        "formula": "CX!E2",
+        "shared_si": null,
+        "value": "55",
+        "cached": "55"
+      },
+      "D": {
+        "ref": "D20",
+        "formula": "CX!F2",
+        "shared_si": null,
+        "value": "165",
+        "cached": "165"
+      },
+      "E": {
+        "ref": "E20",
+        "formula": "CX!G2",
+        "shared_si": null,
+        "value": "258",
+        "cached": "258"
+      },
+      "F": {
+        "ref": "F20",
+        "formula": "CX!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G20",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H20",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I20",
+        "formula": "H20*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J20",
+        "formula": "H20*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K20",
+        "formula": "H20*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N20",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 21,
+      "A": {
+        "ref": "A21",
+        "value": "14",
+        "cached": "14"
+      },
+      "B": {
+        "ref": "B21",
+        "value": "Integrate, Extend, and Innovate with SAP Business Technology Platform",
+        "cached": "31"
+      },
+      "C": {
+        "ref": "C21",
+        "value": "65",
+        "cached": "65"
+      },
+      "D": {
+        "ref": "D21",
+        "value": "261",
+        "cached": "261"
+      },
+      "E": {
+        "ref": "E21",
+        "value": "503",
+        "cached": "503"
+      },
+      "F": {
+        "ref": "F21",
+        "formula": "BTP!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G21",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H21",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I21",
+        "formula": "H21*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J21",
+        "formula": "H21*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K21",
+        "formula": "H21*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N21",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 22,
+      "A": {
+        "ref": "A22",
+        "value": "15",
+        "cached": "15"
+      },
+      "B": {
+        "ref": "B22",
+        "value": "Transform Your Data and Analytics with SAP Business Data Cloud",
+        "cached": "32"
+      },
+      "C": {
+        "ref": "C22",
+        "value": "74",
+        "cached": "74"
+      },
+      "D": {
+        "ref": "D22",
+        "value": "142",
+        "cached": "142"
+      },
+      "E": {
+        "ref": "E22",
+        "value": "186",
+        "cached": "186"
+      },
+      "F": {
+        "ref": "F22",
+        "formula": "BDC!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G22",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H22",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I22",
+        "formula": "H22*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J22",
+        "formula": "H22*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K22",
+        "formula": "H22*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N22",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 23,
+      "A": {
+        "ref": "A23",
+        "value": "16",
+        "cached": "16"
+      },
+      "B": {
+        "ref": "B23",
+        "value": "Boost Your SAP Cloud ERP Journey with Integrated Toolchain",
+        "cached": "33"
+      },
+      "C": {
+        "ref": "C23",
+        "value": "50",
+        "cached": "50"
+      },
+      "D": {
+        "ref": "D23",
+        "value": "157",
+        "cached": "157"
+      },
+      "E": {
+        "ref": "E23",
+        "value": "335",
+        "cached": "335"
+      },
+      "F": {
+        "ref": "F23",
+        "formula": "ITC!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G23",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H23",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I23",
+        "formula": "H23*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J23",
+        "formula": "H23*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K23",
+        "formula": "H23*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N23",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 24,
+      "A": {
+        "ref": "A24",
+        "value": "17",
+        "cached": "17"
+      },
+      "B": {
+        "ref": "B24",
+        "value": "Accelerate Your Business Transformation with a Clean Core",
+        "cached": "34"
+      },
+      "C": {
+        "ref": "C24",
+        "value": "85",
+        "cached": "85"
+      },
+      "D": {
+        "ref": "D24",
+        "value": "427",
+        "cached": "427"
+      },
+      "E": {
+        "ref": "E24",
+        "value": "1002",
+        "cached": "1002"
+      },
+      "F": {
+        "ref": "F24",
+        "formula": "'Clean Core'!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G24",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H24",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I24",
+        "formula": "H24*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J24",
+        "formula": "H24*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K24",
+        "formula": "H24*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N24",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 25,
+      "A": {
+        "ref": "A25",
+        "value": "18",
+        "cached": "18"
+      },
+      "B": {
+        "ref": "B25",
+        "value": "Drive Enterprise Architecture Transformation",
+        "cached": "35"
+      },
+      "C": {
+        "ref": "C25",
+        "value": "106",
+        "cached": "106"
+      },
+      "D": {
+        "ref": "D25",
+        "value": "262",
+        "cached": "262"
+      },
+      "E": {
+        "ref": "E25",
+        "value": "439",
+        "cached": "439"
+      },
+      "F": {
+        "ref": "F25",
+        "formula": "Architecture!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G25",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H25",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I25",
+        "formula": "H25*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J25",
+        "formula": "H25*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K25",
+        "formula": "H25*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N25",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 26,
+      "A": {
+        "ref": "A26",
+        "value": "19",
+        "cached": "19"
+      },
+      "B": {
+        "ref": "B26",
+        "value": "Modernize Your Integration Landscape with SAP Integration Suite",
+        "cached": "36"
+      },
+      "C": {
+        "ref": "C26",
+        "value": "44",
+        "cached": "44"
+      },
+      "D": {
+        "ref": "D26",
+        "value": "102",
+        "cached": "102"
+      },
+      "E": {
+        "ref": "E26",
+        "value": "179",
+        "cached": "179"
+      },
+      "F": {
+        "ref": "F26",
+        "formula": "Integration!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G26",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H26",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I26",
+        "formula": "H26*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J26",
+        "formula": "H26*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K26",
+        "formula": "H26*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N26",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 27,
+      "A": {
+        "ref": "A27",
+        "value": "20",
+        "cached": "20"
+      },
+      "B": {
+        "ref": "B27",
+        "value": "Reimagine Business Transformation Management as a Capability",
+        "cached": "37"
+      },
+      "C": {
+        "ref": "C27",
+        "value": "60",
+        "cached": "60"
+      },
+      "D": {
+        "ref": "D27",
+        "value": "128",
+        "cached": "128"
+      },
+      "E": {
+        "ref": "E27",
+        "value": "287",
+        "cached": "287"
+      },
+      "F": {
+        "ref": "F27",
+        "formula": "BTM!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G27",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H27",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I27",
+        "formula": "H27*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J27",
+        "formula": "H27*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K27",
+        "formula": "H27*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N27",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 28,
+      "A": {
+        "ref": "A28",
+        "value": "21",
+        "cached": "21"
+      },
+      "B": {
+        "ref": "B28",
+        "value": "Enhance Cybersecurity and Compliance in Your SAP Environment",
+        "cached": "38"
+      },
+      "C": {
+        "ref": "C28",
+        "value": "20",
+        "cached": "20"
+      },
+      "D": {
+        "ref": "D28",
+        "value": "65",
+        "cached": "65"
+      },
+      "E": {
+        "ref": "E28",
+        "value": "100",
+        "cached": "100"
+      },
+      "F": {
+        "ref": "F28",
+        "formula": "'Security&Compliance'!H2",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "G": {
+        "ref": "G28",
+        "value": "N/A",
+        "cached": "14"
+      },
+      "H": {
+        "ref": "H28",
+        "formula": "",
+        "shared_si": "1",
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I28",
+        "formula": "H28*I6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J28",
+        "formula": "H28*J6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K28",
+        "formula": "H28*K6",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N28",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 29,
+      "A": {
+        "ref": "A29",
+        "value": null,
+        "cached": null
+      },
+      "B": {
+        "ref": "B29",
+        "value": "dedicated expert service component",
+        "cached": "39"
+      },
+      "C": {
+        "ref": "C29",
+        "value": null,
+        "cached": null
+      },
+      "D": {
+        "ref": "D29",
+        "value": null,
+        "cached": null
+      },
+      "E": {
+        "ref": "E29",
+        "value": null,
+        "cached": null
+      },
+      "F": {
+        "ref": "F29",
+        "value": null,
+        "cached": null
+      },
+      "G": {
+        "ref": "G29",
+        "value": null,
+        "cached": null
+      },
+      "H": {
+        "ref": "H29",
+        "value": null,
+        "cached": null
+      },
+      "I": {
+        "ref": "I29",
+        "value": null,
+        "cached": null
+      },
+      "J": {
+        "ref": "J29",
+        "value": null,
+        "cached": null
+      },
+      "K": {
+        "ref": "K29",
+        "value": null,
+        "cached": null
+      },
+      "N": {
+        "ref": "N29",
+        "value": null,
+        "cached": null
+      }
+    },
+    {
+      "row": 30,
+      "A": {
+        "ref": "A30",
+        "value": null,
+        "cached": null
+      },
+      "B": {
+        "ref": "B30",
+        "value": "Sum",
+        "cached": "40"
+      },
+      "C": {
+        "ref": "C30",
+        "value": null,
+        "cached": null
+      },
+      "D": {
+        "ref": "D30",
+        "value": null,
+        "cached": null
+      },
+      "E": {
+        "ref": "E30",
+        "value": null,
+        "cached": null
+      },
+      "F": {
+        "ref": "F30",
+        "value": null,
+        "cached": null
+      },
+      "G": {
+        "ref": "G30",
+        "value": null,
+        "cached": null
+      },
+      "H": {
+        "ref": "H30",
+        "formula": "SUM(I30:K30)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "I": {
+        "ref": "I30",
+        "formula": "SUM(I7:I28)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "J": {
+        "ref": "J30",
+        "formula": "SUM(J7:J29)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "K": {
+        "ref": "K30",
+        "formula": "SUM(K7:K29)",
+        "shared_si": null,
+        "value": "0",
+        "cached": "0"
+      },
+      "N": {
+        "ref": "N30",
+        "value": "The minimum number of days per year is 36",
+        "cached": "244"
+      }
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int          @id @default(autoincrement())
+  email        String       @unique
+  name         String?
+  passwordHash String
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  sessions     Session[]
+  engagements  Engagement[]
+  importRuns   ImportRun[]
+}
+
+model Session {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Section {
+  id          Int       @id @default(autoincrement())
+  workbookRow Int       @unique
+  name        String
+  startRow    Int
+  endRow      Int
+  crmId       String?
+  services    Service[]
+}
+
+model Service {
+  id                       Int                        @id @default(autoincrement())
+  row                      Int                        @unique
+  sectionId                Int
+  section                  Section                    @relation(fields: [sectionId], references: [id])
+  name                     String
+  crmId                    String?
+  defaultEffort            Int?
+  templateS                Int?
+  templateM                Int?
+  templateL                Int?
+  templateCustom           Int?
+  templateDetail           String?
+  values                   ScenarioServiceValue[]
+  engagementCustomServices EngagementScenarioService[]
+}
+
+model Scenario {
+  id              Int                    @id @default(autoincrement())
+  name            String                 @unique
+  layout          String
+  totalS          Int?
+  totalM          Int?
+  totalL          Int?
+  totalCustom     Int?
+  customTotalCell String
+  overrideCount   Int
+  values          ScenarioServiceValue[]
+}
+
+model ScenarioServiceValue {
+  id         Int      @id @default(autoincrement())
+  scenarioId Int
+  serviceId  Int
+  scenario   Scenario @relation(fields: [scenarioId], references: [id])
+  service    Service  @relation(fields: [serviceId], references: [id])
+  s          Int?
+  m          Int?
+  l          Int?
+  custom     Int?
+  details    String?
+
+  @@unique([scenarioId, serviceId])
+}
+
+model Engagement {
+  id            Int                         @id @default(autoincrement())
+  ownerId       Int
+  owner         User                        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  name          String
+  customerName  String?
+  opportunity   String?
+  notes         String?
+  durationYears Int                         @default(3)
+  spreadY1      Float                       @default(50)
+  spreadY2      Float                       @default(25)
+  spreadY3      Float                       @default(25)
+  spreadY4      Float                       @default(0)
+  spreadY5      Float                       @default(0)
+  createdAt     DateTime                    @default(now())
+  updatedAt     DateTime                    @updatedAt
+  selections    EngagementSelection[]
+  customServices EngagementScenarioService[]
+
+  @@index([ownerId])
+}
+
+model EngagementSelection {
+  id           Int        @id @default(autoincrement())
+  engagementId Int
+  row          Int
+  size         String
+  customDays   Float?
+  engagement   Engagement @relation(fields: [engagementId], references: [id], onDelete: Cascade)
+
+  @@unique([engagementId, row])
+}
+
+model EngagementScenarioService {
+  id           Int        @id @default(autoincrement())
+  engagementId Int
+  scenarioRow  Int
+  serviceKey   String
+  serviceId    Int?
+  serviceName  String
+  sectionName  String?
+  days         Float
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  engagement   Engagement @relation(fields: [engagementId], references: [id], onDelete: Cascade)
+  service      Service?   @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+
+  @@index([engagementId, scenarioRow])
+  @@unique([engagementId, scenarioRow, serviceKey])
+}
+
+model ImportRun {
+  id                Int      @id @default(autoincrement())
+  userId            Int?
+  user              User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  sourcePath        String
+  status            String
+  message           String?
+  rowsDetected      Int?
+  scenariosDetected Int?
+  servicesDetected  Int?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  importedAt        DateTime?
+
+  @@index([userId])
+}
