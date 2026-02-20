@@ -33,14 +33,30 @@ function round2(value: number): number {
   return Math.round(value * 100) / 100;
 }
 
+type EngagementCsvServiceDetail = {
+  serviceName: string;
+  sectionName: string | null;
+  days: number;
+};
+
 export function buildEngagementCsv(args: {
   engagementName: string;
   customerName?: string | null;
   opportunity?: string | null;
   spread: Spread;
   result: QuickSizerResult;
+  serviceSummaryByRow?: Record<number, string>;
+  serviceDetailsByRow?: Record<number, EngagementCsvServiceDetail[]>;
 }): string {
-  const { engagementName, customerName, opportunity, spread, result } = args;
+  const {
+    engagementName,
+    customerName,
+    opportunity,
+    spread,
+    result,
+    serviceSummaryByRow,
+    serviceDetailsByRow
+  } = args;
 
   const rows: Array<Array<unknown>> = [
     ["Engagement", engagementName],
@@ -52,7 +68,7 @@ export function buildEngagementCsv(args: {
     ["Spread Y4", round2(spread.y4)],
     ["Spread Y5", round2(spread.y5)],
     [],
-    ["Row", "Scenario", "Size", "Selected Days", "Y1", "Y2", "Y3", "Y4", "Y5"]
+    ["Row", "Scenario", "Size", "Services", "Selected Days", "Y1", "Y2", "Y3", "Y4", "Y5"]
   ];
 
   for (const row of result.rows) {
@@ -60,6 +76,8 @@ export function buildEngagementCsv(args: {
       row.row,
       row.name,
       row.size,
+      serviceSummaryByRow?.[row.row] ??
+        (row.size === "Custom" ? "Custom service allocation" : "Preset package"),
       round2(row.selectedDays),
       round2(row.y1),
       round2(row.y2),
@@ -74,6 +92,7 @@ export function buildEngagementCsv(args: {
     "Totals",
     "",
     "",
+    "",
     round2(result.totals.selectedDays),
     round2(result.totals.y1),
     round2(result.totals.y2),
@@ -81,6 +100,36 @@ export function buildEngagementCsv(args: {
     round2(result.totals.y4),
     round2(result.totals.y5)
   ]);
+
+  if (serviceDetailsByRow) {
+    rows.push([]);
+    rows.push(["Detailed Service Allocation"]);
+    rows.push(["Scenario Row", "Scenario", "Size", "Service", "Section", "Days"]);
+
+    for (const row of result.rows) {
+      const details = serviceDetailsByRow[row.row] ?? [];
+
+      if (!details.length) {
+        rows.push([row.row, row.name, row.size, "-", "-", round2(row.selectedDays)]);
+        continue;
+      }
+
+      for (const detail of details) {
+        rows.push([
+          row.row,
+          row.name,
+          row.size,
+          detail.serviceName,
+          detail.sectionName ?? "",
+          round2(detail.days)
+        ]);
+      }
+
+      rows.push(["", "", "", "Scenario Total", "", round2(row.selectedDays)]);
+    }
+
+    rows.push(["", "", "", "Grand Total", "", round2(result.totals.selectedDays)]);
+  }
 
   return toCsv(rows);
 }
@@ -529,7 +578,7 @@ function buildEngagementReportRows(args: {
 function prepareEngagementReportRows(rows: EngagementReportRow[]): PreparedEngagementReportRow[] {
   return rows.map((row) => {
     const scenarioLines = wrapPdfCellText(row.scenario, 44, 2);
-    const servicesLines = wrapPdfCellText(row.services, 52, 3);
+    const servicesLines = wrapPdfCellText(row.services, 52, 6);
     const lineCount = Math.max(1, scenarioLines.length, servicesLines.length);
 
     return {
