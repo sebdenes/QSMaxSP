@@ -10,8 +10,7 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "import:workbook": "tsx scripts/importWorkbook.ts",
-    "start:render": "npx prisma db push && npm run db:seed && next start"
+    "import:workbook": "tsx scripts/importWorkbook.ts"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",
