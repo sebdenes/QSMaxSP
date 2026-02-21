@@ -276,33 +276,51 @@ export default function QuickSizerApp() {
   const [error, setError] = useState<string | null>(null);
   const [savedAt, setSavedAt] = useState<string | null>(null);
 
+  function canAccessStep(step: WizardStep): boolean {
+    if (step === 5 && !expertModeUnlocked) {
+      return false;
+    }
+    return true;
+  }
+
   function resetStepHistory() {
     stepHistoryRef.current = [];
   }
 
   function navigateToStep(nextStep: WizardStep, trackHistory = true) {
-    if (nextStep === wizardStep) {
-      return;
-    }
-
-    if (trackHistory) {
-      const history = stepHistoryRef.current;
-      if (history[history.length - 1] !== wizardStep) {
-        history.push(wizardStep);
+    setWizardStep((currentStep) => {
+      if (currentStep === nextStep || !canAccessStep(nextStep)) {
+        return currentStep;
       }
-    }
 
-    setWizardStep(nextStep);
+      if (trackHistory) {
+        const history = stepHistoryRef.current;
+        if (history[history.length - 1] !== currentStep) {
+          history.push(currentStep);
+        }
+      }
+
+      return nextStep;
+    });
   }
 
   function goBackStep(fallbackStep: WizardStep) {
-    const previousStep = stepHistoryRef.current.pop();
-    if (previousStep) {
-      setWizardStep(previousStep);
-      return;
-    }
+    setWizardStep((currentStep) => {
+      while (stepHistoryRef.current.length > 0) {
+        const candidate = stepHistoryRef.current.pop();
+        if (!candidate || candidate === currentStep) {
+          continue;
+        }
 
-    setWizardStep(fallbackStep);
+        if (!canAccessStep(candidate)) {
+          continue;
+        }
+
+        return candidate;
+      }
+
+      return canAccessStep(fallbackStep) ? fallbackStep : 4;
+    });
   }
 
   const scenarioRows = useMemo(() => workbook?.lineItems ?? [], [workbook]);

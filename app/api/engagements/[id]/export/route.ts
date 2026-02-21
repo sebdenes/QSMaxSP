@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth";
-import { buildEngagementCsv, buildEngagementReportPdf } from "@/lib/exporters";
+import { buildEngagementCsv, buildEngagementPdfLines, buildEngagementReportPdf, buildSimplePdf } from "@/lib/exporters";
 import { prisma } from "@/lib/prisma";
 import { calculateQuickSizer } from "@/lib/quickSizer";
 import { getScenarioDrilldown } from "@/lib/scenarioDrilldown";
@@ -299,15 +299,29 @@ export async function GET(
   const nameSlug = safeFileName(engagement.name || `engagement-${engagement.id}`);
 
   if (format === "pdf") {
-    const pdfBytes = await buildEngagementReportPdf({
-      engagementName: engagement.name,
-      customerName: engagement.customerName,
-      opportunity: engagement.opportunity,
-      spread,
-      result: exportResult,
-      serviceSummaryByRow,
-      serviceDetailsByRow
-    });
+    let pdfBytes: Uint8Array;
+
+    try {
+      pdfBytes = await buildEngagementReportPdf({
+        engagementName: engagement.name,
+        customerName: engagement.customerName,
+        opportunity: engagement.opportunity,
+        spread,
+        result: exportResult,
+        serviceSummaryByRow,
+        serviceDetailsByRow
+      });
+    } catch (error) {
+      console.error("Failed to build rich engagement PDF, using fallback format.", error);
+      const fallbackLines = buildEngagementPdfLines({
+        engagementName: engagement.name,
+        customerName: engagement.customerName,
+        opportunity: engagement.opportunity,
+        spread,
+        result: exportResult
+      });
+      pdfBytes = await buildSimplePdf("Max Success Plan Premium Services Quicksizer", fallbackLines);
+    }
 
     return new NextResponse(pdfBytes, {
       headers: {
