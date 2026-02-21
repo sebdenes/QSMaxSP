@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Prisma } from "@prisma/client";
 import { requireSessionUser } from "@/lib/auth";
 import { buildEngagementCsv, buildEngagementPdfLines, buildEngagementReportPdf, buildSimplePdf } from "@/lib/exporters";
 import { prisma } from "@/lib/prisma";
@@ -24,6 +25,13 @@ type ServiceDetail = {
   sectionName: string | null;
   days: number;
 };
+
+type EngagementExportRecord = Prisma.EngagementGetPayload<{
+  include: {
+    selections: true;
+    customServices: true;
+  };
+}>;
 
 function toId(value: string): number | null {
   const id = Number(value);
@@ -151,7 +159,7 @@ export async function GET(
     return NextResponse.json({ error: "Invalid engagement id." }, { status: 400 });
   }
 
-  const engagement = await prisma.engagement.findFirst({
+  const engagement: EngagementExportRecord | null = await prisma.engagement.findFirst({
     where: { id: engagementId, ownerId: auth.user.id },
     include: { selections: true, customServices: true }
   });
@@ -161,7 +169,7 @@ export async function GET(
   }
 
   const snapshot = getWorkbookSnapshot();
-  const selections: QuickSizerSelection[] = engagement.selections.map((entry) => ({
+  const selections: QuickSizerSelection[] = engagement.selections.map((entry: EngagementExportRecord["selections"][number]) => ({
     row: entry.row,
     size: normalizeSize(entry.size),
     customDays: entry.customDays ?? undefined
@@ -195,7 +203,7 @@ export async function GET(
   const scenarioIdByRow = buildScenarioIdByRow(snapshot.lineItems, scenariosForMatching);
 
   const customServicesByRow = new Map<number, ServiceDetail[]>();
-  const sortedCustomServices = [...engagement.customServices].sort((a, b) => {
+  const sortedCustomServices = [...engagement.customServices].sort((a: EngagementExportRecord["customServices"][number], b: EngagementExportRecord["customServices"][number]) => {
     if (a.scenarioRow !== b.scenarioRow) {
       return a.scenarioRow - b.scenarioRow;
     }

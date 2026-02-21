@@ -60,3 +60,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Validate container build
+        run: docker build -t quicksizer-ci .

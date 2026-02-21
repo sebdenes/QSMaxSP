@@ -278,3 +278,25 @@ test(
     assert.equal(meBody.user.role, "ADMIN");
   }
 );
+
+test(
+  "health endpoints return expected liveness and readiness states",
+  { skip: !RUN_INTEGRATION },
+  async () => {
+    const { GET: getHealthLive } = await import("../app/api/health/live/route");
+    const { GET: getHealthReady } = await import("../app/api/health/ready/route");
+
+    const liveResponse = await getHealthLive();
+    assert.equal(liveResponse.status, 200);
+    const liveBody = await parseJson<{ status: string; mode: string }>(liveResponse);
+    assert.equal(liveBody.status, "ok");
+    assert.equal(liveBody.mode, "live");
+
+    const readyResponse = await getHealthReady();
+    assert.equal(readyResponse.status, 200);
+    const readyBody = await parseJson<{ status: string; mode: string; database: string }>(readyResponse);
+    assert.equal(readyBody.status, "ok");
+    assert.equal(readyBody.mode, "ready");
+    assert.equal(readyBody.database, "ok");
+  }
+);

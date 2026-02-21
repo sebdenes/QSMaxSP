@@ -28,6 +28,11 @@ Web application to configure and size premium SAP service engagements from workb
 - Self-signup can be disabled with `ALLOW_SELF_SIGNUP=false`.
 - Demo-user login can be disabled with `ALLOW_DEMO_LOGIN=false`.
 
+## Health Endpoints
+
+- Liveness: `GET /api/health/live`
+- Readiness (DB check): `GET /api/health/ready`
+
 ## Exports
 
 - Engagement CSV export includes:
@@ -95,6 +100,27 @@ GitHub Actions CI workflow is defined in `.github/workflows/ci.yml` and runs:
 - API integration tests
 - Production build
 
+## Container Deployment
+
+Build image:
+
+```bash
+docker build -t quicksizer:staging .
+```
+
+Run image:
+
+```bash
+docker run --rm -p 3000:3000 \
+  -e DATABASE_URL="postgresql://postgres:postgres@host.docker.internal:5432/quicksizer?schema=public" \
+  -e ALLOW_SELF_SIGNUP="false" \
+  -e ALLOW_DEMO_LOGIN="false" \
+  -e NODE_ENV="production" \
+  quicksizer:staging
+```
+
+See staging operations guide: `docs/STAGING_RUNBOOK.md`.
+
 ## Deployment Status
 
 - Render deployment config has been intentionally removed from this repository.
@@ -153,3 +179,4 @@ All API routes require authentication.
 - Export logic: `lib/exporters.ts`
 - Import logic: `scripts/importWorkbook.ts`, `lib/importWorkbook.ts`, `lib/domainSync.ts`
 - Production backlog: `docs/PRODUCTION_BACKLOG.md`
+- Staging runbook: `docs/STAGING_RUNBOOK.md`
