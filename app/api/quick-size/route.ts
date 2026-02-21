@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSessionUser } from "@/lib/auth";
+import { requireSessionUser } from "@/lib/auth";
 import { calculateQuickSizer } from "@/lib/quickSizer";
 import { prisma } from "@/lib/prisma";
 import { QuickSizerSelection, Spread } from "@/lib/types";
@@ -38,9 +38,9 @@ function spreadTotal(spread?: Partial<Spread>): number {
 }
 
 export async function POST(request: NextRequest) {
-  const user = await getSessionUser(prisma, request);
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const auth = await requireSessionUser(prisma, request);
+  if (auth.response) {
+    return auth.response;
   }
 
   let payload: RequestPayload;

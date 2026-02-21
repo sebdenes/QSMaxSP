@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import {
   createSession,
   hashPassword,
+  isSelfSignupEnabled,
   sanitizeUser,
   setSessionCookie
 } from "@/lib/auth";
@@ -16,6 +17,13 @@ function asString(value: unknown): string | null {
 }
 
 export async function POST(request: NextRequest) {
+  if (!isSelfSignupEnabled()) {
+    return NextResponse.json(
+      { error: "Self-signup is disabled in this environment." },
+      { status: 403 }
+    );
+  }
+
   let payload: Record<string, unknown>;
 
   try {
@@ -48,6 +56,7 @@ export async function POST(request: NextRequest) {
     data: {
       email,
       name,
+      role: "PLANNER",
       passwordHash: hashPassword(password)
     }
   });

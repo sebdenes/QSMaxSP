@@ -73,6 +73,7 @@ export type AuthUser = {
   id: number;
   email: string;
   name: string | null;
+  role: "ADMIN" | "PLANNER" | "VIEWER";
   createdAt: string;
   updatedAt: string;
 };

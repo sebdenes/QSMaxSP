@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import {
   createSession,
+  isDemoLoginEmail,
+  isDemoLoginEnabled,
   sanitizeUser,
   setSessionCookie,
   verifyPassword
@@ -29,6 +31,13 @@ export async function POST(request: NextRequest) {
 
   if (!email || !password) {
     return NextResponse.json({ error: "Email and password are required." }, { status: 400 });
+  }
+
+  if (isDemoLoginEmail(email) && !isDemoLoginEnabled()) {
+    return NextResponse.json(
+      { error: "Demo login is disabled in this environment." },
+      { status: 403 }
+    );
   }
 
   const user = await prisma.user.findUnique({ where: { email } });

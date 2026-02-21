@@ -20,6 +20,14 @@ Web application to configure and size premium SAP service engagements from workb
 - Back navigation is history-based and context-safe across all steps.
 - Review page shows scenario/service lines, scenario totals, and grand totals.
 
+## Security and Access
+
+- Role-based access with `ADMIN`, `PLANNER`, and `VIEWER`.
+- `VIEWER` is read-only for engagement write operations.
+- Workbook import APIs are restricted to `ADMIN`.
+- Self-signup can be disabled with `ALLOW_SELF_SIGNUP=false`.
+- Demo-user login can be disabled with `ALLOW_DEMO_LOGIN=false`.
+
 ## Exports
 
 - Engagement CSV export includes:
@@ -56,6 +64,7 @@ Default seeded account:
 
 - email: `demo@quicksizer.local`
 - password: `demo1234`
+- role: `ADMIN`
 
 ## Run Locally
 
@@ -73,6 +82,7 @@ App URL:
 ```bash
 npm run typecheck
 npm test
+npm run test:integration
 npm run build
 ```
 
@@ -81,7 +91,8 @@ GitHub Actions CI workflow is defined in `.github/workflows/ci.yml` and runs:
 - Prisma client generation
 - Prisma migration deploy
 - Typecheck
-- Tests
+- Unit tests
+- API integration tests
 - Production build
 
 ## Deployment Status

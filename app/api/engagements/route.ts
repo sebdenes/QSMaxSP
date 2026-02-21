@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSessionUser } from "@/lib/auth";
+import { EDITOR_ROLES, requireSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
 type SpreadValues = {
@@ -65,7 +65,7 @@ function asSpreadValue(value: unknown, fallback: number): number {
 
 function buildDefaultSpread(durationYears: number): SpreadValues {
   const values = [0, 0, 0, 0, 0];
-  const base = Math.floor((10000 / durationYears)) / 100;
+  const base = Math.floor(10000 / durationYears) / 100;
   let remaining = 100;
 
   for (let idx = 0; idx < durationYears; idx += 1) {
@@ -103,13 +103,13 @@ function spreadTotal(spread: SpreadValues): number {
 }
 
 export async function GET(request: NextRequest) {
-  const user = await getSessionUser(prisma, request);
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const auth = await requireSessionUser(prisma, request);
+  if (auth.response) {
+    return auth.response;
   }
 
   const engagements = await prisma.engagement.findMany({
-    where: { ownerId: user.id },
+    where: { ownerId: auth.user.id },
     orderBy: { updatedAt: "desc" },
     include: {
       _count: {
@@ -122,9 +122,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const user = await getSessionUser(prisma, request);
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const auth = await requireSessionUser(prisma, request, EDITOR_ROLES);
+  if (auth.response) {
+    return auth.response;
   }
 
   let payload: Record<string, unknown>;
@@ -172,7 +172,7 @@ export async function POST(request: NextRequest) {
 
   const created = await prisma.engagement.create({
     data: {
-      ownerId: user.id,
+      ownerId: auth.user.id,
       name,
       customerName,
       opportunity: asString(payload.opportunity),

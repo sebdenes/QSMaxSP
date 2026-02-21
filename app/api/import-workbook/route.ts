@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSessionUser } from "@/lib/auth";
+import { ADMIN_ROLES, requireSessionUser } from "@/lib/auth";
 import { importWorkbookFromXlsx } from "@/lib/importWorkbook";
 import { prisma } from "@/lib/prisma";
 import { invalidateWorkbookSnapshotCache } from "@/lib/workbookData";
@@ -13,13 +13,13 @@ function asString(value: unknown): string | null {
 }
 
 export async function GET(request: NextRequest) {
-  const user = await getSessionUser(prisma, request);
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const auth = await requireSessionUser(prisma, request, ADMIN_ROLES);
+  if (auth.response) {
+    return auth.response;
   }
 
   const runs = await prisma.importRun.findMany({
-    where: { userId: user.id },
+    where: { userId: auth.user.id },
     orderBy: { createdAt: "desc" },
     take: 10
   });
@@ -28,9 +28,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const user = await getSessionUser(prisma, request);
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const auth = await requireSessionUser(prisma, request, ADMIN_ROLES);
+  if (auth.response) {
+    return auth.response;
   }
 
   let payload: Record<string, unknown>;
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 
   const run = await prisma.importRun.create({
     data: {
-      userId: user.id,
+      userId: auth.user.id,
       sourcePath,
       status: "RUNNING"
     }

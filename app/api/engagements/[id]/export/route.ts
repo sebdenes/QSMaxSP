@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSessionUser } from "@/lib/auth";
+import { requireSessionUser } from "@/lib/auth";
 import { buildEngagementCsv, buildEngagementPdfLines, buildEngagementReportPdf, buildSimplePdf } from "@/lib/exporters";
 import { prisma } from "@/lib/prisma";
 import { calculateQuickSizer } from "@/lib/quickSizer";
@@ -140,9 +140,9 @@ export async function GET(
   request: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
-  const user = await getSessionUser(prisma, request);
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const auth = await requireSessionUser(prisma, request);
+  if (auth.response) {
+    return auth.response;
   }
 
   const { id } = await context.params;
@@ -152,7 +152,7 @@ export async function GET(
   }
 
   const engagement = await prisma.engagement.findFirst({
-    where: { id: engagementId, ownerId: user.id },
+    where: { id: engagementId, ownerId: auth.user.id },
     include: { selections: true, customServices: true }
   });
 

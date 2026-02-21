@@ -30,8 +30,14 @@ async function main() {
       data: {
         email: "demo@quicksizer.local",
         name: "Demo User",
+        role: "ADMIN",
         passwordHash: hashPassword("demo1234")
       }
+    });
+  } else if (user.role !== "ADMIN") {
+    user = await prisma.user.update({
+      where: { id: user.id },
+      data: { role: "ADMIN" }
     });
   }
 

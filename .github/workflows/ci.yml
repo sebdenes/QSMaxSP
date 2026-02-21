@@ -27,6 +27,7 @@ jobs:
 
     env:
       DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/quicksizer?schema=public
+      RUN_INTEGRATION_TESTS: "1"
       NODE_ENV: test
 
     steps:
@@ -51,8 +52,11 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Run tests
+      - name: Run unit tests
         run: npm test
+
+      - name: Run API integration tests
+        run: npm run test:integration
 
       - name: Build
         run: npm run build

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSessionUser } from "@/lib/auth";
+import { EDITOR_ROLES, requireSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
 const VALID_SIZES = new Set(["N/A", "S", "M", "L", "Custom"]);
@@ -199,9 +199,9 @@ export async function GET(
   request: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
-  const user = await getSessionUser(prisma, request);
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const auth = await requireSessionUser(prisma, request);
+  if (auth.response) {
+    return auth.response;
   }
 
   const { id } = await context.params;
@@ -211,7 +211,7 @@ export async function GET(
     return NextResponse.json({ error: "Invalid engagement id." }, { status: 400 });
   }
 
-  const owned = await findOwnedEngagement(engagementId, user.id);
+  const owned = await findOwnedEngagement(engagementId, auth.user.id);
   if (!owned) {
     return NextResponse.json({ error: "Engagement not found." }, { status: 404 });
   }
@@ -235,9 +235,9 @@ export async function PUT(
   request: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
-  const user = await getSessionUser(prisma, request);
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const auth = await requireSessionUser(prisma, request, EDITOR_ROLES);
+  if (auth.response) {
+    return auth.response;
   }
 
   const { id } = await context.params;
@@ -247,7 +247,7 @@ export async function PUT(
     return NextResponse.json({ error: "Invalid engagement id." }, { status: 400 });
   }
 
-  const owned = await findOwnedEngagement(engagementId, user.id);
+  const owned = await findOwnedEngagement(engagementId, auth.user.id);
   if (!owned) {
     return NextResponse.json({ error: "Engagement not found." }, { status: 404 });
   }
@@ -385,9 +385,9 @@ export async function DELETE(
   request: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
-  const user = await getSessionUser(prisma, request);
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const auth = await requireSessionUser(prisma, request, EDITOR_ROLES);
+  if (auth.response) {
+    return auth.response;
   }
 
   const { id } = await context.params;
@@ -397,7 +397,7 @@ export async function DELETE(
     return NextResponse.json({ error: "Invalid engagement id." }, { status: 400 });
   }
 
-  const owned = await findOwnedEngagement(engagementId, user.id);
+  const owned = await findOwnedEngagement(engagementId, auth.user.id);
   if (!owned) {
     return NextResponse.json({ error: "Engagement not found." }, { status: 404 });
   }
