@@ -68,6 +68,12 @@ App URL:
 
 - `http://127.0.0.1:3000`
 
+## Deployment Status
+
+- Render deployment config has been intentionally removed from this repository.
+- There is no supported `render.yaml` or Render-specific startup script in the current code line.
+- Recommended usage is local runtime (`npm run dev`) or your own self-hosted/container deployment setup.
+
 ## Local Troubleshooting
 
 If port 3000 is already in use:
