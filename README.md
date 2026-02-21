@@ -36,7 +36,7 @@ Web application to configure and size premium SAP service engagements from workb
 ## Tech Stack
 
 - Next.js 15 + TypeScript
-- Prisma + SQLite
+- Prisma + PostgreSQL
 - Workbook/domain artifacts in `data/*.json`
 
 ## Setup
@@ -45,9 +45,10 @@ Web application to configure and size premium SAP service engagements from workb
 git clone git@github.com:sebdenes/QSMaxSP.git
 cd QSMaxSP
 cp .env.example .env
+docker compose up -d postgres
 npm install
 npm run db:generate
-npm run db:push
+npm run db:migrate
 npm run db:seed
 ```
 
@@ -66,6 +67,22 @@ npm run dev -- --hostname 127.0.0.1 --port 3000
 App URL:
 
 - `http://127.0.0.1:3000`
+
+## Quality Checks
+
+```bash
+npm run typecheck
+npm test
+npm run build
+```
+
+GitHub Actions CI workflow is defined in `.github/workflows/ci.yml` and runs:
+
+- Prisma client generation
+- Prisma migration deploy
+- Typecheck
+- Tests
+- Production build
 
 ## Deployment Status
 
@@ -87,6 +104,13 @@ If you hit a Next.js chunk/module runtime error (for example missing `.next` chu
 rm -rf .next
 npm run build
 npm run dev -- --hostname 127.0.0.1 --port 3000
+```
+
+If PostgreSQL is not reachable:
+
+```bash
+docker compose up -d postgres
+docker compose ps
 ```
 
 ## Workbook Import
@@ -117,3 +141,4 @@ All API routes require authentication.
 - Workbook APIs: `app/api/workbook/route.ts`, `app/api/import-workbook/route.ts`
 - Export logic: `lib/exporters.ts`
 - Import logic: `scripts/importWorkbook.ts`, `lib/importWorkbook.ts`, `lib/domainSync.ts`
+- Production backlog: `docs/PRODUCTION_BACKLOG.md`
