@@ -2,17 +2,31 @@
 
 Web application to configure and size premium SAP service engagements from workbook-driven scenario data.
 
+## Portable Single-User Mode (Default)
+
+The app now runs in portable single-user mode by default:
+
+- No login screen.
+- A local admin profile is auto-created on first run.
+- Users can save and reload projects directly in the app (Step 6 + header selector).
+
+Environment flags:
+
+- `AUTH_DISABLED=true`
+- `NEXT_PUBLIC_AUTH_DISABLED=true`
+
+To re-enable full multi-user auth, set both to `false` and enable signup/demo login as needed.
+
 ## Current Product Scope
 
-- Authenticated multi-user app with per-user engagement ownership.
 - Guided 6-step flow:
   - Step 1: Context
   - Step 2: Scope
   - Step 3: Scenarios
   - Step 4: Sizing
   - Step 5: Expert Mode
-  - Step 6: Review
-- Scenario selection grouped by scenario type, with validation requiring at least one scenario per selected type.
+  - Step 6: Project Summary / Save
+- Scenario selection grouped by scenario type with validation requiring at least one scenario per selected type.
 - Per-scenario sizing supports mixed modes:
   - T-shirt sizing (`S`, `M`, `L`) per scenario.
   - Custom sizing per scenario with service-level days.
@@ -20,31 +34,10 @@ Web application to configure and size premium SAP service engagements from workb
 - Back navigation is history-based and context-safe across all steps.
 - Review page shows scenario/service lines, scenario totals, and grand totals.
 
-## Security and Access
-
-- Role-based access with `ADMIN`, `PLANNER`, and `VIEWER`.
-- `VIEWER` is read-only for engagement write operations.
-- Workbook import APIs are restricted to `ADMIN`.
-- Self-signup can be disabled with `ALLOW_SELF_SIGNUP=false`.
-- Demo-user login can be disabled with `ALLOW_DEMO_LOGIN=false`.
-
-## Health Endpoints
-
-- Liveness: `GET /api/health/live`
-- Readiness (DB check): `GET /api/health/ready`
-
 ## Exports
 
-- Engagement CSV export includes:
-  - Metadata block
-  - Scenario summary block
-  - Service allocation detail block
-  - Scenario totals and grand total
-- Engagement PDF export includes:
-  - Structured plan header and summary
-  - Service-level rows
-  - Scenario totals and grand total
-- PDF export has a built-in fallback renderer to prevent hard failures in edge cases.
+- Engagement CSV export includes metadata, scenario summary, service detail, scenario totals, and grand total.
+- Engagement PDF export is intentionally disabled in this build (`/api/engagements/:id/export?format=pdf` returns `400`).
 
 ## Tech Stack
 
@@ -65,22 +58,20 @@ npm run db:migrate
 npm run db:seed
 ```
 
-Default seeded account:
-
-- email: `demo@quicksizer.local`
-- password: `demo1234`
-- role: `ADMIN`
-
 ## Run Locally
 
 ```bash
-cd QSMaxSP
 npm run dev -- --hostname 127.0.0.1 --port 3000
 ```
 
 App URL:
 
 - `http://127.0.0.1:3000`
+
+## Save Projects
+
+- Use **Save Project** in Step 6.
+- Reload saved projects from the header dropdown (**Load Saved Project**).
 
 ## Quality Checks
 
@@ -91,97 +82,17 @@ npm run test:integration
 npm run build
 ```
 
-GitHub Actions CI workflow is defined in `.github/workflows/ci.yml` and runs:
+## Health Endpoints
 
-- Prisma client generation
-- Prisma migration deploy
-- Typecheck
-- Unit tests
-- API integration tests
-- Production build
-
-Manual staging publish workflow: `.github/workflows/deploy-staging.yml`
-
-- Trigger via `Actions` -> `Deploy Staging Image` -> `Run workflow`
-- Publishes image tags to `ghcr.io/<owner>/<repo>` (for example `staging-latest`, `sha-...`)
-
-## Container Deployment
-
-Build image:
-
-```bash
-docker build -t quicksizer:staging .
-```
-
-Run image:
-
-```bash
-docker run --rm -p 3000:3000 \
-  -e DATABASE_URL="postgresql://postgres:postgres@host.docker.internal:5432/quicksizer?schema=public" \
-  -e ALLOW_SELF_SIGNUP="false" \
-  -e ALLOW_DEMO_LOGIN="false" \
-  -e NODE_ENV="production" \
-  quicksizer:staging
-```
-
-See staging operations guide: `docs/STAGING_RUNBOOK.md` (includes GHCR workflow dispatch and runtime steps).
-
-## Deployment Status
-
-- Render deployment config has been intentionally removed from this repository.
-- There is no supported `render.yaml` or Render-specific startup script in the current code line.
-- Recommended usage is local runtime (`npm run dev`) or your own self-hosted/container deployment setup.
-
-## Local Troubleshooting
-
-If port 3000 is already in use:
-
-```bash
-lsof -ti tcp:3000 | xargs kill -9 2>/dev/null || true
-```
-
-If you hit a Next.js chunk/module runtime error (for example missing `.next` chunk files), clear build cache and restart:
-
-```bash
-rm -rf .next
-npm run build
-npm run dev -- --hostname 127.0.0.1 --port 3000
-```
-
-If PostgreSQL is not reachable:
-
-```bash
-docker compose up -d postgres
-docker compose ps
-```
-
-## Workbook Import
-
-Workbook import is CLI-based:
-
-```bash
-npm run import:workbook -- --source /absolute/path/to/MaxEngagementQuickSizer_V1.xlsx
-```
-
-## API Export Endpoints
-
-- Engagement export:
-  - `GET /api/engagements/:id/export?format=csv`
-  - `GET /api/engagements/:id/export?format=pdf`
-- Scenario export:
-  - `GET /api/scenarios/:id/export?format=csv&showHidden=0`
-  - `GET /api/scenarios/:id/export?format=pdf&showHidden=1`
-
-All API routes require authentication.
+- Liveness: `GET /api/health/live`
+- Readiness (DB check): `GET /api/health/ready`
 
 ## Key Paths
 
 - Frontend: `app/page.tsx`, `components/QuickSizerApp.tsx`
-- Auth: `app/api/auth/*`, `lib/auth.ts`, `lib/password.ts`
+- Auth + single-user mode: `app/api/auth/*`, `lib/auth.ts`
 - Engagement APIs: `app/api/engagements/*`
 - Scenario APIs: `app/api/scenarios/*`
 - Workbook APIs: `app/api/workbook/route.ts`, `app/api/import-workbook/route.ts`
 - Export logic: `lib/exporters.ts`
 - Import logic: `scripts/importWorkbook.ts`, `lib/importWorkbook.ts`, `lib/domainSync.ts`
-- Production backlog: `docs/PRODUCTION_BACKLOG.md`
-- Staging runbook: `docs/STAGING_RUNBOOK.md`

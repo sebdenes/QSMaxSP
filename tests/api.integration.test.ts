@@ -11,6 +11,7 @@ import { GET as getEngagements, POST as postEngagements } from "../app/api/engag
 import { PUT as putEngagementById } from "../app/api/engagements/[id]/route";
 import { GET as getEngagementExportById } from "../app/api/engagements/[id]/export/route";
 import { GET as getImportWorkbook } from "../app/api/import-workbook/route";
+import { getWorkbookSnapshot } from "../lib/workbookData";
 
 const prisma = new PrismaClient();
 const RUN_INTEGRATION = process.env.RUN_INTEGRATION_TESTS === "1";
@@ -246,6 +247,123 @@ test(
     const csv = await exportResponse.text();
     assert.match(csv, /SCENARIO SUMMARY/);
     assert.match(csv, /SERVICE ALLOCATION DETAIL/);
+  }
+);
+
+test(
+  "csv export includes full service rows for mixed scenario sizes and rejects pdf export",
+  { skip: !RUN_INTEGRATION },
+  async () => {
+    const planner = await createUser("PLANNER", "planner-mixed-export@example.test");
+    const sessionToken = await createSession(prisma, planner.id);
+
+    const created = await postEngagements(
+      makeRequest({
+        path: "/api/engagements",
+        method: "POST",
+        sessionToken,
+        body: {
+          customerName: "Mixed Export Customer",
+          durationYears: 5,
+          spreadY1: 40,
+          spreadY2: 25,
+          spreadY3: 20,
+          spreadY4: 10,
+          spreadY5: 5
+        }
+      })
+    );
+
+    assert.equal(created.status, 201);
+    const createdBody = await parseJson<{ id: number }>(created);
+    assert.ok(createdBody.id > 0);
+
+    const selections = [
+      { row: 7, size: "S" },
+      { row: 8, size: "M" },
+      { row: 18, size: "L" },
+      { row: 21, size: "M" },
+      { row: 28, size: "S" },
+      { row: 16, size: "Custom", customDays: 44 }
+    ];
+
+    const customServices = [
+      {
+        scenarioRow: 16,
+        serviceKey: "custom-16-a",
+        serviceId: null,
+        serviceName: "Custom Service 16 A",
+        sectionName: "Custom Section",
+        days: 20
+      },
+      {
+        scenarioRow: 16,
+        serviceKey: "custom-16-b",
+        serviceId: null,
+        serviceName: "Custom Service 16 B",
+        sectionName: "Custom Section",
+        days: 24
+      }
+    ];
+
+    const updated = await putEngagementById(
+      makeRequest({
+        path: `/api/engagements/${createdBody.id}`,
+        method: "PUT",
+        sessionToken,
+        body: {
+          name: "Mixed Export Plan",
+          selections,
+          customServices
+        }
+      }),
+      { params: Promise.resolve({ id: String(createdBody.id) }) }
+    );
+    assert.equal(updated.status, 200);
+
+    const exportCsvResponse = await getEngagementExportById(
+      makeRequest({
+        path: `/api/engagements/${createdBody.id}/export?format=csv`,
+        sessionToken
+      }),
+      { params: Promise.resolve({ id: String(createdBody.id) }) }
+    );
+
+    assert.equal(exportCsvResponse.status, 200);
+    assert.match(exportCsvResponse.headers.get("content-type") ?? "", /text\/csv/i);
+
+    const csv = await exportCsvResponse.text();
+    assert.match(csv, /SCENARIO SUMMARY/);
+    assert.match(csv, /SERVICE ALLOCATION DETAIL/);
+    assert.match(csv, /Custom Service 16 A/);
+    assert.match(csv, /Custom Service 16 B/);
+    assert.doesNotMatch(csv, /Preset package/);
+
+    const workbook = getWorkbookSnapshot();
+    const selectedRows = [7, 8, 16, 18, 21, 28];
+    const selectedNames = selectedRows
+      .map((row) => workbook.lineItems.find((item) => item.row === row)?.name)
+      .filter((value): value is string => Boolean(value));
+
+    for (const row of selectedRows) {
+      assert.match(csv, new RegExp(`\\n${row},`));
+    }
+
+    for (const name of selectedNames) {
+      assert.match(csv, new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    }
+
+    const exportPdfResponse = await getEngagementExportById(
+      makeRequest({
+        path: `/api/engagements/${createdBody.id}/export?format=pdf`,
+        sessionToken
+      }),
+      { params: Promise.resolve({ id: String(createdBody.id) }) }
+    );
+
+    assert.equal(exportPdfResponse.status, 400);
+    const pdfBody = await parseJson<{ error: string }>(exportPdfResponse);
+    assert.match(pdfBody.error, /Only CSV export is supported/i);
   }
 );
 

@@ -232,6 +232,23 @@ function toApiError(status: number, message: string): ApiError {
   return err;
 }
 
+function parseBooleanFlag(value: string | undefined, fallback: boolean): boolean {
+  if (value === undefined) {
+    return fallback;
+  }
+
+  const normalized = value.trim().toLowerCase();
+  if (["1", "true", "yes", "on"].includes(normalized)) {
+    return true;
+  }
+
+  if (["0", "false", "no", "off"].includes(normalized)) {
+    return false;
+  }
+
+  return fallback;
+}
+
 export default function QuickSizerApp() {
   const [authLoading, setAuthLoading] = useState(true);
   const [authUser, setAuthUser] = useState<AuthUser | null>(null);
@@ -239,6 +256,7 @@ export default function QuickSizerApp() {
   const [authEmail, setAuthEmail] = useState("demo@quicksizer.local");
   const [authPassword, setAuthPassword] = useState("demo1234");
   const [authName, setAuthName] = useState("Demo User");
+  const authDisabled = parseBooleanFlag(process.env.NEXT_PUBLIC_AUTH_DISABLED, false);
 
   const [workbook, setWorkbook] = useState<WorkbookSnapshot | null>(null);
   const [scenarios, setScenarios] = useState<ScenarioSummary[]>([]);
@@ -1365,7 +1383,7 @@ export default function QuickSizerApp() {
     setSaving(true);
 
     try {
-      const name = `${customerName.trim()} Premium Services Plan`;
+      const name = `${customerName.trim()} Premium Services Project`;
       const spreadPayload = clampSpreadToDuration(activeSpread, durationYears);
 
       let engagementId = activeEngagementId;
@@ -1431,7 +1449,7 @@ export default function QuickSizerApp() {
 
       setSavedAt(new Date().toLocaleString());
       setMessage(
-        `Plan saved. ${selectedLineItems.length} scenarios configured, ${formatNum(
+        `Project saved. ${selectedLineItems.length} scenarios configured, ${formatNum(
           quickResult.totals.selectedDays
         )} total days.`
       );
@@ -1443,11 +1461,11 @@ export default function QuickSizerApp() {
     }
   }
 
-  function exportEngagement(format: "csv" | "pdf") {
+  function exportEngagementCsv() {
     if (!activeEngagementId) {
       return;
     }
-    window.open(`/api/engagements/${activeEngagementId}/export?format=${format}`, "_blank");
+    window.open(`/api/engagements/${activeEngagementId}/export?format=csv`, "_blank");
   }
 
   function goNextFromBasics() {
@@ -1551,10 +1569,27 @@ export default function QuickSizerApp() {
   }
 
   if (authLoading) {
-    return <p className="muted">Checking session...</p>;
+    return <p className="muted">{authDisabled ? "Initializing local workspace..." : "Checking session..."}</p>;
   }
 
   if (!authUser) {
+    if (authDisabled) {
+      return (
+        <section className="card grid" style={{ gap: "0.8rem" }}>
+          <h2>Local Workspace Unavailable</h2>
+          <p className="muted" style={{ margin: 0 }}>
+            Portable mode is enabled, but the local workspace could not be initialized.
+          </p>
+          {error && <p style={{ color: "#b64d4d", margin: 0 }}>{error}</p>}
+          <div className="row">
+            <button type="button" onClick={() => void initializeAuth()}>
+              Retry
+            </button>
+          </div>
+        </section>
+      );
+    }
+
     return (
       <section className="card grid grid-2" style={{ alignItems: "start" }}>
         <div>
@@ -1637,23 +1672,25 @@ export default function QuickSizerApp() {
 
           <div className="row" style={{ gap: "0.5rem" }}>
             <button type="button" className="ghost-button" onClick={resetDraft}>
-              New SAP Plan
+              New Project
             </button>
-            <button
-              type="button"
-              onClick={logout}
-              style={{ background: "#3a4c67", borderColor: "#3a4c67" }}
-            >
-              Sign Out
-            </button>
+            {!authDisabled && (
+              <button
+                type="button"
+                onClick={logout}
+                style={{ background: "#3a4c67", borderColor: "#3a4c67" }}
+              >
+                Sign Out
+              </button>
+            )}
           </div>
         </div>
 
         <div className="row" style={{ marginTop: "0.8rem", flexWrap: "wrap" }}>
-          <span className="badge">Signed in: {authUser.email}</span>
+          <span className="badge">{authDisabled ? "Portable local mode" : "Signed in: " + authUser.email}</span>
           <span className="badge">Flow completion: {workflowCompletion}%</span>
           <label className="row" style={{ gap: "0.4rem" }}>
-            <span className="muted">Load Saved Plan</span>
+            <span className="muted">Load Saved Project</span>
             <select
               value={activeEngagementId ?? ""}
               onChange={(event) => {
@@ -1665,7 +1702,7 @@ export default function QuickSizerApp() {
                 setActiveEngagementId(value);
               }}
             >
-              <option value="">Draft (unsaved)</option>
+              <option value="">Project Draft (unsaved)</option>
               {engagements.map((engagement) => (
                 <option key={engagement.id} value={engagement.id}>
                   {engagement.customerName ?? engagement.name}
@@ -2307,7 +2344,7 @@ export default function QuickSizerApp() {
 
           {wizardStep === 6 && (
             <div className="grid panel-enter" style={{ gap: "1rem", marginTop: "1rem" }}>
-              <h2>Step 6: Plan Summary & Save</h2>
+              <h2>Step 6: Project Summary / Save</h2>
               <p className="muted" style={{ margin: 0 }}>
                 SAP-ready summary of scope, scenarios, sizing decision, and service allocations.
               </p>
@@ -2397,20 +2434,12 @@ export default function QuickSizerApp() {
 
                 <div className="row" style={{ flexWrap: "wrap" }}>
                   <button type="button" onClick={savePlan} disabled={!readyToSave || saving}>
-                    {saving ? "Saving..." : "Save Plan"}
+                    {saving ? "Saving..." : "Save Project"}
                   </button>
                   <button
                     type="button"
                     className="ghost-button"
-                    onClick={() => exportEngagement("pdf")}
-                    disabled={!activeEngagementId}
-                  >
-                    Export PDF
-                  </button>
-                  <button
-                    type="button"
-                    className="ghost-button"
-                    onClick={() => exportEngagement("csv")}
+                    onClick={exportEngagementCsv}
                     disabled={!activeEngagementId}
                   >
                     Export CSV

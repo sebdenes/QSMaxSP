@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import {
   createSession,
+  getOrCreateAuthDisabledUser,
   hashPassword,
+  isAuthDisabled,
   isSelfSignupEnabled,
   sanitizeUser,
   setSessionCookie
@@ -17,6 +19,11 @@ function asString(value: unknown): string | null {
 }
 
 export async function POST(request: NextRequest) {
+  if (isAuthDisabled()) {
+    const user = await getOrCreateAuthDisabledUser(prisma);
+    return NextResponse.json({ user: sanitizeUser(user) });
+  }
+
   if (!isSelfSignupEnabled()) {
     return NextResponse.json(
       { error: "Self-signup is disabled in this environment." },

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Prisma } from "@prisma/client";
 import { requireSessionUser } from "@/lib/auth";
-import { buildEngagementCsv, buildEngagementPdfLines, buildEngagementReportPdf, buildSimplePdf } from "@/lib/exporters";
+import { buildEngagementCsv } from "@/lib/exporters";
 import { prisma } from "@/lib/prisma";
 import { calculateQuickSizer } from "@/lib/quickSizer";
 import { getScenarioDrilldown } from "@/lib/scenarioDrilldown";
@@ -24,6 +24,14 @@ type ServiceDetail = {
   serviceName: string;
   sectionName: string | null;
   days: number;
+};
+
+type TemplateServiceDetail = {
+  serviceName: string;
+  sectionName: string;
+  valueS: number;
+  valueM: number;
+  valueL: number;
 };
 
 type EngagementExportRecord = Prisma.EngagementGetPayload<{
@@ -103,23 +111,30 @@ function buildScenarioIdByRow(
   for (const lineItem of lineItems) {
     let matchedScenario: ScenarioIndexEntry | null = null;
 
-    if (lineItem.scenarioLabel) {
-      const candidates =
-        scenarioBucketsByKey.get(normalizeScenarioKey(lineItem.scenarioLabel)) ?? [];
+    const labelCandidates: ScenarioIndexEntry[] = [];
+    const keys = [lineItem.scenarioLabel, lineItem.name]
+      .filter((value): value is string => Boolean(value))
+      .map((value) => normalizeScenarioKey(value));
 
-      if (candidates.length === 1) {
-        matchedScenario = candidates[0];
-      } else if (candidates.length > 1) {
-        const narrowed = candidates.filter(
-          (scenario) =>
-            isSameDays(scenario.totalS, lineItem.daysBySize.S) &&
-            isSameDays(scenario.totalM, lineItem.daysBySize.M) &&
-            isSameDays(scenario.totalL, lineItem.daysBySize.L)
-        );
+    for (const key of keys) {
+      const candidates = scenarioBucketsByKey.get(key) ?? [];
+      for (const candidate of candidates) {
+        labelCandidates.push(candidate);
+      }
+    }
 
-        if (narrowed.length === 1) {
-          matchedScenario = narrowed[0];
-        }
+    if (labelCandidates.length === 1) {
+      matchedScenario = labelCandidates[0];
+    } else if (labelCandidates.length > 1) {
+      const narrowed = labelCandidates.filter(
+        (scenario) =>
+          isSameDays(scenario.totalS, lineItem.daysBySize.S) &&
+          isSameDays(scenario.totalM, lineItem.daysBySize.M) &&
+          isSameDays(scenario.totalL, lineItem.daysBySize.L)
+      );
+
+      if (narrowed.length === 1) {
+        matchedScenario = narrowed[0];
       }
     }
 
@@ -142,6 +157,53 @@ function buildScenarioIdByRow(
   }
 
   return map;
+}
+
+function templateValueForSize(service: TemplateServiceDetail, size: BaselineSize): number {
+  if (size === "S") {
+    return service.valueS;
+  }
+  if (size === "M") {
+    return service.valueM;
+  }
+  return service.valueL;
+}
+
+function buildTemplateFallbackDetails(
+  templateServices: TemplateServiceDetail[],
+  size: BaselineSize,
+  selectedDays: number
+): ServiceDetail[] {
+  const positiveServices = templateServices
+    .map((service) => ({
+      serviceName: service.serviceName,
+      sectionName: service.sectionName,
+      value: templateValueForSize(service, size)
+    }))
+    .filter((service) => service.value > 0);
+
+  if (!positiveServices.length || selectedDays <= 0) {
+    return [];
+  }
+
+  const templateTotal = positiveServices.reduce((sum, service) => sum + service.value, 0);
+  if (templateTotal <= 0) {
+    return [];
+  }
+
+  const scaled = positiveServices.map((service) => ({
+    serviceName: service.serviceName,
+    sectionName: service.sectionName,
+    days: round2((service.value / templateTotal) * selectedDays)
+  }));
+
+  const roundedTotal = round2(scaled.reduce((sum, service) => sum + service.days, 0));
+  const delta = round2(selectedDays - roundedTotal);
+  if (Math.abs(delta) > 0.0001 && scaled.length > 0) {
+    scaled[scaled.length - 1].days = round2(scaled[scaled.length - 1].days + delta);
+  }
+
+  return scaled.filter((service) => service.days > 0);
 }
 
 export async function GET(
@@ -184,7 +246,7 @@ export async function GET(
   };
 
   const result = calculateQuickSizer(snapshot.lineItems, selections, spread);
-  const exportRows = result.rows.filter((row) => row.size !== "N/A" && row.selectedDays > 0);
+  const exportRows = result.rows.filter((row) => row.size !== "N/A");
   const exportResult = {
     ...result,
     rows: exportRows
@@ -248,6 +310,25 @@ export async function GET(
     })
   );
 
+  const templateServices = await prisma.service.findMany({
+    orderBy: { row: "asc" },
+    include: {
+      section: {
+        select: {
+          name: true
+        }
+      }
+    }
+  });
+
+  const templateServiceDetails: TemplateServiceDetail[] = templateServices.map((service) => ({
+    serviceName: service.name,
+    sectionName: service.section.name,
+    valueS: Math.max(0, service.templateS ?? 0),
+    valueM: Math.max(0, service.templateM ?? 0),
+    valueL: Math.max(0, service.templateL ?? 0)
+  }));
+
   const serviceSummaryByRow: Record<number, string> = {};
   const serviceDetailsByRow: Record<number, ServiceDetail[]> = {};
 
@@ -266,10 +347,6 @@ export async function GET(
         if (drilldown) {
           for (const section of drilldown.sections) {
             for (const service of section.services) {
-              if (!service.visible) {
-                continue;
-              }
-
               const days = daysForBaselineSize(service.effective, baselineSize);
               if (days <= 0) {
                 continue;
@@ -283,6 +360,14 @@ export async function GET(
             }
           }
         }
+      }
+
+      if (baselineSize && details.length === 0) {
+        details = buildTemplateFallbackDetails(
+          templateServiceDetails,
+          baselineSize,
+          round2(row.selectedDays)
+        );
       }
     }
 
@@ -304,40 +389,14 @@ export async function GET(
   }
 
   const format = request.nextUrl.searchParams.get("format")?.toLowerCase() ?? "csv";
-  const nameSlug = safeFileName(engagement.name || `engagement-${engagement.id}`);
-
-  if (format === "pdf") {
-    let pdfBytes: Uint8Array;
-
-    try {
-      pdfBytes = await buildEngagementReportPdf({
-        engagementName: engagement.name,
-        customerName: engagement.customerName,
-        opportunity: engagement.opportunity,
-        spread,
-        result: exportResult,
-        serviceSummaryByRow,
-        serviceDetailsByRow
-      });
-    } catch (error) {
-      console.error("Failed to build rich engagement PDF, using fallback format.", error);
-      const fallbackLines = buildEngagementPdfLines({
-        engagementName: engagement.name,
-        customerName: engagement.customerName,
-        opportunity: engagement.opportunity,
-        spread,
-        result: exportResult
-      });
-      pdfBytes = await buildSimplePdf("Max Success Plan Premium Services Quicksizer", fallbackLines);
-    }
-
-    return new NextResponse(pdfBytes, {
-      headers: {
-        "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename="${nameSlug}.pdf"`
-      }
-    });
+  if (format !== "csv") {
+    return NextResponse.json(
+      { error: "Only CSV export is supported in this build." },
+      { status: 400 }
+    );
   }
+
+  const nameSlug = safeFileName(engagement.name || `engagement-${engagement.id}`);
 
   const csv = buildEngagementCsv({
     engagementName: engagement.name,

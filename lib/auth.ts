@@ -6,6 +6,8 @@ import { hashPassword, verifyPassword } from "@/lib/password";
 const SESSION_COOKIE_NAME = "quicksizer_session";
 const SESSION_TTL_DAYS = 30;
 const DEMO_LOGIN_EMAIL = "demo@quicksizer.local";
+const AUTH_DISABLED_DEFAULT_USER_NAME = "Local Planner";
+const AUTH_DISABLED_DEFAULT_USER_PASSWORD = "local-mode-only";
 
 export const READ_ONLY_ROLES: ReadonlyArray<UserRole> = ["ADMIN", "PLANNER", "VIEWER"];
 export const EDITOR_ROLES: ReadonlyArray<UserRole> = ["ADMIN", "PLANNER"];
@@ -34,12 +36,29 @@ function parseBooleanEnv(value: string | undefined, fallback: boolean): boolean 
   return fallback;
 }
 
+function normalizedEmail(input: string | undefined, fallback: string): string {
+  const value = (input ?? "").trim().toLowerCase();
+  return value || fallback;
+}
+
+function normalizedName(input: string | undefined, fallback: string): string {
+  const value = (input ?? "").trim();
+  return value || fallback;
+}
+
 export function isSelfSignupEnabled(): boolean {
   return parseBooleanEnv(process.env.ALLOW_SELF_SIGNUP, process.env.NODE_ENV !== "production");
 }
 
 export function isDemoLoginEnabled(): boolean {
   return parseBooleanEnv(process.env.ALLOW_DEMO_LOGIN, process.env.NODE_ENV !== "production");
+}
+
+export function isAuthDisabled(): boolean {
+  return parseBooleanEnv(
+    process.env.AUTH_DISABLED ?? process.env.NEXT_PUBLIC_AUTH_DISABLED,
+    false
+  );
 }
 
 export function isDemoLoginEmail(email: string): boolean {
@@ -107,6 +126,41 @@ export function getSessionToken(request: NextRequest): string | null {
   return request.cookies.get(SESSION_COOKIE_NAME)?.value ?? null;
 }
 
+export async function getOrCreateAuthDisabledUser(prisma: PrismaClient): Promise<User> {
+  const email = normalizedEmail(process.env.AUTH_DISABLED_USER_EMAIL, DEMO_LOGIN_EMAIL);
+  const name = normalizedName(
+    process.env.AUTH_DISABLED_USER_NAME,
+    AUTH_DISABLED_DEFAULT_USER_NAME
+  );
+  const password = normalizedName(
+    process.env.AUTH_DISABLED_USER_PASSWORD,
+    AUTH_DISABLED_DEFAULT_USER_PASSWORD
+  );
+
+  let user = await prisma.user.findUnique({ where: { email } });
+
+  if (!user) {
+    user = await prisma.user.create({
+      data: {
+        email,
+        name,
+        role: "ADMIN",
+        passwordHash: hashPassword(password)
+      }
+    });
+    return user;
+  }
+
+  if (user.role !== "ADMIN") {
+    user = await prisma.user.update({
+      where: { id: user.id },
+      data: { role: "ADMIN" }
+    });
+  }
+
+  return user;
+}
+
 export async function getSessionUser(
   prisma: PrismaClient,
   request: NextRequest
@@ -138,7 +192,9 @@ export async function requireSessionUser(
   request: NextRequest,
   allowedRoles: ReadonlyArray<UserRole> = READ_ONLY_ROLES
 ): Promise<{ user: User; response: null } | { user: null; response: NextResponse }> {
-  const user = await getSessionUser(prisma, request);
+  const user = isAuthDisabled()
+    ? await getOrCreateAuthDisabledUser(prisma)
+    : await getSessionUser(prisma, request);
 
   if (!user) {
     return {

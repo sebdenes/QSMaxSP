@@ -56,6 +56,98 @@ test("buildEngagementCsv emits metadata, detail rows, and totals", () => {
   assert.match(csv, /Architecture Point of View/);
 });
 
+test("buildEngagementCsv includes service rows for mixed S\/M\/L and Custom selections", () => {
+  const mixedResult: QuickSizerResult = {
+    rows: [
+      {
+        row: 7,
+        name: "Scenario S",
+        size: "S",
+        selectedDays: 32,
+        y1: 12.8,
+        y2: 8,
+        y3: 6.4,
+        y4: 3.2,
+        y5: 1.6
+      },
+      {
+        row: 8,
+        name: "Scenario M",
+        size: "M",
+        selectedDays: 40,
+        y1: 16,
+        y2: 10,
+        y3: 8,
+        y4: 4,
+        y5: 2
+      },
+      {
+        row: 9,
+        name: "Scenario L",
+        size: "L",
+        selectedDays: 60,
+        y1: 24,
+        y2: 15,
+        y3: 12,
+        y4: 6,
+        y5: 3
+      },
+      {
+        row: 16,
+        name: "Scenario Custom",
+        size: "Custom",
+        selectedDays: 44,
+        y1: 17.6,
+        y2: 11,
+        y3: 8.8,
+        y4: 4.4,
+        y5: 2.2
+      }
+    ],
+    totals: {
+      selectedDays: 176,
+      y1: 70.4,
+      y2: 44,
+      y3: 35.2,
+      y4: 17.6,
+      y5: 8.8
+    }
+  };
+
+  const csv = buildEngagementCsv({
+    engagementName: "Mixed Plan",
+    customerName: "Contoso",
+    opportunity: "Pilot",
+    spread: { y1: 40, y2: 25, y3: 20, y4: 10, y5: 5 },
+    result: mixedResult,
+    serviceSummaryByRow: {
+      7: "Service A (32d)",
+      8: "Service B (40d)",
+      9: "Service C (60d)",
+      16: "Custom Service X (20d); Custom Service Y (24d)"
+    },
+    serviceDetailsByRow: {
+      7: [{ serviceName: "Service A", sectionName: "Section 1", days: 32 }],
+      8: [{ serviceName: "Service B", sectionName: "Section 2", days: 40 }],
+      9: [{ serviceName: "Service C", sectionName: "Section 3", days: 60 }],
+      16: [
+        { serviceName: "Custom Service X", sectionName: "Custom Section", days: 20 },
+        { serviceName: "Custom Service Y", sectionName: "Custom Section", days: 24 }
+      ]
+    }
+  });
+
+  assert.match(csv, /Scenario S/);
+  assert.match(csv, /Scenario M/);
+  assert.match(csv, /Scenario L/);
+  assert.match(csv, /Scenario Custom/);
+  assert.match(csv, /Custom Service X/);
+  assert.match(csv, /Custom Service Y/);
+  assert.match(csv, /Scenario Total/);
+  assert.match(csv, /GRAND TOTAL/);
+  assert.doesNotMatch(csv, /Preset package/);
+});
+
 test("buildScenarioCsv respects hidden row mode flag", () => {
   const drilldown: ScenarioDrilldownResponse = {
     scenario: {

@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import {
   createSession,
+  getOrCreateAuthDisabledUser,
+  isAuthDisabled,
   isDemoLoginEmail,
   isDemoLoginEnabled,
   sanitizeUser,
@@ -18,6 +20,11 @@ function asString(value: unknown): string | null {
 }
 
 export async function POST(request: NextRequest) {
+  if (isAuthDisabled()) {
+    const user = await getOrCreateAuthDisabledUser(prisma);
+    return NextResponse.json({ user: sanitizeUser(user) });
+  }
+
   let payload: Record<string, unknown>;
 
   try {
