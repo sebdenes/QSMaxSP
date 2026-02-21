@@ -42,7 +42,8 @@ Web application to configure and size premium SAP service engagements from workb
 ## Setup
 
 ```bash
-cd "/Users/I048171/Desktop/ProjectQuicksizer"
+git clone git@github.com:sebdenes/QSMaxSP.git
+cd QSMaxSP
 cp .env.example .env
 npm install
 npm run db:generate
@@ -58,9 +59,7 @@ Default seeded account:
 ## Run Locally
 
 ```bash
-cd "/Users/I048171/Desktop/ProjectQuicksizer"
-source ~/.zshrc >/dev/null 2>&1 || true
-source ~/.zprofile >/dev/null 2>&1 || true
+cd QSMaxSP
 npm run dev -- --hostname 127.0.0.1 --port 3000
 ```
 
