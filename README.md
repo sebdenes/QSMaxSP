@@ -100,6 +100,11 @@ GitHub Actions CI workflow is defined in `.github/workflows/ci.yml` and runs:
 - API integration tests
 - Production build
 
+Manual staging publish workflow: `.github/workflows/deploy-staging.yml`
+
+- Trigger via `Actions` -> `Deploy Staging Image` -> `Run workflow`
+- Publishes image tags to `ghcr.io/<owner>/<repo>` (for example `staging-latest`, `sha-...`)
+
 ## Container Deployment
 
 Build image:
@@ -119,7 +124,7 @@ docker run --rm -p 3000:3000 \
   quicksizer:staging
 ```
 
-See staging operations guide: `docs/STAGING_RUNBOOK.md`.
+See staging operations guide: `docs/STAGING_RUNBOOK.md` (includes GHCR workflow dispatch and runtime steps).
 
 ## Deployment Status
 
