@@ -58,39 +58,59 @@ export function buildEngagementCsv(args: {
     serviceDetailsByRow
   } = args;
 
+  const generatedAt = new Date().toISOString();
+
   const rows: Array<Array<unknown>> = [
+    ["Document", "Max Success Plan Premium Services Quicksizer Export"],
+    ["Generated At (UTC)", generatedAt],
     ["Engagement", engagementName],
     ["Customer", customerName ?? ""],
     ["Opportunity", opportunity ?? ""],
-    ["Spread Y1", round2(spread.y1)],
-    ["Spread Y2", round2(spread.y2)],
-    ["Spread Y3", round2(spread.y3)],
-    ["Spread Y4", round2(spread.y4)],
-    ["Spread Y5", round2(spread.y5)],
+    ["Spread Y1 (%)", round2(spread.y1)],
+    ["Spread Y2 (%)", round2(spread.y2)],
+    ["Spread Y3 (%)", round2(spread.y3)],
+    ["Spread Y4 (%)", round2(spread.y4)],
+    ["Spread Y5 (%)", round2(spread.y5)],
     [],
-    ["Row", "Scenario", "Size", "Services", "Selected Days", "Y1", "Y2", "Y3", "Y4", "Y5"]
+    ["SCENARIO SUMMARY"],
+    [
+      "Scenario Row",
+      "Scenario",
+      "Sizing Mode",
+      "Scenario Total Days",
+      "Y1 Days",
+      "Y2 Days",
+      "Y3 Days",
+      "Y4 Days",
+      "Y5 Days",
+      "Included Service Count",
+      "Included Services"
+    ]
   ];
 
   for (const row of result.rows) {
+    const details = serviceDetailsByRow?.[row.row] ?? [];
+    const serviceSummary =
+      serviceSummaryByRow?.[row.row] ??
+      (row.size === "Custom" ? "Custom service allocation" : "Preset package");
+
     rows.push([
       row.row,
       row.name,
       row.size,
-      serviceSummaryByRow?.[row.row] ??
-        (row.size === "Custom" ? "Custom service allocation" : "Preset package"),
       round2(row.selectedDays),
       round2(row.y1),
       round2(row.y2),
       round2(row.y3),
       round2(row.y4),
-      round2(row.y5)
+      round2(row.y5),
+      details.length,
+      serviceSummary
     ]);
   }
 
-  rows.push([]);
   rows.push([
-    "Totals",
-    "",
+    "GRAND TOTAL",
     "",
     "",
     round2(result.totals.selectedDays),
@@ -98,41 +118,62 @@ export function buildEngagementCsv(args: {
     round2(result.totals.y2),
     round2(result.totals.y3),
     round2(result.totals.y4),
-    round2(result.totals.y5)
+    round2(result.totals.y5),
+    "",
+    ""
   ]);
 
-  if (serviceDetailsByRow) {
-    rows.push([]);
-    rows.push(["Detailed Service Allocation"]);
-    rows.push(["Scenario Row", "Scenario", "Size", "Service", "Section", "Days"]);
+  rows.push([]);
+  rows.push(["SERVICE ALLOCATION DETAIL"]);
+  rows.push([
+    "Scenario Row",
+    "Scenario",
+    "Sizing Mode",
+    "Service",
+    "Section",
+    "Service Days",
+    "Scenario Total Days"
+  ]);
 
-    for (const row of result.rows) {
-      const details = serviceDetailsByRow[row.row] ?? [];
+  for (const row of result.rows) {
+    const details = serviceDetailsByRow?.[row.row] ?? [];
 
-      if (!details.length) {
-        rows.push([row.row, row.name, row.size, "-", "-", round2(row.selectedDays)]);
-        continue;
-      }
-
-      for (const detail of details) {
-        rows.push([
-          row.row,
-          row.name,
-          row.size,
-          detail.serviceName,
-          detail.sectionName ?? "",
-          round2(detail.days)
-        ]);
-      }
-
-      rows.push(["", "", "", "Scenario Total", "", round2(row.selectedDays)]);
+    if (!details.length) {
+      const fallbackService =
+        serviceSummaryByRow?.[row.row] ??
+        (row.size === "Custom" ? "Custom service allocation" : "Preset package");
+      rows.push([
+        row.row,
+        row.name,
+        row.size,
+        fallbackService,
+        "-",
+        round2(row.selectedDays),
+        round2(row.selectedDays)
+      ]);
+      continue;
     }
 
-    rows.push(["", "", "", "Grand Total", "", round2(result.totals.selectedDays)]);
+    for (const detail of details) {
+      rows.push([
+        row.row,
+        row.name,
+        row.size,
+        detail.serviceName,
+        detail.sectionName ?? "",
+        round2(detail.days),
+        round2(row.selectedDays)
+      ]);
+    }
+
+    rows.push(["", "", "", "Scenario Total", "", "", round2(row.selectedDays)]);
   }
 
-  return toCsv(rows);
+  rows.push(["", "", "", "GRAND TOTAL", "", "", round2(result.totals.selectedDays)]);
+
+  return `\uFEFF${toCsv(rows)}\n`;
 }
+
 
 export function buildScenarioCsv(
   drilldown: ScenarioDrilldownResponse,
@@ -434,23 +475,22 @@ export function buildScenarioPdfLines(
   return lines;
 }
 
+type EngagementReportRowVariant = "service" | "scenarioTotal" | "grandTotal" | "empty";
+
 type EngagementReportRow = {
-  row: number;
+  rowLabel: string;
   scenario: string;
   size: string;
-  services: string;
-  selectedDays: number;
-  y1: number;
-  y2: number;
-  y3: number;
-  y4: number;
-  y5: number;
+  service: string;
+  section: string;
+  days: number;
+  variant: EngagementReportRowVariant;
 };
 
 type Alignment = "left" | "center" | "right";
 
 type EngagementReportColumn = {
-  key: keyof EngagementReportRow;
+  key: keyof Pick<EngagementReportRow, "rowLabel" | "scenario" | "size" | "service" | "section" | "days">;
   label: string;
   width: number;
   align: Alignment;
@@ -458,29 +498,26 @@ type EngagementReportColumn = {
 
 type PreparedEngagementReportRow = EngagementReportRow & {
   scenarioLines: string[];
-  servicesLines: string[];
+  serviceLines: string[];
+  sectionLines: string[];
   rowHeight: number;
 };
 
 const REPORT_COLUMNS: EngagementReportColumn[] = [
-  { key: "row", label: "#", width: 28, align: "center" },
-  { key: "scenario", label: "Scenario", width: 186, align: "left" },
-  { key: "size", label: "Size", width: 44, align: "center" },
-  { key: "services", label: "Included Services", width: 222, align: "left" },
-  { key: "selectedDays", label: "Days", width: 64, align: "right" },
-  { key: "y1", label: "Y1", width: 41, align: "right" },
-  { key: "y2", label: "Y2", width: 41, align: "right" },
-  { key: "y3", label: "Y3", width: 41, align: "right" },
-  { key: "y4", label: "Y4", width: 41, align: "right" },
-  { key: "y5", label: "Y5", width: 41, align: "right" }
+  { key: "rowLabel", label: "#", width: 30, align: "center" },
+  { key: "scenario", label: "Scenario", width: 196, align: "left" },
+  { key: "size", label: "Size", width: 46, align: "center" },
+  { key: "service", label: "Service", width: 188, align: "left" },
+  { key: "section", label: "Section", width: 176, align: "left" },
+  { key: "days", label: "Days", width: 76, align: "right" }
 ];
 
 const REPORT_TABLE_X = 32;
 const REPORT_TABLE_HEADER_HEIGHT = 18;
-const REPORT_TABLE_TOP_Y = PDF_PAGE_HEIGHT - 182;
-const REPORT_TABLE_BOTTOM_Y = 38;
+const REPORT_TABLE_TOP_Y = PDF_PAGE_HEIGHT - 204;
+const REPORT_TABLE_BOTTOM_Y = 34;
 const REPORT_ROW_FONT_SIZE = 8;
-const REPORT_ROW_LINE_HEIGHT = 8.6;
+const REPORT_ROW_LINE_HEIGHT = 8.8;
 const REPORT_CELL_PADDING_X = 4;
 
 function formatReportNumber(value: number): string {
@@ -488,10 +525,15 @@ function formatReportNumber(value: number): string {
   return rounded.toLocaleString("en-US", { maximumFractionDigits: 2 });
 }
 
-function wrapPdfCellText(input: string, maxChars: number, maxLines: number): string[] {
+function wrapPdfCellText(
+  input: string,
+  maxChars: number,
+  maxLines: number,
+  emptyPlaceholder = "-"
+): string[] {
   const safe = toPdfSafeAscii(input).replace(/\s+/g, " ").trim();
   if (!safe) {
-    return ["-"];
+    return [emptyPlaceholder];
   }
 
   const wrapped: string[] = [];
@@ -556,35 +598,77 @@ function resolveCellTextX(args: {
 function buildEngagementReportRows(args: {
   result: QuickSizerResult;
   serviceSummaryByRow?: Record<number, string>;
+  serviceDetailsByRow?: Record<number, EngagementCsvServiceDetail[]>;
 }): EngagementReportRow[] {
-  const { result, serviceSummaryByRow } = args;
+  const { result, serviceSummaryByRow, serviceDetailsByRow } = args;
+  const reportRows: EngagementReportRow[] = [];
 
-  return result.rows.map((row) => ({
-    row: row.row,
-    scenario: row.name,
-    size: row.size,
-    services:
+  for (const row of result.rows) {
+    const details = serviceDetailsByRow?.[row.row] ?? [];
+    const fallbackSummary =
       serviceSummaryByRow?.[row.row] ??
-      (row.size === "Custom" ? "Custom service allocation" : "Preset package"),
-    selectedDays: row.selectedDays,
-    y1: row.y1,
-    y2: row.y2,
-    y3: row.y3,
-    y4: row.y4,
-    y5: row.y5
-  }));
+      (row.size === "Custom" ? "Custom service allocation" : "Preset package");
+
+    if (!details.length) {
+      reportRows.push({
+        rowLabel: String(row.row),
+        scenario: row.name,
+        size: row.size,
+        service: fallbackSummary,
+        section: "-",
+        days: row.selectedDays,
+        variant: "empty"
+      });
+    } else {
+      details.forEach((detail, index) => {
+        reportRows.push({
+          rowLabel: index === 0 ? String(row.row) : "",
+          scenario: index === 0 ? row.name : "",
+          size: index === 0 ? row.size : "",
+          service: detail.serviceName,
+          section: detail.sectionName ?? "-",
+          days: detail.days,
+          variant: "service"
+        });
+      });
+    }
+
+    reportRows.push({
+      rowLabel: "",
+      scenario: "",
+      size: "",
+      service: "Scenario Total",
+      section: row.name,
+      days: row.selectedDays,
+      variant: "scenarioTotal"
+    });
+  }
+
+  reportRows.push({
+    rowLabel: "",
+    scenario: "",
+    size: "",
+    service: "Grand Total",
+    section: "",
+    days: result.totals.selectedDays,
+    variant: "grandTotal"
+  });
+
+  return reportRows;
 }
 
 function prepareEngagementReportRows(rows: EngagementReportRow[]): PreparedEngagementReportRow[] {
   return rows.map((row) => {
-    const scenarioLines = wrapPdfCellText(row.scenario, 44, 2);
-    const servicesLines = wrapPdfCellText(row.services, 52, 6);
-    const lineCount = Math.max(1, scenarioLines.length, servicesLines.length);
+    const scenarioLines = wrapPdfCellText(row.scenario, 36, 3, "");
+    const serviceLines = wrapPdfCellText(row.service, 34, 3, "");
+    const sectionLines = wrapPdfCellText(row.section, 32, 3, "");
+    const lineCount = Math.max(1, scenarioLines.length, serviceLines.length, sectionLines.length);
 
     return {
       ...row,
       scenarioLines,
-      servicesLines,
+      serviceLines,
+      sectionLines,
       rowHeight: Math.max(16, 8 + lineCount * REPORT_ROW_LINE_HEIGHT)
     };
   });
@@ -617,6 +701,7 @@ function paginateEngagementReportRows(
 
   return pages;
 }
+
 
 function drawPdfText(args: {
   commands: string[];
@@ -701,7 +786,7 @@ function buildEngagementReportPageStream(args: {
   drawPdfFillRect({
     commands,
     x: REPORT_TABLE_X,
-    y: PDF_PAGE_HEIGHT - 24,
+    y: PDF_PAGE_HEIGHT - 26,
     width: tableWidth,
     height: 3,
     color: [0.04, 0.43, 0.82]
@@ -711,19 +796,19 @@ function buildEngagementReportPageStream(args: {
     commands,
     text: "Max Success Plan Premium Services Quicksizer",
     x: REPORT_TABLE_X,
-    y: PDF_PAGE_HEIGHT - 40,
+    y: PDF_PAGE_HEIGHT - 43,
     size: 15,
     font: "F2",
     color: [0.05, 0.26, 0.52]
   });
 
-  const planLine = wrapPdfCellText(`Plan: ${engagementName}`, 100, 1)[0];
+  const planLine = wrapPdfCellText(`Plan: ${engagementName}`, 96, 1)[0];
   drawPdfText({
     commands,
     text: planLine,
     x: REPORT_TABLE_X,
-    y: PDF_PAGE_HEIGHT - 55,
-    size: 9.8,
+    y: PDF_PAGE_HEIGHT - 58,
+    size: 9.6,
     font: "F2",
     color: [0.18, 0.27, 0.41]
   });
@@ -732,18 +817,18 @@ function buildEngagementReportPageStream(args: {
     commands,
     text: `Generated ${generatedAtLabel} | Page ${pageIndex + 1} of ${pageCount}`,
     x: REPORT_TABLE_X,
-    y: PDF_PAGE_HEIGHT - 68,
+    y: PDF_PAGE_HEIGHT - 71,
     size: 8.3,
     color: [0.34, 0.43, 0.55]
   });
 
-  const infoBoxY = PDF_PAGE_HEIGHT - 120;
+  const infoBoxY = PDF_PAGE_HEIGHT - 150;
   drawPdfFillRect({
     commands,
     x: REPORT_TABLE_X,
     y: infoBoxY,
     width: tableWidth,
-    height: 46,
+    height: 62,
     color: [0.95, 0.98, 1]
   });
 
@@ -751,7 +836,7 @@ function buildEngagementReportPageStream(args: {
     commands,
     text: `Customer: ${customerName ?? "-"}`,
     x: REPORT_TABLE_X + 8,
-    y: infoBoxY + 29,
+    y: infoBoxY + 44,
     size: 8.5,
     font: "F2"
   });
@@ -760,7 +845,7 @@ function buildEngagementReportPageStream(args: {
     commands,
     text: `Opportunity: ${opportunity ?? "-"}`,
     x: REPORT_TABLE_X + 8,
-    y: infoBoxY + 16,
+    y: infoBoxY + 31,
     size: 8.5
   });
 
@@ -768,16 +853,16 @@ function buildEngagementReportPageStream(args: {
     commands,
     text: `Spread %: Y1 ${formatReportNumber(spread.y1)}  Y2 ${formatReportNumber(spread.y2)}  Y3 ${formatReportNumber(spread.y3)}  Y4 ${formatReportNumber(spread.y4)}  Y5 ${formatReportNumber(spread.y5)}`,
     x: REPORT_TABLE_X + 8,
-    y: infoBoxY + 3,
+    y: infoBoxY + 18,
     size: 8.5
   });
 
   drawPdfFillRect({
     commands,
     x: REPORT_TABLE_X,
-    y: infoBoxY - 24,
+    y: infoBoxY + 2,
     width: tableWidth,
-    height: 18,
+    height: 12,
     color: [0.9, 0.95, 1]
   });
 
@@ -785,8 +870,8 @@ function buildEngagementReportPageStream(args: {
     commands,
     text: `Totals: Days ${formatReportNumber(totals.selectedDays)}  |  Y1 ${formatReportNumber(totals.y1)}  Y2 ${formatReportNumber(totals.y2)}  Y3 ${formatReportNumber(totals.y3)}  Y4 ${formatReportNumber(totals.y4)}  Y5 ${formatReportNumber(totals.y5)}`,
     x: REPORT_TABLE_X + 8,
-    y: infoBoxY - 18,
-    size: 8.7,
+    y: infoBoxY + 5,
+    size: 8.4,
     font: "F2",
     color: [0.06, 0.29, 0.56]
   });
@@ -861,8 +946,28 @@ function buildEngagementReportPageStream(args: {
     for (let index = 0; index < rows.length; index += 1) {
       const row = rows[index];
       const rowBottomY = rowTopY - row.rowHeight;
+      const isScenarioTotal = row.variant === "scenarioTotal";
+      const isGrandTotal = row.variant === "grandTotal";
 
-      if (index % 2 === 1) {
+      if (isGrandTotal) {
+        drawPdfFillRect({
+          commands,
+          x: REPORT_TABLE_X,
+          y: rowBottomY,
+          width: tableWidth,
+          height: row.rowHeight,
+          color: [0.83, 0.92, 1]
+        });
+      } else if (isScenarioTotal) {
+        drawPdfFillRect({
+          commands,
+          x: REPORT_TABLE_X,
+          y: rowBottomY,
+          width: tableWidth,
+          height: row.rowHeight,
+          color: [0.93, 0.97, 1]
+        });
+      } else if (index % 2 === 1) {
         drawPdfFillRect({
           commands,
           x: REPORT_TABLE_X,
@@ -879,30 +984,55 @@ function buildEngagementReportPageStream(args: {
           const firstLineY = rowTopY - 10;
           for (let lineIndex = 0; lineIndex < row.scenarioLines.length; lineIndex += 1) {
             const text = row.scenarioLines[lineIndex];
+            if (!text) {
+              continue;
+            }
             drawPdfText({
               commands,
               text,
               x: colX + REPORT_CELL_PADDING_X,
               y: firstLineY - lineIndex * REPORT_ROW_LINE_HEIGHT,
               size: REPORT_ROW_FONT_SIZE,
+              font: isGrandTotal || isScenarioTotal ? "F2" : "F1",
               color: [0.16, 0.22, 0.32]
             });
           }
-        } else if (col.key === "services") {
+        } else if (col.key === "service") {
           const firstLineY = rowTopY - 10;
-          for (let lineIndex = 0; lineIndex < row.servicesLines.length; lineIndex += 1) {
-            const text = row.servicesLines[lineIndex];
+          for (let lineIndex = 0; lineIndex < row.serviceLines.length; lineIndex += 1) {
+            const text = row.serviceLines[lineIndex];
+            if (!text) {
+              continue;
+            }
             drawPdfText({
               commands,
               text,
               x: colX + REPORT_CELL_PADDING_X,
               y: firstLineY - lineIndex * REPORT_ROW_LINE_HEIGHT,
               size: REPORT_ROW_FONT_SIZE,
+              font: isGrandTotal || isScenarioTotal ? "F2" : "F1",
+              color: [0.16, 0.22, 0.32]
+            });
+          }
+        } else if (col.key === "section") {
+          const firstLineY = rowTopY - 10;
+          for (let lineIndex = 0; lineIndex < row.sectionLines.length; lineIndex += 1) {
+            const text = row.sectionLines[lineIndex];
+            if (!text) {
+              continue;
+            }
+            drawPdfText({
+              commands,
+              text,
+              x: colX + REPORT_CELL_PADDING_X,
+              y: firstLineY - lineIndex * REPORT_ROW_LINE_HEIGHT,
+              size: REPORT_ROW_FONT_SIZE,
+              font: isGrandTotal || isScenarioTotal ? "F2" : "F1",
               color: [0.16, 0.22, 0.32]
             });
           }
         } else {
-          const rawValue = row[col.key];
+          const rawValue = col.key === "days" ? row.days : row[col.key];
           const text =
             typeof rawValue === "number" ? formatReportNumber(rawValue) : String(rawValue ?? "");
 
@@ -920,7 +1050,13 @@ function buildEngagementReportPageStream(args: {
             x: textX,
             y: rowBottomY + row.rowHeight / 2 - 3,
             size: REPORT_ROW_FONT_SIZE,
-            font: col.key === "size" ? "F2" : "F1",
+            font:
+              isGrandTotal ||
+              isScenarioTotal ||
+              col.key === "size" ||
+              (col.key === "days" && row.variant !== "service")
+                ? "F2"
+                : "F1",
             color: [0.16, 0.22, 0.32]
           });
         }
@@ -997,6 +1133,7 @@ function buildEngagementReportPageStream(args: {
 
   return commands.join("\n");
 }
+
 
 function buildPdfWithTwoFonts(pageStreams: string[]): Uint8Array {
   const pageObjectIds: number[] = [];
@@ -1079,10 +1216,12 @@ export async function buildEngagementReportPdf(args: {
   spread: Spread;
   result: QuickSizerResult;
   serviceSummaryByRow?: Record<number, string>;
+  serviceDetailsByRow?: Record<number, EngagementCsvServiceDetail[]>;
 }): Promise<Uint8Array> {
   const rows = buildEngagementReportRows({
     result: args.result,
-    serviceSummaryByRow: args.serviceSummaryByRow
+    serviceSummaryByRow: args.serviceSummaryByRow,
+    serviceDetailsByRow: args.serviceDetailsByRow
   });
 
   const preparedRows = prepareEngagementReportRows(rows);
@@ -1106,3 +1245,4 @@ export async function buildEngagementReportPdf(args: {
 
   return buildPdfWithTwoFonts(streams);
 }
+

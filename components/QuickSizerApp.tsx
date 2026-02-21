@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { calculateQuickSizer } from "@/lib/quickSizer";
 import {
   AuthUser,
@@ -246,6 +246,7 @@ export default function QuickSizerApp() {
 
   const [activeEngagementId, setActiveEngagementId] = useState<number | null>(null);
   const [wizardStep, setWizardStep] = useState<WizardStep>(1);
+  const stepHistoryRef = useRef<WizardStep[]>([]);
 
   const [customerName, setCustomerName] = useState("");
   const [durationYears, setDurationYears] = useState(3);
@@ -255,8 +256,9 @@ export default function QuickSizerApp() {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const [, setBaselineSize] = useState<BaselineSize>("M");
   const [presetSizeByRow, setPresetSizeByRow] = useState<Record<number, BaselineSize>>({});
-  const [useCustomSizing, setUseCustomSizing] = useState(false);
-  const [expertModeUnlocked, setExpertModeUnlocked] = useState(false);
+  const [customRows, setCustomRows] = useState<number[]>([]);
+  const useCustomSizing = customRows.length > 0;
+  const expertModeUnlocked = useCustomSizing;
 
   const [serviceCatalog, setServiceCatalog] = useState<ServiceCatalogItem[]>([]);
   const [loadingCatalog, setLoadingCatalog] = useState(false);
@@ -273,6 +275,35 @@ export default function QuickSizerApp() {
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [savedAt, setSavedAt] = useState<string | null>(null);
+
+  function resetStepHistory() {
+    stepHistoryRef.current = [];
+  }
+
+  function navigateToStep(nextStep: WizardStep, trackHistory = true) {
+    if (nextStep === wizardStep) {
+      return;
+    }
+
+    if (trackHistory) {
+      const history = stepHistoryRef.current;
+      if (history[history.length - 1] !== wizardStep) {
+        history.push(wizardStep);
+      }
+    }
+
+    setWizardStep(nextStep);
+  }
+
+  function goBackStep(fallbackStep: WizardStep) {
+    const previousStep = stepHistoryRef.current.pop();
+    if (previousStep) {
+      setWizardStep(previousStep);
+      return;
+    }
+
+    setWizardStep(fallbackStep);
+  }
 
   const scenarioRows = useMemo(() => workbook?.lineItems ?? [], [workbook]);
 
@@ -315,6 +346,7 @@ export default function QuickSizerApp() {
   }, [selectedTypeEntries, rowsByType]);
 
   const selectedRowsSet = useMemo(() => new Set(selectedRows), [selectedRows]);
+  const customRowsSet = useMemo(() => new Set(customRows), [customRows]);
 
   const missingScenarioTypeSelections = useMemo(
     () =>
@@ -399,16 +431,25 @@ export default function QuickSizerApp() {
     [selectedRows, rowMap]
   );
 
+  const customLineItems = useMemo(
+    () => selectedLineItems.filter((line) => customRowsSet.has(line.row)),
+    [selectedLineItems, customRowsSet]
+  );
+
   const presetSizeCounts = useMemo<Record<BaselineSize, number>>(() => {
     const counts: Record<BaselineSize, number> = { S: 0, M: 0, L: 0 };
 
     for (const row of selectedRows) {
+      if (customRowsSet.has(row)) {
+        continue;
+      }
+
       const size = presetSizeByRow[row] ?? RECOMMENDED_BASELINE_SIZE;
       counts[size] += 1;
     }
 
     return counts;
-  }, [selectedRows, presetSizeByRow]);
+  }, [selectedRows, presetSizeByRow, customRowsSet]);
 
   const presetSizingModeLabel = useMemo(() => {
     const active = (["S", "M", "L"] as BaselineSize[])
@@ -442,6 +483,18 @@ export default function QuickSizerApp() {
     return "Mixed";
   }, [presetSizeCounts]);
 
+  const sizingModeLabel = useMemo(() => {
+    if (!useCustomSizing) {
+      return presetSizingModeLabel;
+    }
+
+    if (customRows.length === selectedRows.length) {
+      return "Custom";
+    }
+
+    return `Mixed (${selectedRows.length - customRows.length} preset, ${customRows.length} custom)`;
+  }, [useCustomSizing, customRows.length, selectedRows.length, presetSizingModeLabel]);
+
   const activeInsightRow = useMemo(() => {
     if (!selectedRows.length) {
       return null;
@@ -470,12 +523,18 @@ export default function QuickSizerApp() {
     return presetSizeByRow[activeInsightRow] ?? RECOMMENDED_BASELINE_SIZE;
   }, [activeInsightRow, presetSizeByRow]);
 
+  const activeInsightUsesCustom = Boolean(
+    activeInsightRow ? customRowsSet.has(activeInsightRow) : false
+  );
+
   const activeInsightServicesForBaseline = useMemo(
     () =>
-      activeInsightServices.filter(
-        (service) => daysForBaselineSize(service, activeInsightSize) > 0
-      ),
-    [activeInsightServices, activeInsightSize]
+      activeInsightUsesCustom
+        ? []
+        : activeInsightServices.filter(
+            (service) => daysForBaselineSize(service, activeInsightSize) > 0
+          ),
+    [activeInsightUsesCustom, activeInsightServices, activeInsightSize]
   );
 
   const activeInsightSelectedSizeTotal = useMemo(
@@ -510,22 +569,22 @@ export default function QuickSizerApp() {
       return [];
     }
 
-    if (!useCustomSizing) {
-      return selectedRows.map((row) => ({
-        row,
-        size: presetSizeByRow[row] ?? RECOMMENDED_BASELINE_SIZE
-      }));
-    }
-
     return selectedRows.map((row) => {
-      const total = (customByRow[row] ?? []).reduce((sum, entry) => sum + entry.days, 0);
+      if (customRowsSet.has(row)) {
+        const total = (customByRow[row] ?? []).reduce((sum, entry) => sum + entry.days, 0);
+        return {
+          row,
+          size: "Custom" as const,
+          customDays: round2(total)
+        };
+      }
+
       return {
         row,
-        size: "Custom" as const,
-        customDays: round2(total)
+        size: presetSizeByRow[row] ?? RECOMMENDED_BASELINE_SIZE
       };
     });
-  }, [selectedRows, useCustomSizing, presetSizeByRow, customByRow]);
+  }, [selectedRows, customRowsSet, presetSizeByRow, customByRow]);
 
   const quickResult = useMemo(() => {
     if (!workbook) {
@@ -539,9 +598,12 @@ export default function QuickSizerApp() {
     return selectedLineItems.map((line) => {
       const rowResult = quickResult?.rows.find((entry) => entry.row === line.row);
       const baselineSize = presetSizeByRow[line.row] ?? RECOMMENDED_BASELINE_SIZE;
-      const sizeLabel = useCustomSizing ? "Custom" : baselineSize;
+      const rowUsesCustom = customRowsSet.has(line.row);
+      const scenarioId = scenarioIdByRow.get(line.row);
+      const sizeLabel = rowUsesCustom ? "Custom" : baselineSize;
+      const hasPresetInsights = Array.isArray(sizingInsightsByRow[line.row]);
 
-      const services = useCustomSizing
+      const services = rowUsesCustom
         ? (customByRow[line.row] ?? []).map((entry) => ({
             serviceName: entry.serviceName,
             sectionName: entry.sectionName ?? "-",
@@ -556,12 +618,19 @@ export default function QuickSizerApp() {
             .filter((service) => service.days > 0);
 
       const serviceTotal = round2(services.reduce((sum, service) => sum + service.days, 0));
+      const loading =
+        !rowUsesCustom &&
+        Boolean(scenarioId) &&
+        (Boolean(loadingInsightsByRow[line.row]) || !hasPresetInsights) &&
+        services.length === 0;
+      const unavailable = !rowUsesCustom && !scenarioId && services.length === 0;
 
       return {
         row: line.row,
         scenarioName: line.name,
         sizeLabel,
-        loading: !useCustomSizing && Boolean(loadingInsightsByRow[line.row]) && services.length === 0,
+        loading,
+        unavailable,
         services,
         totalDays: round2(rowResult?.selectedDays ?? serviceTotal)
       };
@@ -570,10 +639,11 @@ export default function QuickSizerApp() {
     selectedLineItems,
     quickResult,
     presetSizeByRow,
-    useCustomSizing,
+    customRowsSet,
     customByRow,
     sizingInsightsByRow,
-    loadingInsightsByRow
+    loadingInsightsByRow,
+    scenarioIdByRow
   ]);
 
   const reviewGrandTotal = useMemo(
@@ -584,11 +654,11 @@ export default function QuickSizerApp() {
   const customIssuesByRow = useMemo(() => {
     const issues: Record<number, string> = {};
 
-    if (!useCustomSizing) {
-      return issues;
-    }
-
     for (const row of selectedRows) {
+      if (!customRowsSet.has(row)) {
+        continue;
+      }
+
       const services = customByRow[row] ?? [];
       if (!services.length) {
         issues[row] = "Select at least one service.";
@@ -601,7 +671,7 @@ export default function QuickSizerApp() {
     }
 
     return issues;
-  }, [useCustomSizing, selectedRows, customByRow]);
+  }, [selectedRows, customRowsSet, customByRow]);
 
   const basicsValid = customerName.trim().length > 0 && !spreadOverLimit;
   const typesValid = selectedTypes.length > 0;
@@ -649,6 +719,7 @@ export default function QuickSizerApp() {
   function resetDraft() {
     setActiveEngagementId(null);
     setWizardStep(1);
+    resetStepHistory();
     setCustomerName("");
     setDurationYears(3);
     setSpread({ y1: 50, y2: 25, y3: 25, y4: 0, y5: 0 });
@@ -656,8 +727,7 @@ export default function QuickSizerApp() {
     setSelectedRows([]);
     setBaselineSize("M");
     setPresetSizeByRow({});
-    setUseCustomSizing(false);
-    setExpertModeUnlocked(false);
+    setCustomRows([]);
     setPendingServiceByRow({});
     setCustomByRow({});
     setSizingInsightsByRow({});
@@ -710,42 +780,38 @@ export default function QuickSizerApp() {
     const inferredTypes = Array.from(new Set(rows.map((row) => classifyScenarioType(row))));
     setSelectedTypes(inferredTypes);
 
-    const hasPersistedCustom = engagement.customServices.length > 0;
-    const allPresetSizes =
-      activeSelections.length > 0 &&
-      activeSelections.every((entry) => normalizeBaselineSize(entry.size) !== null);
     const presetMap: Record<number, BaselineSize> = {};
+    const customRowsFromSelections = new Set<number>();
 
     for (const selection of activeSelections) {
       const size = normalizeBaselineSize(selection.size);
       if (size) {
         presetMap[selection.row] = size;
+      } else if (selection.size === "Custom") {
+        customRowsFromSelections.add(selection.row);
       }
     }
 
-    if (hasPersistedCustom) {
-      setUseCustomSizing(true);
-      setExpertModeUnlocked(true);
-      setBaselineSize("M");
-      setPresetSizeByRow(presetMap);
-      setCustomByRow(hydrateCustomServices(engagement.customServices));
-    } else if (allPresetSizes) {
-      setUseCustomSizing(false);
-      setExpertModeUnlocked(false);
-      setBaselineSize(RECOMMENDED_BASELINE_SIZE);
-      setPresetSizeByRow(
-        rows.reduce<Record<number, BaselineSize>>((acc, row) => {
-          acc[row] = presetMap[row] ?? RECOMMENDED_BASELINE_SIZE;
-          return acc;
-        }, {})
-      );
-      setCustomByRow({});
-    } else {
-      setUseCustomSizing(true);
-      setExpertModeUnlocked(true);
-      setBaselineSize("M");
-      setPresetSizeByRow(presetMap);
+    const customRowsFromServices = new Set<number>(
+      engagement.customServices.map((entry) => entry.scenarioRow)
+    );
 
+    const hydratedCustomRows = rows.filter(
+      (row) => customRowsFromSelections.has(row) || customRowsFromServices.has(row)
+    );
+
+    setBaselineSize(RECOMMENDED_BASELINE_SIZE);
+    setPresetSizeByRow(
+      rows.reduce<Record<number, BaselineSize>>((acc, row) => {
+        acc[row] = presetMap[row] ?? RECOMMENDED_BASELINE_SIZE;
+        return acc;
+      }, {})
+    );
+    setCustomRows(hydratedCustomRows);
+
+    if (engagement.customServices.length > 0) {
+      setCustomByRow(hydrateCustomServices(engagement.customServices));
+    } else {
       const legacyCustom: Record<number, CustomServiceDraft[]> = {};
       for (const selection of activeSelections) {
         if (selection.size !== "Custom") {
@@ -773,6 +839,7 @@ export default function QuickSizerApp() {
     }
 
     setSavedAt(new Date().toLocaleString());
+    resetStepHistory();
     setWizardStep(6);
   }
 
@@ -887,6 +954,8 @@ export default function QuickSizerApp() {
       return next;
     });
 
+    setCustomRows((prev) => prev.filter((row) => selectedRows.includes(row)));
+
     setPendingServiceByRow((prev) => {
       const next: Record<number, number> = {};
       for (const row of selectedRows) {
@@ -991,11 +1060,14 @@ export default function QuickSizerApp() {
   ]);
 
   useEffect(() => {
-    if (wizardStep !== 6 || useCustomSizing) {
+    if (wizardStep !== 6) {
       return;
     }
 
     for (const row of selectedRows) {
+      if (customRowsSet.has(row)) {
+        continue;
+      }
       if (!scenarioIdByRow.get(row)) {
         continue;
       }
@@ -1008,8 +1080,8 @@ export default function QuickSizerApp() {
     }
   }, [
     wizardStep,
-    useCustomSizing,
     selectedRows,
+    customRowsSet,
     sizingInsightsByRow,
     loadingInsightsByRow,
     scenarioIdByRow
@@ -1113,18 +1185,30 @@ export default function QuickSizerApp() {
       [row]: size
     }));
     setBaselineSize(size);
-    setUseCustomSizing(false);
+    setCustomRows((prev) => prev.filter((entry) => entry !== row));
   }
 
   function applyPresetSizeToSelected(size: BaselineSize) {
     setBaselineSize(size);
-    setUseCustomSizing(false);
     setPresetSizeByRow((prev) => {
       const next = { ...prev };
       for (const row of selectedRows) {
         next[row] = size;
       }
       return next;
+    });
+    setCustomRows((prev) => prev.filter((row) => !selectedRows.includes(row)));
+  }
+
+  function setCustomSizingForRow(row: number, enabled: boolean) {
+    setCustomRows((prev) => {
+      const set = new Set(prev);
+      if (enabled) {
+        set.add(row);
+      } else {
+        set.delete(row);
+      }
+      return Array.from(set);
     });
   }
 
@@ -1290,20 +1374,22 @@ export default function QuickSizerApp() {
       const noteSections: string[] = [];
       noteSections.push(`Scenario Types: ${selectedTypes.join(", ")}`);
       noteSections.push(`Scenarios: ${selectedLineItems.map((line) => line.name).join(" | ")}`);
-      noteSections.push(`Sizing Mode: ${useCustomSizing ? "Custom" : presetSizingModeLabel}`);
+      noteSections.push(`Sizing Mode: ${sizingModeLabel}`);
 
-      const customServicesPayload: EngagementCustomServiceRecord[] = useCustomSizing
-        ? selectedRows.flatMap((row) =>
-            (customByRow[row] ?? []).map((entry) => ({
-              scenarioRow: row,
-              serviceKey: entry.serviceKey,
-              serviceId: entry.serviceId,
-              serviceName: entry.serviceName,
-              sectionName: entry.sectionName,
-              days: round2(entry.days)
-            }))
-          )
-        : [];
+      const customServicesPayload: EngagementCustomServiceRecord[] = selectedRows.flatMap((row) => {
+        if (!customRowsSet.has(row)) {
+          return [];
+        }
+
+        return (customByRow[row] ?? []).map((entry) => ({
+          scenarioRow: row,
+          serviceKey: entry.serviceKey,
+          serviceId: entry.serviceId,
+          serviceName: entry.serviceName,
+          sectionName: entry.sectionName,
+          days: round2(entry.days)
+        }));
+      });
 
       await fetchJson<EngagementDetail>(`/api/engagements/${engagementId}`, {
         method: "PUT",
@@ -1352,7 +1438,7 @@ export default function QuickSizerApp() {
       return;
     }
     setError(null);
-    setWizardStep(2);
+    navigateToStep(2);
   }
 
   function goNextFromTypes() {
@@ -1361,7 +1447,7 @@ export default function QuickSizerApp() {
       return;
     }
     setError(null);
-    setWizardStep(3);
+    navigateToStep(3);
   }
 
   function goNextFromScenarios() {
@@ -1378,11 +1464,30 @@ export default function QuickSizerApp() {
     }
 
     setError(null);
-    setWizardStep(4);
+    navigateToStep(4);
   }
 
-  function goNextBaseline() {
-    setUseCustomSizing(false);
+  async function ensureReviewInsightsLoaded() {
+    const rowsToLoad = selectedRows.filter((row) => {
+      if (customRowsSet.has(row)) {
+        return false;
+      }
+
+      if (!scenarioIdByRow.get(row)) {
+        return false;
+      }
+
+      return !sizingInsightsByRow[row];
+    });
+
+    if (!rowsToLoad.length) {
+      return;
+    }
+
+    await Promise.all(rowsToLoad.map((row) => loadSizingInsights(row)));
+  }
+
+  async function goNextBaseline() {
     setPresetSizeByRow((prev) => {
       const next = { ...prev };
       for (const row of selectedRows) {
@@ -1391,29 +1496,40 @@ export default function QuickSizerApp() {
       return next;
     });
     setError(null);
-    setWizardStep(6);
+
+    if (useCustomSizing) {
+      navigateToStep(5);
+      return;
+    }
+
+    await ensureReviewInsightsLoaded();
+    navigateToStep(6);
   }
 
-  function applyRecommendedSizingAndReview() {
+  async function applyRecommendedSizingAndReview() {
     applyPresetSizeToSelected(RECOMMENDED_BASELINE_SIZE);
     setError(null);
-    setWizardStep(6);
+    await ensureReviewInsightsLoaded();
+    navigateToStep(6);
   }
 
   function switchToCustom() {
-    setUseCustomSizing(true);
-    setExpertModeUnlocked(true);
+    const focusRow = activeInsightRow ?? selectedRows[0] ?? null;
+    if (focusRow) {
+      setCustomSizingForRow(focusRow, true);
+    }
     setError(null);
-    setWizardStep(5);
+    navigateToStep(5);
   }
 
-  function goNextFromCustom() {
+  async function goNextFromCustom() {
     if (!customValid) {
       setError("Resolve custom service validation issues before continuing.");
       return;
     }
     setError(null);
-    setWizardStep(6);
+    await ensureReviewInsightsLoaded();
+    navigateToStep(6);
   }
 
   if (authLoading) {
@@ -1569,6 +1685,7 @@ export default function QuickSizerApp() {
                       return;
                     }
                     if (step.id <= wizardStep) {
+                      resetStepHistory();
                       setWizardStep(step.id);
                     }
                   }}
@@ -1687,7 +1804,7 @@ export default function QuickSizerApp() {
               </div>
 
               <div className="row" style={{ justifyContent: "space-between", flexWrap: "wrap" }}>
-                <button type="button" className="ghost-button" onClick={() => setWizardStep(1)}>
+                <button type="button" className="ghost-button" onClick={() => goBackStep(1)}>
                   Back
                 </button>
                 <button type="button" onClick={goNextFromTypes}>
@@ -1791,7 +1908,7 @@ export default function QuickSizerApp() {
               </div>
 
               <div className="row" style={{ justifyContent: "space-between", flexWrap: "wrap" }}>
-                <button type="button" className="ghost-button" onClick={() => setWizardStep(2)}>
+                <button type="button" className="ghost-button" onClick={() => goBackStep(2)}>
                   Back
                 </button>
                 <button type="button" onClick={goNextFromScenarios}>
@@ -1837,17 +1954,19 @@ export default function QuickSizerApp() {
                 <div className="row" style={{ justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" }}>
                   <h2 style={{ fontSize: "0.95rem", margin: 0 }}>Scenario-level Sizing</h2>
                   <span className="badge">
-                    {presetSizingModeLabel} | Total days: {formatNum(quickResult.totals.selectedDays)}
+                    {sizingModeLabel} | Total days: {formatNum(quickResult.totals.selectedDays)}
                   </span>
                 </div>
 
                 <p className="muted" style={{ margin: "0.5rem 0 0" }}>
-                  Set size per scenario. You can mix S, M, and L across the selected scope.
+                  Set size per scenario. You can mix S, M, L, and Custom across the selected scope.
                 </p>
 
                 <div className="grid" style={{ gap: "0.6rem", marginTop: "0.75rem" }}>
                   {selectedLineItems.map((line) => {
                     const rowSize = presetSizeByRow[line.row] ?? RECOMMENDED_BASELINE_SIZE;
+                    const rowUsesCustom = customRowsSet.has(line.row);
+                    const selectedDays = rowUsesCustom ? rowCustomTotal(line.row) : line.daysBySize[rowSize];
 
                     return (
                       <div key={line.row} className="card" style={{ padding: "0.7rem" }}>
@@ -1855,21 +1974,28 @@ export default function QuickSizerApp() {
                           <div>
                             <strong>{line.name}</strong>
                             <p className="muted" style={{ margin: "0.35rem 0 0" }}>
-                              Selected size: <strong>{rowSize}</strong> | Days: {formatNum(line.daysBySize[rowSize])}
+                              Selected mode: <strong>{rowUsesCustom ? "Custom" : rowSize}</strong> | Days: {formatNum(selectedDays)}
                             </p>
                           </div>
 
-                          <div className="row" style={{ gap: "0.35rem" }}>
+                          <div className="row" style={{ gap: "0.35rem", flexWrap: "wrap" }}>
                             {(["S", "M", "L"] as BaselineSize[]).map((size) => (
                               <button
                                 key={size}
                                 type="button"
-                                className={rowSize === size ? "" : "ghost-button"}
+                                className={!rowUsesCustom && rowSize === size ? "" : "ghost-button"}
                                 onClick={() => setPresetSizeForRow(line.row, size)}
                               >
                                 {size}
                               </button>
                             ))}
+                            <button
+                              type="button"
+                              className={rowUsesCustom ? "" : "ghost-button"}
+                              onClick={() => setCustomSizingForRow(line.row, true)}
+                            >
+                              Custom
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -1915,23 +2041,33 @@ export default function QuickSizerApp() {
 
                 {activeInsightLineItem && (
                   <div className="row" style={{ marginTop: "0.5rem", flexWrap: "wrap" }}>
-                    <span className="badge">
-                      Selected size {activeInsightSize}: {formatNum(activeInsightLineItem.daysBySize[activeInsightSize])} days
-                    </span>
+                    {activeInsightUsesCustom ? (
+                      <span className="badge">Custom scenario: configure services and days in Step 5.</span>
+                    ) : (
+                      <span className="badge">
+                        Selected size {activeInsightSize}: {formatNum(activeInsightLineItem.daysBySize[activeInsightSize])} days
+                      </span>
+                    )}
                   </div>
                 )}
 
-                {activeInsightLoading && (
+                {!activeInsightUsesCustom && activeInsightLoading && (
                   <p className="muted" style={{ margin: "0.6rem 0 0" }}>Loading included services...</p>
                 )}
 
-                {!activeInsightLoading && !activeInsightScenarioId && activeInsightLineItem && (
+                {activeInsightUsesCustom && activeInsightLineItem && (
+                  <p className="muted" style={{ margin: "0.6rem 0 0" }}>
+                    This scenario is set to Custom. Use Step 5 to select services and allocate days.
+                  </p>
+                )}
+
+                {!activeInsightUsesCustom && !activeInsightLoading && !activeInsightScenarioId && activeInsightLineItem && (
                   <p className="muted" style={{ margin: "0.6rem 0 0" }}>
                     Service-level sizing details are not available for this scenario.
                   </p>
                 )}
 
-                {!activeInsightLoading && activeInsightScenarioId && (
+                {!activeInsightUsesCustom && !activeInsightLoading && activeInsightScenarioId && (
                   <div style={{ marginTop: "0.6rem", overflowX: "auto" }}>
                     <table className="service-matrix-table">
                       <thead>
@@ -1972,7 +2108,7 @@ export default function QuickSizerApp() {
               </section>
 
               <div className="row" style={{ justifyContent: "space-between", flexWrap: "wrap" }}>
-                <button type="button" className="ghost-button" onClick={() => setWizardStep(3)}>
+                <button type="button" className="ghost-button" onClick={() => goBackStep(3)}>
                   Back
                 </button>
                 <div className="row" style={{ flexWrap: "wrap" }}>
@@ -1980,7 +2116,7 @@ export default function QuickSizerApp() {
                     Need Expert Sizing? Open Custom
                   </button>
                   <button type="button" onClick={goNextBaseline}>
-                    Continue with Selected Sizes
+                    {useCustomSizing ? "Continue to Expert Custom" : "Continue with Selected Sizes"}
                   </button>
                 </div>
               </div>
@@ -2015,7 +2151,11 @@ export default function QuickSizerApp() {
                 <p className="muted">Service catalog unavailable. Try again or use baseline sizing.</p>
               )}
 
-              {selectedLineItems.map((line) => {
+              {customLineItems.length === 0 && (
+                <p className="muted">No scenario is set to Custom. Go back and set at least one scenario to Custom.</p>
+              )}
+
+              {customLineItems.map((line) => {
                 const selectedEntries = customByRow[line.row] ?? [];
                 const selectedServiceIds = new Set(
                   selectedEntries
@@ -2128,7 +2268,7 @@ export default function QuickSizerApp() {
               })}
 
               <div className="row" style={{ justifyContent: "space-between", flexWrap: "wrap" }}>
-                <button type="button" className="ghost-button" onClick={() => setWizardStep(4)}>
+                <button type="button" className="ghost-button" onClick={() => goBackStep(4)}>
                   Back
                 </button>
                 <div className="row" style={{ flexWrap: "wrap" }}>
@@ -2170,7 +2310,7 @@ export default function QuickSizerApp() {
                   </div>
                   <div className="row" style={{ justifyContent: "space-between" }}>
                     <span className="muted">Sizing Mode</span>
-                    <strong>{useCustomSizing ? "Custom" : presetSizingModeLabel}</strong>
+                    <strong>{sizingModeLabel}</strong>
                   </div>
                 </div>
               </section>
@@ -2195,7 +2335,9 @@ export default function QuickSizerApp() {
                           <td colSpan={2} className="muted">
                             {allocation.loading
                               ? "Loading included services..."
-                              : "No services with allocated days."}
+                              : allocation.unavailable
+                                ? "Service breakdown unavailable for this scenario."
+                                : "No services with allocated days."}
                           </td>
                           <td>{formatNum(allocation.totalDays)}</td>
                         </tr>
@@ -2230,7 +2372,7 @@ export default function QuickSizerApp() {
                 <button
                   type="button"
                   className="ghost-button"
-                  onClick={() => setWizardStep(useCustomSizing ? 5 : 4)}
+                  onClick={() => goBackStep(4)}
                 >
                   Back
                 </button>
@@ -2295,7 +2437,7 @@ export default function QuickSizerApp() {
             </div>
             <div>
               <small>Sizing</small>
-              <strong>{useCustomSizing ? "Custom" : sidebarSizingLabel}</strong>
+              <strong>{useCustomSizing ? (customRows.length === selectedRows.length ? "Custom" : "Mixed") : sidebarSizingLabel}</strong>
             </div>
           </div>
 

@@ -305,7 +305,8 @@ export async function GET(
       opportunity: engagement.opportunity,
       spread,
       result: exportResult,
-      serviceSummaryByRow
+      serviceSummaryByRow,
+      serviceDetailsByRow
     });
 
     return new NextResponse(pdfBytes, {
