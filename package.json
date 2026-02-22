@@ -2,6 +2,8 @@
   "name": "project-quicksizer",
   "version": "0.2.0",
   "private": true,
+  "description": "Max Success Plan Premium Services Quicksizer desktop package",
+  "author": "QSMaxSP Team",
   "main": "electron/main.cjs",
   "scripts": {
     "dev": "next dev",
@@ -20,10 +22,10 @@
     "db:init:reset": "node scripts/initSqliteDb.cjs --reset",
     "import:workbook": "tsx scripts/importWorkbook.ts",
     "desktop:prepare": "node scripts/initSqliteDb.cjs --db-file prisma/desktop.db --reset && next build",
-    "desktop:start": "npm run desktop:prepare && npx electron .",
-    "desktop:dist:mac": "npm run desktop:prepare && npx electron-builder --mac zip --publish never",
-    "desktop:dist:win": "npm run desktop:prepare && npx electron-builder --win portable --publish never",
-    "desktop:dist": "npm run desktop:prepare && npx electron-builder --mac zip --win portable --publish never",
+    "desktop:start": "npm run desktop:prepare && npx electron@31.7.7 .",
+    "desktop:dist:mac": "npm run desktop:prepare && npx electron-builder@26.8.1 --mac zip --publish never",
+    "desktop:dist:win": "npm run desktop:prepare && npx electron-builder@26.8.1 --win portable --publish never",
+    "desktop:dist": "npm run desktop:prepare && npx electron-builder@26.8.1 --mac zip --win portable --publish never",
     "validate": "npm run typecheck && npm test && npm run test:integration && npm run build"
   },
   "dependencies": {
@@ -46,6 +48,7 @@
   "build": {
     "appId": "com.qsmaxsp.app",
     "productName": "QSMaxSP",
+    "electronVersion": "31.7.7",
     "asar": false,
     "directories": {
       "output": "dist"
