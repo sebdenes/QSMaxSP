@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { WorkbookSnapshot } from "@/lib/types";
+import { getProjectRoot } from "@/lib/runtimePaths";
 
 type CellData = {
   value?: string | number | null;
@@ -58,7 +59,7 @@ function asNumber(value: unknown): number {
 }
 
 function loadJson<T>(fileName: string): T {
-  const fullPath = path.join(process.cwd(), "data", fileName);
+  const fullPath = path.join(getProjectRoot(), "data", fileName);
   const raw = fs.readFileSync(fullPath, "utf8");
   return JSON.parse(raw) as T;
 }
@@ -83,8 +84,8 @@ function extractScenarioLabel(formula: string | undefined): string | undefined {
 }
 
 function resolveCacheVersion(): string {
-  const totalsPath = path.join(process.cwd(), "data", "totals.json");
-  const domainPath = path.join(process.cwd(), "data", "domain_model.json");
+  const totalsPath = path.join(getProjectRoot(), "data", "totals.json");
+  const domainPath = path.join(getProjectRoot(), "data", "domain_model.json");
 
   const totalsStat = fs.statSync(totalsPath);
   const domainStat = fs.statSync(domainPath);

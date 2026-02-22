@@ -1,0 +1,83 @@
+name: Desktop Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            target: mac
+            artifact_name: desktop-macos
+            dist_script: desktop:dist:mac
+          - os: windows-latest
+            target: win
+            artifact_name: desktop-windows
+            dist_script: desktop:dist:win
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install desktop packaging tools
+        run: npm install --no-save electron@31.7.7 electron-builder@24.13.3
+
+      - name: Build desktop package
+        run: npm run ${{ matrix.dist_script }}
+
+      - name: Upload desktop artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: |
+            dist/*.zip
+            dist/*.exe
+            dist/latest*.yml
+            dist/*.blockmap
+          if-no-files-found: error
+
+  publish-release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build-desktop
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download macOS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: desktop-macos
+          path: release-assets/macos
+
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: desktop-windows
+          path: release-assets/windows
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-assets/macos/**
+            release-assets/windows/**
+          generate_release_notes: true

@@ -1,7 +1,8 @@
 {
   "name": "project-quicksizer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "main": "electron/main.cjs",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,13 +10,21 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test \"tests/**/*.unit.test.ts\"",
-    "test:integration": "RUN_INTEGRATION_TESTS=1 node --import tsx --test \"tests/**/*.integration.test.ts\"",
+    "test:integration": "node scripts/runIntegrationTests.cjs",
     "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate deploy",
-    "db:migrate:dev": "prisma migrate dev",
+    "db:migrate": "prisma db push",
+    "db:migrate:dev": "prisma db push",
     "db:push": "prisma db push",
-    "db:seed": "tsx prisma/seed.ts",
-    "import:workbook": "tsx scripts/importWorkbook.ts"
+    "db:seed": "node --import tsx prisma/seed.ts",
+    "db:init": "node scripts/initSqliteDb.cjs",
+    "db:init:reset": "node scripts/initSqliteDb.cjs --reset",
+    "import:workbook": "tsx scripts/importWorkbook.ts",
+    "desktop:prepare": "node scripts/initSqliteDb.cjs --db-file prisma/desktop.db --reset && next build",
+    "desktop:start": "npm run desktop:prepare && npx electron .",
+    "desktop:dist:mac": "npm run desktop:prepare && npx electron-builder --mac zip --publish never",
+    "desktop:dist:win": "npm run desktop:prepare && npx electron-builder --win portable --publish never",
+    "desktop:dist": "npm run desktop:prepare && npx electron-builder --mac zip --win portable --publish never",
+    "validate": "npm run typecheck && npm test && npm run test:integration && npm run build"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",
@@ -33,5 +42,50 @@
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
+  },
+  "build": {
+    "appId": "com.qsmaxsp.app",
+    "productName": "QSMaxSP",
+    "asar": false,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "app/**/*",
+      "components/**/*",
+      "lib/**/*",
+      "data/**/*",
+      "prisma/**/*",
+      ".next/**/*",
+      "public/**/*",
+      "next.config.ts",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "extraMetadata": {
+      "main": "electron/main.cjs"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
   }
 }

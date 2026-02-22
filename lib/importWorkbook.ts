@@ -4,6 +4,7 @@ import { spawn } from "node:child_process";
 import { PrismaClient } from "@prisma/client";
 import { getDomainModel } from "./domainStore";
 import { syncDomainModel } from "./domainSync";
+import { getProjectRoot } from "./runtimePaths";
 
 export type WorkbookImportResult = {
   sourcePath: string;
@@ -19,7 +20,7 @@ export async function importWorkbookFromXlsx(
   sourcePath: string
 ): Promise<WorkbookImportResult> {
   const resolvedSource = path.resolve(sourcePath);
-  const projectRoot = process.cwd();
+  const projectRoot = getProjectRoot();
 
   if (!fs.existsSync(resolvedSource)) {
     throw new Error(`Workbook not found: ${resolvedSource}`);

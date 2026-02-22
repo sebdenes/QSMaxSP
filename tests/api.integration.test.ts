@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { after, beforeEach, test } from "node:test";
-import { PrismaClient, UserRole } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { NextRequest } from "next/server";
-import { createSession } from "../lib/auth";
+import { AppUserRole, createSession } from "../lib/auth";
 import { hashPassword } from "../lib/password";
 import { GET as getMe } from "../app/api/auth/me/route";
 import { POST as postLogin } from "../app/api/auth/login/route";
@@ -53,7 +53,7 @@ function extractSessionTokenFromSetCookie(response: Response): string | null {
   return match ? match[1] : null;
 }
 
-async function createUser(role: UserRole, email?: string) {
+async function createUser(role: AppUserRole, email?: string) {
   const userEmail = email ?? `user.${role.toLowerCase()}.${Date.now()}@example.test`;
   return prisma.user.create({
     data: {
@@ -392,7 +392,7 @@ test(
     );
     assert.equal(meResponse.status, 200);
 
-    const meBody = await parseJson<{ user: { role: UserRole } }>(meResponse);
+    const meBody = await parseJson<{ user: { role: AppUserRole } }>(meResponse);
     assert.equal(meBody.user.role, "ADMIN");
   }
 );

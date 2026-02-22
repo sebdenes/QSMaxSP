@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient, User, UserRole } from "@prisma/client";
+import { PrismaClient, User } from "@prisma/client";
 import { hashPassword, verifyPassword } from "@/lib/password";
 
 const SESSION_COOKIE_NAME = "quicksizer_session";
@@ -9,9 +9,11 @@ const DEMO_LOGIN_EMAIL = "demo@quicksizer.local";
 const AUTH_DISABLED_DEFAULT_USER_NAME = "Local Planner";
 const AUTH_DISABLED_DEFAULT_USER_PASSWORD = "local-mode-only";
 
-export const READ_ONLY_ROLES: ReadonlyArray<UserRole> = ["ADMIN", "PLANNER", "VIEWER"];
-export const EDITOR_ROLES: ReadonlyArray<UserRole> = ["ADMIN", "PLANNER"];
-export const ADMIN_ROLES: ReadonlyArray<UserRole> = ["ADMIN"];
+export type AppUserRole = "ADMIN" | "PLANNER" | "VIEWER";
+
+export const READ_ONLY_ROLES: ReadonlyArray<AppUserRole> = ["ADMIN", "PLANNER", "VIEWER"];
+export const EDITOR_ROLES: ReadonlyArray<AppUserRole> = ["ADMIN", "PLANNER"];
+export const ADMIN_ROLES: ReadonlyArray<AppUserRole> = ["ADMIN"];
 
 function nowPlusDays(days: number): Date {
   const date = new Date();
@@ -72,8 +74,21 @@ function isSecureCookieEnabled(): boolean {
   );
 }
 
-function isRoleAllowed(userRole: UserRole, allowedRoles: ReadonlyArray<UserRole>): boolean {
-  return allowedRoles.length === 0 || allowedRoles.includes(userRole);
+function normalizeRole(value: string): AppUserRole | null {
+  if (value === "ADMIN" || value === "PLANNER" || value === "VIEWER") {
+    return value;
+  }
+
+  return null;
+}
+
+function isRoleAllowed(userRole: string, allowedRoles: ReadonlyArray<AppUserRole>): boolean {
+  const normalizedRole = normalizeRole(userRole);
+  if (!normalizedRole) {
+    return false;
+  }
+
+  return allowedRoles.length === 0 || allowedRoles.includes(normalizedRole);
 }
 
 export { hashPassword, verifyPassword };
@@ -190,7 +205,7 @@ export async function getSessionUser(
 export async function requireSessionUser(
   prisma: PrismaClient,
   request: NextRequest,
-  allowedRoles: ReadonlyArray<UserRole> = READ_ONLY_ROLES
+  allowedRoles: ReadonlyArray<AppUserRole> = READ_ONLY_ROLES
 ): Promise<{ user: User; response: null } | { user: null; response: NextResponse }> {
   const user = isAuthDisabled()
     ? await getOrCreateAuthDisabledUser(prisma)

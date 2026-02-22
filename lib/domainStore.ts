@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { getProjectRoot } from "./runtimePaths";
 import {
   DomainModel,
   TotalsData,
@@ -8,7 +9,7 @@ import {
 } from "./domainTypes";
 
 function readJson<T>(fileName: string): T {
-  const filePath = path.join(process.cwd(), "data", fileName);
+  const filePath = path.join(getProjectRoot(), "data", fileName);
   return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
 }
 
@@ -25,7 +26,7 @@ export function getVisibilityData(): VisibilityEntry[] {
 }
 
 export function getWorkbookProfile(): WorkbookProfile | null {
-  const filePath = path.join(process.cwd(), "data", "workbook_profile.json");
+  const filePath = path.join(getProjectRoot(), "data", "workbook_profile.json");
   if (!fs.existsSync(filePath)) {
     return null;
   }

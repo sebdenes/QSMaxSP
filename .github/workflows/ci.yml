@@ -10,24 +10,8 @@ jobs:
   validate:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: quicksizer
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U postgres -d quicksizer"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     env:
-      DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/quicksizer?schema=public
-      RUN_INTEGRATION_TESTS: "1"
+      DATABASE_URL: file:./prisma/ci.db
       NODE_ENV: test
 
     steps:
@@ -43,11 +27,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate Prisma client
-        run: npm run db:generate
-
-      - name: Apply Prisma migrations
-        run: npm run db:migrate
+      - name: Prepare SQLite database
+        run: node scripts/initSqliteDb.cjs --db-file prisma/ci.db --reset
 
       - name: Typecheck
         run: npm run typecheck
@@ -60,6 +41,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Validate container build
-        run: docker build -t quicksizer-ci .

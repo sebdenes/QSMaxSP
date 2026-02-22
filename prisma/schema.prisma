@@ -3,21 +3,15 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
-}
-
-enum UserRole {
-  ADMIN
-  PLANNER
-  VIEWER
 }
 
 model User {
   id           Int          @id @default(autoincrement())
   email        String       @unique
   name         String?
-  role         UserRole     @default(PLANNER)
+  role         String       @default("PLANNER")
   passwordHash String
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt

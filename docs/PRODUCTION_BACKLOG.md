@@ -1,107 +1,68 @@
-# Production Backlog
+# Desktop Product Backlog
 
-## Prioritization Model
+## Prioritization
 
-- `P0`: required before production launch.
-- `P1`: required for stable scale-out after first production release.
-- `P2`: optimization and operational maturity.
+- `P0`: required before broad user rollout.
+- `P1`: required for stability and scale after pilot.
+- `P2`: optimization and product growth.
 
-## Epic 1: Platform Foundation (P0)
+## Epic 1: Desktop Runtime Hardening (P0)
 
-Goal: move from prototype runtime to production-grade runtime and delivery.
-
-### Stories
-
-1. `P0` Replace local SQLite with managed PostgreSQL
-- Deliverables: Prisma configured for PostgreSQL, migration files under `prisma/migrations`, documented local Postgres bootstrap.
-- Acceptance criteria: app can run with Postgres end-to-end, migrations apply on clean DB.
-
-2. `P0` Establish CI quality gate
-- Deliverables: GitHub Actions workflow for install, Prisma generate/migrate, build, and tests.
-- Acceptance criteria: PRs and pushes run CI; red pipeline blocks merge.
-
-3. `P0` Define release strategy and environments
-- Deliverables: `dev/stage/prod` deployment strategy, environment variable contract, rollback approach.
-- Acceptance criteria: documented release checklist and rollback runbook.
-
-## Epic 2: Identity, Access, and Security (P0)
-
-Goal: protect customer and engagement data for enterprise usage.
+Goal: keep the app one-click for business users while preserving all sizing behavior.
 
 ### Stories
 
-1. `P0` Integrate enterprise SSO (OIDC/SAML)
-- Deliverables: SSO login path, disable demo auth in production.
-- Acceptance criteria: only enterprise identities can access production.
+1. `P0` Package signed executables for macOS and Windows.
+- Acceptance: downloadable ZIP artifacts from GitHub Actions release workflow.
 
-2. `P0` Implement role-based access control
-- Deliverables: roles (`Admin`, `Planner`, `Viewer`) and authorization checks on APIs.
-- Acceptance criteria: unauthorized actions are denied and audited.
+2. `P0` Keep local data persistence with zero external dependencies.
+- Acceptance: app starts with embedded SQLite DB and saves/reloads projects offline.
 
-3. `P0` Secret and configuration hardening
-- Deliverables: secrets manager usage, zero plaintext secrets in repo.
-- Acceptance criteria: secret scanning passes; production secrets rotated and documented.
+3. `P0` Maintain CSV export completeness for all sizing combinations.
+- Acceptance: CSV includes scenario/service details, scenario totals, and grand total.
 
-4. `P1` Security scanning and dependency governance
-- Deliverables: SCA + container scan in CI, dependency update policy.
-- Acceptance criteria: high/critical vulnerabilities block release.
+## Epic 2: Quality and Regression Safety (P0)
 
-## Epic 3: Functional Reliability and Quality (P0)
-
-Goal: ensure consistent behavior across sizing, exports, and navigation.
+Goal: ensure fast, safe iteration for enhancements and bug fixes.
 
 ### Stories
 
-1. `P0` Unit test baseline for core business logic
-- Deliverables: tests for spread normalization, sizing calculations, CSV/PDF output builders.
-- Acceptance criteria: tests run in CI with deterministic results.
+1. `P0` CI quality gate on all PRs.
+- Acceptance: typecheck, unit tests, integration tests, and production build must pass.
 
-2. `P0` API integration tests
-- Deliverables: test coverage for auth, scenario selection, engagement save, export endpoints.
-- Acceptance criteria: core API flows pass against ephemeral database.
+2. `P0` Desktop release pipeline.
+- Acceptance: workflow builds macOS and Windows artifacts on-demand and on version tags.
 
-3. `P1` E2E user journey tests
-- Deliverables: full wizard tests (mixed sizing, expert mode gating, back navigation, export).
-- Acceptance criteria: critical user journey passes on each release candidate.
+3. `P1` Expand automated journey coverage.
+- Acceptance: add scenario-level test matrix for mixed `S/M/L/Custom` and back-navigation behavior.
 
-## Epic 4: Observability and Operations (P1)
+## Epic 3: Change Management for User Feedback (P1)
 
-Goal: make production supportable with measurable SLAs.
+Goal: convert pilot feedback into controlled, traceable releases.
 
 ### Stories
 
-1. `P1` Structured logging and request correlation
-- Deliverables: request IDs, structured API logs, error context.
-- Acceptance criteria: incidents are traceable end-to-end.
+1. `P1` Bug and feature issue templates.
+- Acceptance: every request is logged with repro steps/acceptance criteria.
 
-2. `P1` Error monitoring and alerting
-- Deliverables: runtime error tracking, alert thresholds for export/import/auth failures.
-- Acceptance criteria: alerts fire within SLA for critical failure patterns.
+2. `P1` PR template with mandatory validation checklist.
+- Acceptance: no merge without declared test evidence.
 
-3. `P1` Backup, restore, and DR checks
-- Deliverables: automated backup policy and restore test cadence.
-- Acceptance criteria: restore drill succeeds within target RTO/RPO.
+3. `P1` Release notes discipline.
+- Acceptance: each tagged release includes user-facing changes and known limitations.
 
-## Epic 5: Product Governance and Adoption (P1)
+## Epic 4: Product Improvements from Pilot (P1)
 
-Goal: run controlled rollout and collect operational/product feedback.
+Goal: evolve UX without reintroducing complexity.
 
 ### Stories
 
-1. `P1` Pilot rollout playbook
-- Deliverables: test cohort plan, feedback triage workflow, issue severity policy.
-- Acceptance criteria: pilot completes with documented decisions for GA.
-
-2. `P1` Analytics and KPI instrumentation
-- Deliverables: funnel metrics, completion rates by step, export success metrics.
-- Acceptance criteria: weekly KPI dashboard for product steering.
-
-3. `P2` Documentation and enablement pack
-- Deliverables: admin guide, user guide, implementation notes, FAQ.
-- Acceptance criteria: onboarding can be completed without engineering support.
+1. `P1` Scenario list usability and filtering improvements.
+2. `P1` Improved in-app onboarding hints for non-expert users.
+3. `P2` Optional lightweight telemetry (opt-in) for anonymous usage health.
 
 ## Delivery Waves
 
-- Wave 1 (Now): Epic 1 stories 1-2 and Epic 3 story 1.
-- Wave 2: Epic 2 + Epic 3 story 2.
-- Wave 3: Epic 4 + Epic 5 + Epic 3 story 3.
+- Wave 1 (now): Epic 1 + Epic 2.
+- Wave 2: Epic 3.
+- Wave 3: Epic 4.
