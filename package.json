@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "check": "pnpm typecheck",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test \"tests/**/*.unit.test.ts\"",
     "test:integration": "node scripts/runIntegrationTests.cjs",
