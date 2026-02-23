@@ -123,12 +123,62 @@ const OPTIMIZER_STRATEGY_HINTS: Record<OptimizerStrategy, string> = {
   depth: "Concentrated investment in fewer scenarios."
 };
 
-function createEmptyOptimizerCompareResults(): Record<OptimizerStrategy, ScenarioOptimizerResult | null> {
+type OptimizerCompareResults = Record<OptimizerStrategy, ScenarioOptimizerResult | null>;
+
+function createEmptyOptimizerCompareResults(): OptimizerCompareResults {
   return {
     balanced: null,
     coverage: null,
     depth: null
   };
+}
+
+function pickBestOptimizerStrategy(
+  compareResults: OptimizerCompareResults,
+  targetDays: number
+): OptimizerStrategy | null {
+  const candidates = OPTIMIZER_STRATEGIES
+    .map((strategy) => {
+      const result = compareResults[strategy];
+      return result ? { strategy, result } : null;
+    })
+    .filter(
+      (entry): entry is { strategy: OptimizerStrategy; result: ScenarioOptimizerResult } =>
+        entry !== null
+    )
+    .filter((entry) => entry.result.selections.length > 0);
+
+  if (!candidates.length) {
+    return null;
+  }
+
+  candidates.sort((left, right) => {
+    const leftOverflow = Math.max(0, left.result.totalDays - targetDays);
+    const rightOverflow = Math.max(0, right.result.totalDays - targetDays);
+    if (leftOverflow !== rightOverflow) {
+      return leftOverflow - rightOverflow;
+    }
+
+    const leftDistance = Math.abs(targetDays - left.result.totalDays);
+    const rightDistance = Math.abs(targetDays - right.result.totalDays);
+    if (leftDistance !== rightDistance) {
+      return leftDistance - rightDistance;
+    }
+
+    const coverageDiff = right.result.coveredTypes.length - left.result.coveredTypes.length;
+    if (coverageDiff !== 0) {
+      return coverageDiff;
+    }
+
+    const scopeDiff = right.result.selectedScenarioCount - left.result.selectedScenarioCount;
+    if (scopeDiff !== 0) {
+      return scopeDiff;
+    }
+
+    return OPTIMIZER_STRATEGIES.indexOf(left.strategy) - OPTIMIZER_STRATEGIES.indexOf(right.strategy);
+  });
+
+  return candidates[0].strategy;
 }
 
 function round2(value: number): number {
@@ -320,9 +370,8 @@ export default function QuickSizerApp() {
   const [optimizerLoading, setOptimizerLoading] = useState(false);
   const [optimizerError, setOptimizerError] = useState<string | null>(null);
   const [optimizerResult, setOptimizerResult] = useState<ScenarioOptimizerResult | null>(null);
-  const [optimizerCompareResults, setOptimizerCompareResults] = useState<
-    Record<OptimizerStrategy, ScenarioOptimizerResult | null>
-  >(createEmptyOptimizerCompareResults);
+  const [optimizerCompareResults, setOptimizerCompareResults] =
+    useState<OptimizerCompareResults>(createEmptyOptimizerCompareResults);
 
   function canAccessStep(step: WizardStep): boolean {
     if (step === 5 && !expertModeUnlocked) {
@@ -748,6 +797,11 @@ export default function QuickSizerApp() {
   const hasOptimizerComparePlans = useMemo(
     () => optimizerComparePlans.some((plan) => Boolean(plan.result)),
     [optimizerComparePlans]
+  );
+
+  const bestOptimizerCompareStrategy = useMemo(
+    () => pickBestOptimizerStrategy(optimizerCompareResults, Number(optimizerTargetDays)),
+    [optimizerCompareResults, optimizerTargetDays]
   );
 
   useEffect(() => {
@@ -1558,7 +1612,7 @@ export default function QuickSizerApp() {
   }
 
   function firstAvailableOptimizerResult(
-    source: Record<OptimizerStrategy, ScenarioOptimizerResult | null>
+    source: OptimizerCompareResults
   ): ScenarioOptimizerResult | null {
     for (const strategy of OPTIMIZER_STRATEGIES) {
       if (source[strategy]) {
@@ -1621,29 +1675,77 @@ export default function QuickSizerApp() {
     setOptimizerError(null);
 
     try {
+      const next = createEmptyOptimizerCompareResults();
       const compareTuples = await Promise.all(
         OPTIMIZER_STRATEGIES.map(async (strategy) => {
           const result = await fetchJson<ScenarioOptimizerResult>("/api/optimizer", {
             method: "POST",
             body: JSON.stringify(buildOptimizerPayload(strategy))
           });
+          next[strategy] = result;
           return [strategy, result] as const;
         })
       );
 
-      const next = createEmptyOptimizerCompareResults();
-      for (const [strategy, result] of compareTuples) {
-        next[strategy] = result;
-      }
       setOptimizerCompareResults(next);
-
-      const selected = next[optimizerStrategy] ?? firstAvailableOptimizerResult(next);
-      setOptimizerResult(selected);
+      setOptimizerResult(next[optimizerStrategy] ?? firstAvailableOptimizerResult(next));
 
       const generatedCount = compareTuples.filter(([, result]) => result.selections.length > 0).length;
       setMessage(
         `Generated ${generatedCount}/${OPTIMIZER_STRATEGIES.length} optimizer options for comparison.`
       );
+    } catch (err) {
+      const apiErr = err as ApiError;
+      setOptimizerError(apiErr.message);
+    } finally {
+      setOptimizerLoading(false);
+    }
+  }
+
+  async function autoPickBestOptimizerPlan() {
+    if (!workbook) {
+      return;
+    }
+
+    const targetDays = Number(optimizerTargetDays);
+    if (!Number.isFinite(targetDays) || targetDays <= 0) {
+      setOptimizerError("Enter a positive target day budget.");
+      return;
+    }
+
+    setOptimizerLoading(true);
+    setOptimizerError(null);
+
+    try {
+      const compareResults = createEmptyOptimizerCompareResults();
+      await Promise.all(
+        OPTIMIZER_STRATEGIES.map(async (strategy) => {
+          compareResults[strategy] = await fetchJson<ScenarioOptimizerResult>("/api/optimizer", {
+            method: "POST",
+            body: JSON.stringify(buildOptimizerPayload(strategy))
+          });
+        })
+      );
+
+      setOptimizerCompareResults(compareResults);
+
+      const bestStrategy = pickBestOptimizerStrategy(compareResults, targetDays);
+      if (!bestStrategy) {
+        setOptimizerResult(null);
+        setOptimizerError("Unable to auto-pick a valid option for this target.");
+        return;
+      }
+
+      const bestResult = compareResults[bestStrategy];
+      if (!bestResult) {
+        setOptimizerResult(null);
+        setOptimizerError("Unable to resolve the best optimizer option.");
+        return;
+      }
+
+      setOptimizerStrategy(bestStrategy);
+      setOptimizerResult(bestResult);
+      applyOptimizerPlanFromResult(bestResult, `${OPTIMIZER_STRATEGY_LABELS[bestStrategy]} (auto-picked)`);
     } catch (err) {
       const apiErr = err as ApiError;
       setOptimizerError(apiErr.message);
@@ -2623,6 +2725,14 @@ export default function QuickSizerApp() {
                     <button
                       type="button"
                       className="ghost-button"
+                      onClick={autoPickBestOptimizerPlan}
+                      disabled={optimizerLoading}
+                    >
+                      Auto-pick Best
+                    </button>
+                    <button
+                      type="button"
+                      className="ghost-button"
                       onClick={applyOptimizerPlan}
                       disabled={!optimizerResult || optimizerLoading}
                     >
@@ -2643,7 +2753,12 @@ export default function QuickSizerApp() {
                         <section key={plan.strategy} className="choice-card selected" style={{ alignItems: "stretch" }}>
                           <div className="row" style={{ justifyContent: "space-between", width: "100%" }}>
                             <strong>{plan.label}</strong>
-                            {optimizerStrategy === plan.strategy && <span className="recommend-tag">Selected</span>}
+                            <div className="row" style={{ gap: "0.35rem", flexWrap: "wrap" }}>
+                              {bestOptimizerCompareStrategy === plan.strategy && (
+                                <span className="recommend-tag">Best Fit</span>
+                              )}
+                              {optimizerStrategy === plan.strategy && <span className="recommend-tag">Selected</span>}
+                            </div>
                           </div>
                           <span className="muted">{plan.hint}</span>
                           {compareResult ? (
