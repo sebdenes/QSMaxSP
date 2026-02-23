@@ -69,6 +69,38 @@ export type QuickSizerResult = {
   };
 };
 
+export type OptimizerStrategy = "balanced" | "coverage" | "depth";
+
+export type ScenarioOptimizerSelection = {
+  row: number;
+  size: "S" | "M" | "L";
+};
+
+export type ScenarioOptimizerRecommendation = {
+  row: number;
+  scenarioName: string;
+  scenarioType: string;
+  size: "S" | "M" | "L";
+  days: number;
+  portfolioSharePct: number;
+  reason: string;
+};
+
+export type ScenarioOptimizerResult = {
+  strategy: OptimizerStrategy;
+  targetDays: number;
+  totalDays: number;
+  utilizationPct: number;
+  durationYears: number;
+  spread: Spread;
+  selectedScenarioCount: number;
+  coveredTypes: string[];
+  uncoveredTypes: string[];
+  yearTotals: Spread;
+  selections: ScenarioOptimizerSelection[];
+  recommendations: ScenarioOptimizerRecommendation[];
+};
+
 export type AuthUser = {
   id: number;
   email: string;

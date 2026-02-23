@@ -7,7 +7,9 @@ import {
   EngagementCustomServiceRecord,
   EngagementDetail,
   EngagementSummary,
+  OptimizerStrategy,
   QuickSizerSelection,
+  ScenarioOptimizerResult,
   ScenarioDrilldownResponse,
   ScenarioSummary,
   Spread,
@@ -293,6 +295,11 @@ export default function QuickSizerApp() {
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [savedAt, setSavedAt] = useState<string | null>(null);
+  const [optimizerTargetDays, setOptimizerTargetDays] = useState(0);
+  const [optimizerStrategy, setOptimizerStrategy] = useState<OptimizerStrategy>("balanced");
+  const [optimizerLoading, setOptimizerLoading] = useState(false);
+  const [optimizerError, setOptimizerError] = useState<string | null>(null);
+  const [optimizerResult, setOptimizerResult] = useState<ScenarioOptimizerResult | null>(null);
 
   function canAccessStep(step: WizardStep): boolean {
     if (step === 5 && !expertModeUnlocked) {
@@ -687,6 +694,16 @@ export default function QuickSizerApp() {
     [quickResult]
   );
 
+  useEffect(() => {
+    if (optimizerTargetDays > 0) {
+      return;
+    }
+
+    if (reviewGrandTotal > 0) {
+      setOptimizerTargetDays(reviewGrandTotal);
+    }
+  }, [optimizerTargetDays, reviewGrandTotal]);
+
   const customIssuesByRow = useMemo(() => {
     const issues: Record<number, string> = {};
 
@@ -772,6 +789,11 @@ export default function QuickSizerApp() {
     setSavedAt(null);
     setError(null);
     setMessage(null);
+    setOptimizerTargetDays(0);
+    setOptimizerStrategy("balanced");
+    setOptimizerLoading(false);
+    setOptimizerError(null);
+    setOptimizerResult(null);
   }
 
   function hydrateCustomServices(customServices: EngagementCustomServiceRecord[]) {
@@ -875,6 +897,8 @@ export default function QuickSizerApp() {
     }
 
     setSavedAt(new Date().toLocaleString());
+    setOptimizerError(null);
+    setOptimizerResult(null);
     resetStepHistory();
     setWizardStep(6);
   }
@@ -1466,6 +1490,85 @@ export default function QuickSizerApp() {
       return;
     }
     window.open(`/api/engagements/${activeEngagementId}/export?format=csv`, "_blank");
+  }
+
+  async function runScenarioOptimizer() {
+    if (!workbook) {
+      return;
+    }
+
+    const targetDays = Number(optimizerTargetDays);
+    if (!Number.isFinite(targetDays) || targetDays <= 0) {
+      setOptimizerError("Enter a positive target day budget.");
+      return;
+    }
+
+    setOptimizerLoading(true);
+    setOptimizerError(null);
+
+    try {
+      const candidateRows =
+        selectedTypes.length > 0
+          ? visibleRows.map((row) => row.row)
+          : scenarioRows.map((row) => row.row);
+
+      const result = await fetchJson<ScenarioOptimizerResult>("/api/optimizer", {
+        method: "POST",
+        body: JSON.stringify({
+          targetDays,
+          strategy: optimizerStrategy,
+          durationYears,
+          spread: activeSpread,
+          candidateRows
+        })
+      });
+
+      setOptimizerResult(result);
+      setMessage(
+        `Optimizer generated ${result.selectedScenarioCount} scenario recommendations (${formatNum(
+          result.totalDays
+        )} / ${formatNum(result.targetDays)} days).`
+      );
+    } catch (err) {
+      const apiErr = err as ApiError;
+      setOptimizerError(apiErr.message);
+    } finally {
+      setOptimizerLoading(false);
+    }
+  }
+
+  function applyOptimizerPlan() {
+    if (!optimizerResult) {
+      return;
+    }
+
+    if (optimizerResult.selections.length === 0) {
+      setOptimizerError("Optimizer did not find a valid plan for this target.");
+      return;
+    }
+
+    const rows = optimizerResult.selections.map((selection) => selection.row).sort((a, b) => a - b);
+    const inferredTypes = Array.from(new Set(rows.map((row) => classifyScenarioType(row))));
+    const nextPresetSizes = optimizerResult.selections.reduce<Record<number, BaselineSize>>(
+      (acc, selection) => {
+        acc[selection.row] = selection.size;
+        return acc;
+      },
+      {}
+    );
+
+    setSelectedTypes(inferredTypes);
+    setSelectedRows(rows);
+    setPresetSizeByRow(nextPresetSizes);
+    setCustomRows([]);
+    setCustomByRow({});
+    setPendingServiceByRow({});
+    setInsightRow(rows[0] ?? null);
+    setError(null);
+    setOptimizerError(null);
+    setMessage(
+      `Applied optimizer plan: ${rows.length} scenarios, ${formatNum(optimizerResult.totalDays)} total days.`
+    );
   }
 
   function goNextFromBasics() {
@@ -2348,6 +2451,112 @@ export default function QuickSizerApp() {
               <p className="muted" style={{ margin: 0 }}>
                 SAP-ready summary of scope, scenarios, sizing decision, and service allocations.
               </p>
+
+              <section className="card" style={{ borderStyle: "dashed" }}>
+                <div className="row" style={{ justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <div>
+                    <h2 style={{ fontSize: "0.95rem", margin: 0 }}>Scenario Optimizer (Target Mode)</h2>
+                    <p className="muted" style={{ margin: "0.35rem 0 0" }}>
+                      Set a target day budget and let the optimizer propose which scenarios to include and what baseline size to use.
+                    </p>
+                  </div>
+                  <span className="badge">MVP</span>
+                </div>
+
+                <div className="row" style={{ marginTop: "0.75rem", flexWrap: "wrap", alignItems: "flex-end" }}>
+                  <label className="grid" style={{ gap: "0.3rem", minWidth: "200px" }}>
+                    <span className="muted">Target total days</span>
+                    <input
+                      type="number"
+                      min={1}
+                      step={1}
+                      value={optimizerTargetDays}
+                      onChange={(event) => setOptimizerTargetDays(Number(event.target.value))}
+                    />
+                  </label>
+
+                  <label className="grid" style={{ gap: "0.3rem", minWidth: "220px" }}>
+                    <span className="muted">Optimization strategy</span>
+                    <select
+                      value={optimizerStrategy}
+                      onChange={(event) => setOptimizerStrategy(event.target.value as OptimizerStrategy)}
+                    >
+                      <option value="balanced">Balanced (mix of coverage and depth)</option>
+                      <option value="coverage">Coverage (more scenarios at smaller sizes)</option>
+                      <option value="depth">Depth (fewer scenarios at larger sizes)</option>
+                    </select>
+                  </label>
+
+                  <div className="row" style={{ flexWrap: "wrap" }}>
+                    <button type="button" onClick={runScenarioOptimizer} disabled={optimizerLoading}>
+                      {optimizerLoading ? "Optimizing..." : "Generate Plan"}
+                    </button>
+                    <button
+                      type="button"
+                      className="ghost-button"
+                      onClick={applyOptimizerPlan}
+                      disabled={!optimizerResult || optimizerLoading}
+                    >
+                      Apply Plan
+                    </button>
+                  </div>
+                </div>
+
+                {optimizerError && (
+                  <p style={{ color: "#b64d4d", margin: "0.65rem 0 0" }}>{optimizerError}</p>
+                )}
+
+                {optimizerResult && (
+                  <div className="grid" style={{ gap: "0.65rem", marginTop: "0.8rem" }}>
+                    <div className="row" style={{ flexWrap: "wrap" }}>
+                      <span className="badge">Recommended: {optimizerResult.selectedScenarioCount} scenarios</span>
+                      <span className="badge">
+                        Total days: {formatNum(optimizerResult.totalDays)} / {formatNum(optimizerResult.targetDays)}
+                      </span>
+                      <span className="badge">Utilization: {formatNum(optimizerResult.utilizationPct)}%</span>
+                      <span className="badge">Y1: {formatNum(optimizerResult.yearTotals.y1)}</span>
+                      <span className="badge">Y2: {formatNum(optimizerResult.yearTotals.y2)}</span>
+                      <span className="badge">Y3: {formatNum(optimizerResult.yearTotals.y3)}</span>
+                      <span className="badge">Y4: {formatNum(optimizerResult.yearTotals.y4)}</span>
+                      <span className="badge">Y5: {formatNum(optimizerResult.yearTotals.y5)}</span>
+                    </div>
+
+                    <p className="muted" style={{ margin: 0 }}>
+                      Covered types: {optimizerResult.coveredTypes.join(", ") || "None"}.
+                      {optimizerResult.uncoveredTypes.length > 0 && (
+                        <> Uncovered: {optimizerResult.uncoveredTypes.join(", ")}.</>
+                      )}
+                    </p>
+
+                    <div style={{ overflowX: "auto" }}>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Scenario</th>
+                            <th>Type</th>
+                            <th>Size</th>
+                            <th>Days</th>
+                            <th>% of Portfolio</th>
+                            <th>Reason</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {optimizerResult.recommendations.map((entry) => (
+                            <tr key={`${entry.row}-${entry.size}`}>
+                              <td>{entry.scenarioName}</td>
+                              <td>{entry.scenarioType}</td>
+                              <td>{entry.size}</td>
+                              <td>{formatNum(entry.days)}</td>
+                              <td>{formatNum(entry.portfolioSharePct)}%</td>
+                              <td>{entry.reason}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+              </section>
 
               <section className="card" style={{ borderStyle: "dashed" }}>
                 <div className="grid" style={{ gap: "0.6rem" }}>
