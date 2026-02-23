@@ -111,6 +111,26 @@ const SCENARIO_TYPE_BY_ROW: Record<number, string> = {
   28: "Cybersecurity & Compliance"
 };
 
+const OPTIMIZER_STRATEGIES: OptimizerStrategy[] = ["balanced", "coverage", "depth"];
+const OPTIMIZER_STRATEGY_LABELS: Record<OptimizerStrategy, string> = {
+  balanced: "Option A - Balanced",
+  coverage: "Option B - Coverage",
+  depth: "Option C - Depth"
+};
+const OPTIMIZER_STRATEGY_HINTS: Record<OptimizerStrategy, string> = {
+  balanced: "Balanced mix of coverage and delivery depth.",
+  coverage: "Broader coverage across more scenarios.",
+  depth: "Concentrated investment in fewer scenarios."
+};
+
+function createEmptyOptimizerCompareResults(): Record<OptimizerStrategy, ScenarioOptimizerResult | null> {
+  return {
+    balanced: null,
+    coverage: null,
+    depth: null
+  };
+}
+
 function round2(value: number): number {
   return Math.round(value * 100) / 100;
 }
@@ -300,6 +320,9 @@ export default function QuickSizerApp() {
   const [optimizerLoading, setOptimizerLoading] = useState(false);
   const [optimizerError, setOptimizerError] = useState<string | null>(null);
   const [optimizerResult, setOptimizerResult] = useState<ScenarioOptimizerResult | null>(null);
+  const [optimizerCompareResults, setOptimizerCompareResults] = useState<
+    Record<OptimizerStrategy, ScenarioOptimizerResult | null>
+  >(createEmptyOptimizerCompareResults);
 
   function canAccessStep(step: WizardStep): boolean {
     if (step === 5 && !expertModeUnlocked) {
@@ -468,6 +491,13 @@ export default function QuickSizerApp() {
 
     return scenarioRows.filter((row) => selectedTypes.includes(classifyScenarioType(row.row)));
   }, [scenarioRows, selectedTypes]);
+
+  const optimizerCandidateRows = useMemo(() => {
+    if (selectedTypes.length > 0) {
+      return visibleRows.map((row) => row.row);
+    }
+    return scenarioRows.map((row) => row.row);
+  }, [selectedTypes.length, visibleRows, scenarioRows]);
 
   const selectedLineItems = useMemo(
     () => selectedRows.map((row) => rowMap.get(row)).filter(Boolean) as typeof scenarioRows,
@@ -704,6 +734,29 @@ export default function QuickSizerApp() {
     }
   }, [optimizerTargetDays, reviewGrandTotal]);
 
+  const optimizerComparePlans = useMemo(
+    () =>
+      OPTIMIZER_STRATEGIES.map((strategy) => ({
+        strategy,
+        label: OPTIMIZER_STRATEGY_LABELS[strategy],
+        hint: OPTIMIZER_STRATEGY_HINTS[strategy],
+        result: optimizerCompareResults[strategy]
+      })),
+    [optimizerCompareResults]
+  );
+
+  const hasOptimizerComparePlans = useMemo(
+    () => optimizerComparePlans.some((plan) => Boolean(plan.result)),
+    [optimizerComparePlans]
+  );
+
+  useEffect(() => {
+    const selectedCompareResult = optimizerCompareResults[optimizerStrategy];
+    if (selectedCompareResult) {
+      setOptimizerResult(selectedCompareResult);
+    }
+  }, [optimizerCompareResults, optimizerStrategy]);
+
   const customIssuesByRow = useMemo(() => {
     const issues: Record<number, string> = {};
 
@@ -794,6 +847,7 @@ export default function QuickSizerApp() {
     setOptimizerLoading(false);
     setOptimizerError(null);
     setOptimizerResult(null);
+    setOptimizerCompareResults(createEmptyOptimizerCompareResults());
   }
 
   function hydrateCustomServices(customServices: EngagementCustomServiceRecord[]) {
@@ -899,6 +953,7 @@ export default function QuickSizerApp() {
     setSavedAt(new Date().toLocaleString());
     setOptimizerError(null);
     setOptimizerResult(null);
+    setOptimizerCompareResults(createEmptyOptimizerCompareResults());
     resetStepHistory();
     setWizardStep(6);
   }
@@ -1492,6 +1547,27 @@ export default function QuickSizerApp() {
     window.open(`/api/engagements/${activeEngagementId}/export?format=csv`, "_blank");
   }
 
+  function buildOptimizerPayload(strategy: OptimizerStrategy) {
+    return {
+      targetDays: Number(optimizerTargetDays),
+      strategy,
+      durationYears,
+      spread: activeSpread,
+      candidateRows: optimizerCandidateRows
+    };
+  }
+
+  function firstAvailableOptimizerResult(
+    source: Record<OptimizerStrategy, ScenarioOptimizerResult | null>
+  ): ScenarioOptimizerResult | null {
+    for (const strategy of OPTIMIZER_STRATEGIES) {
+      if (source[strategy]) {
+        return source[strategy];
+      }
+    }
+    return null;
+  }
+
   async function runScenarioOptimizer() {
     if (!workbook) {
       return;
@@ -1507,23 +1583,16 @@ export default function QuickSizerApp() {
     setOptimizerError(null);
 
     try {
-      const candidateRows =
-        selectedTypes.length > 0
-          ? visibleRows.map((row) => row.row)
-          : scenarioRows.map((row) => row.row);
-
       const result = await fetchJson<ScenarioOptimizerResult>("/api/optimizer", {
         method: "POST",
-        body: JSON.stringify({
-          targetDays,
-          strategy: optimizerStrategy,
-          durationYears,
-          spread: activeSpread,
-          candidateRows
-        })
+        body: JSON.stringify(buildOptimizerPayload(optimizerStrategy))
       });
 
       setOptimizerResult(result);
+      setOptimizerCompareResults((prev) => ({
+        ...prev,
+        [optimizerStrategy]: result
+      }));
       setMessage(
         `Optimizer generated ${result.selectedScenarioCount} scenario recommendations (${formatNum(
           result.totalDays
@@ -1537,19 +1606,61 @@ export default function QuickSizerApp() {
     }
   }
 
-  function applyOptimizerPlan() {
-    if (!optimizerResult) {
+  async function runScenarioOptimizerCompare() {
+    if (!workbook) {
       return;
     }
 
-    if (optimizerResult.selections.length === 0) {
+    const targetDays = Number(optimizerTargetDays);
+    if (!Number.isFinite(targetDays) || targetDays <= 0) {
+      setOptimizerError("Enter a positive target day budget.");
+      return;
+    }
+
+    setOptimizerLoading(true);
+    setOptimizerError(null);
+
+    try {
+      const compareTuples = await Promise.all(
+        OPTIMIZER_STRATEGIES.map(async (strategy) => {
+          const result = await fetchJson<ScenarioOptimizerResult>("/api/optimizer", {
+            method: "POST",
+            body: JSON.stringify(buildOptimizerPayload(strategy))
+          });
+          return [strategy, result] as const;
+        })
+      );
+
+      const next = createEmptyOptimizerCompareResults();
+      for (const [strategy, result] of compareTuples) {
+        next[strategy] = result;
+      }
+      setOptimizerCompareResults(next);
+
+      const selected = next[optimizerStrategy] ?? firstAvailableOptimizerResult(next);
+      setOptimizerResult(selected);
+
+      const generatedCount = compareTuples.filter(([, result]) => result.selections.length > 0).length;
+      setMessage(
+        `Generated ${generatedCount}/${OPTIMIZER_STRATEGIES.length} optimizer options for comparison.`
+      );
+    } catch (err) {
+      const apiErr = err as ApiError;
+      setOptimizerError(apiErr.message);
+    } finally {
+      setOptimizerLoading(false);
+    }
+  }
+
+  function applyOptimizerPlanFromResult(result: ScenarioOptimizerResult, sourceLabel: string) {
+    if (result.selections.length === 0) {
       setOptimizerError("Optimizer did not find a valid plan for this target.");
       return;
     }
 
-    const rows = optimizerResult.selections.map((selection) => selection.row).sort((a, b) => a - b);
+    const rows = result.selections.map((selection) => selection.row).sort((a, b) => a - b);
     const inferredTypes = Array.from(new Set(rows.map((row) => classifyScenarioType(row))));
-    const nextPresetSizes = optimizerResult.selections.reduce<Record<number, BaselineSize>>(
+    const nextPresetSizes = result.selections.reduce<Record<number, BaselineSize>>(
       (acc, selection) => {
         acc[selection.row] = selection.size;
         return acc;
@@ -1566,9 +1677,17 @@ export default function QuickSizerApp() {
     setInsightRow(rows[0] ?? null);
     setError(null);
     setOptimizerError(null);
+    setOptimizerResult(result);
     setMessage(
-      `Applied optimizer plan: ${rows.length} scenarios, ${formatNum(optimizerResult.totalDays)} total days.`
+      `Applied ${sourceLabel}: ${rows.length} scenarios, ${formatNum(result.totalDays)} total days.`
     );
+  }
+
+  function applyOptimizerPlan() {
+    if (!optimizerResult) {
+      return;
+    }
+    applyOptimizerPlanFromResult(optimizerResult, "selected optimizer plan");
   }
 
   function goNextFromBasics() {
@@ -2481,15 +2600,25 @@ export default function QuickSizerApp() {
                       value={optimizerStrategy}
                       onChange={(event) => setOptimizerStrategy(event.target.value as OptimizerStrategy)}
                     >
-                      <option value="balanced">Balanced (mix of coverage and depth)</option>
-                      <option value="coverage">Coverage (more scenarios at smaller sizes)</option>
-                      <option value="depth">Depth (fewer scenarios at larger sizes)</option>
+                      {OPTIMIZER_STRATEGIES.map((strategy) => (
+                        <option key={strategy} value={strategy}>
+                          {OPTIMIZER_STRATEGY_LABELS[strategy]}
+                        </option>
+                      ))}
                     </select>
                   </label>
 
                   <div className="row" style={{ flexWrap: "wrap" }}>
                     <button type="button" onClick={runScenarioOptimizer} disabled={optimizerLoading}>
-                      {optimizerLoading ? "Optimizing..." : "Generate Plan"}
+                      {optimizerLoading ? "Optimizing..." : "Generate Selected Option"}
+                    </button>
+                    <button
+                      type="button"
+                      className="ghost-button"
+                      onClick={runScenarioOptimizerCompare}
+                      disabled={optimizerLoading}
+                    >
+                      Compare A/B/C
                     </button>
                     <button
                       type="button"
@@ -2506,8 +2635,49 @@ export default function QuickSizerApp() {
                   <p style={{ color: "#b64d4d", margin: "0.65rem 0 0" }}>{optimizerError}</p>
                 )}
 
+                {hasOptimizerComparePlans && (
+                  <div className="choice-grid" style={{ marginTop: "0.8rem" }}>
+                    {optimizerComparePlans.map((plan) => {
+                      const compareResult = plan.result;
+                      return (
+                        <section key={plan.strategy} className="choice-card selected" style={{ alignItems: "stretch" }}>
+                          <div className="row" style={{ justifyContent: "space-between", width: "100%" }}>
+                            <strong>{plan.label}</strong>
+                            {optimizerStrategy === plan.strategy && <span className="recommend-tag">Selected</span>}
+                          </div>
+                          <span className="muted">{plan.hint}</span>
+                          {compareResult ? (
+                            <>
+                              <span className="stat-line">
+                                {formatNum(compareResult.totalDays)} / {formatNum(compareResult.targetDays)} days (
+                                {formatNum(compareResult.utilizationPct)}%)
+                              </span>
+                              <span className="stat-line">
+                                {compareResult.selectedScenarioCount} scenarios, {compareResult.coveredTypes.length} types
+                              </span>
+                              <button
+                                type="button"
+                                className="ghost-button"
+                                onClick={() => applyOptimizerPlanFromResult(compareResult, plan.label)}
+                                disabled={optimizerLoading}
+                              >
+                                Apply {plan.label}
+                              </button>
+                            </>
+                          ) : (
+                            <span className="muted">Not generated yet.</span>
+                          )}
+                        </section>
+                      );
+                    })}
+                  </div>
+                )}
+
                 {optimizerResult && (
                   <div className="grid" style={{ gap: "0.65rem", marginTop: "0.8rem" }}>
+                    <p className="muted" style={{ margin: 0 }}>
+                      Detail view for {OPTIMIZER_STRATEGY_LABELS[optimizerResult.strategy]}.
+                    </p>
                     <div className="row" style={{ flexWrap: "wrap" }}>
                       <span className="badge">Recommended: {optimizerResult.selectedScenarioCount} scenarios</span>
                       <span className="badge">
